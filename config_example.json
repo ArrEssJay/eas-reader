@@ -1,0 +1,10 @@
+{
+  "socketio_servers": [
+    "wss://server1",
+    "wss://server2"
+  ],
+  "loki_url": "https://server.domain/loki/api/v1/push",
+  "loki_username": "username",
+  "loki_password": "password"
+
+}
