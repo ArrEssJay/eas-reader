@@ -18,8 +18,6 @@ def load_config(config_file="config.json"):
     with open(config_file, "r") as f:
         return json.load(f)
 
-config = load_config()
-
 # Load brigade lookup from CSV
 def load_brigades_lookup(csv_file="data/cfa_brigades.csv"):
     """
@@ -36,14 +34,6 @@ def load_brigades_lookup(csv_file="data/cfa_brigades.csv"):
                 lookup[key] = row
     return lookup
 
-brigades_lookup = load_brigades_lookup()
-
-
-# Read settings from the config
-SOCKETIO_SERVERS = config["socketio_servers"]
-LOKI_URL = config["loki_url"]
-LOKI_USERNAME = config["loki_username"]
-LOKI_PASSWORD = config["loki_password"]
 
 # Global circular buffer for deduplication (max 10 items)
 message_buffer = deque(maxlen=10)
@@ -242,14 +232,27 @@ def start_client(server_url, shutdown_event):
 
 def main():
     """Main execution: start a thread for each Socket.IO server and handle shutdown gracefully."""
-    global NO_WRITE
+    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, brigades_lookup
 
-    print("hi")
-    parser = argparse.ArgumentParser(description="EAS to Loki logger with optional no-write mode.")
+    parser = argparse.ArgumentParser(
+        description="EAS to Loki logger with optional no-write mode and configurable config file."
+    )
     parser.add_argument("--no_write", action="store_true",
                         help="Disable writing logs to Loki.")
+    parser.add_argument("-c", "--config", default="config.json",
+                        help="Path to configuration file (default: config.json)")
     args = parser.parse_args()
     NO_WRITE = args.no_write
+
+    # Reload configuration from the specified config file
+    config = load_config(args.config)
+    SOCKETIO_SERVERS = config["socketio_servers"]
+    LOKI_URL = config["loki_url"]
+    LOKI_USERNAME = config["loki_username"]
+    LOKI_PASSWORD = config["loki_password"]
+
+    # Reload the brigade lookup in case paths or data have changed
+    brigades_lookup = load_brigades_lookup()
 
     threads = []
     for server_url in SOCKETIO_SERVERS:
