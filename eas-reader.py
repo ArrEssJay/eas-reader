@@ -155,8 +155,8 @@ def parse_cfa_message(parsed_message):
         if event_type_match:
             event_type_coded = event_type_match.group(1)
         
-        parsed_message['f_event_type'] = event_descriptions.get(event_type_coded, "Unknown")
-        parsed_message['f_code'] =  event_type_match.group(2)
+            parsed_message['f_event_type'] = event_descriptions.get(event_type_coded, "Unknown")
+            parsed_message['f_code'] =  event_type_match.group(2)
 
         # Extract Fireground channels
         chans = re.findall(r"(?<=FGD)[0-9]{1,3}", parsed_message['message'])
