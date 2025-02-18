@@ -9,6 +9,7 @@ from requests.auth import HTTPBasicAuth
 import argparse
 import time
 import csv
+import os, base64, json, sys
 
 # Global flag to control whether to write to Loki
 NO_WRITE = False
@@ -242,10 +243,19 @@ def main():
     parser.add_argument("-c", "--config", default="config.json",
                         help="Path to configuration file (default: config.json)")
     args = parser.parse_args()
+    # If the BASE64_CONFIG environment variable is set, decode and parse it as JSON.
+    if os.environ.get("BASE64_CONFIG"):
+        try:
+            global config_override
+            config_json = json.loads(base64.b64decode(os.environ["BASE64_CONFIG"]).decode("utf-8"))
+        except Exception as e:
+            print(f"Error decoding BASE64_CONFIG: {e}", file=sys.stderr)
+            sys.exit(1)
+    else: 
+        # load configuration from the specified config file
+        config = load_config(args.config)
+    
     NO_WRITE = args.no_write
-
-    # Reload configuration from the specified config file
-    config = load_config(args.config)
     SOCKETIO_SERVERS = config["socketio_servers"]
     LOKI_URL = config["loki_url"]
     LOKI_USERNAME = config["loki_username"]
