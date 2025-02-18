@@ -14,11 +14,6 @@ import os, base64, json, sys
 # Global flag to control whether to write to Loki
 NO_WRITE = False
 
-# Load configuration from config.json
-def load_config(config_file="config.json"):
-    with open(config_file, "r") as f:
-        return json.load(f)
-
 # Load brigade lookup from CSV
 def load_brigades_lookup(csv_file="data/cfa_brigades.csv"):
     """
@@ -245,15 +240,16 @@ def main():
     args = parser.parse_args()
     # If the BASE64_CONFIG environment variable is set, decode and parse it as JSON.
     if os.environ.get("BASE64_CONFIG"):
+        print("Using BASE64_CONFIG environment variable for configuration.", file=sys.stderr)
         try:
-            global config_override
-            config_json = json.loads(base64.b64decode(os.environ["BASE64_CONFIG"]).decode("utf-8"))
+            config = json.loads(base64.b64decode(os.environ["BASE64_CONFIG"]).decode("utf-8"))
         except Exception as e:
             print(f"Error decoding BASE64_CONFIG: {e}", file=sys.stderr)
             sys.exit(1)
     else: 
         # load configuration from the specified config file
-        config = load_config(args.config)
+        config_file= args.config if args.config else "config.json"
+        config =  json.load(config_file)
     
     NO_WRITE = args.no_write
     SOCKETIO_SERVERS = config["socketio_servers"]
