@@ -249,7 +249,8 @@ def main():
     else: 
         # load configuration from the specified config file
         config_file= args.config if args.config else "config.json"
-        config =  json.load(config_file)
+        with open(config_file, "r") as f:
+            config =  json.load(f)
     
     NO_WRITE = args.no_write
     SOCKETIO_SERVERS = config["socketio_servers"]

@@ -14,4 +14,4 @@ COPY . .
 VOLUME /config
 
 # Run the Python script located in the .devcontainer folder
-CMD ["python3","-u", "./eas-reader.py -c /config/config.json"]
+CMD ["python3","-u", "./eas-reader.py"]
