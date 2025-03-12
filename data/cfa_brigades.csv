@@ -2,6 +2,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 02,2003,Bendigo,BEND,Fortuna
 02,2011,Golden Square,GOLD,Fortuna
 02,2038,Eaglehawk,EAGL,Fortuna
+02,2046,Kangaroo Flat,KFLT,Fortuna
 02,2054,Bealiba,BEAL,Goldfields
 02,2064,Benloch,BENL,Coliban
 02,2071,Bolinda & Monegeetta,BOLI,Romsey
@@ -9,6 +10,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 02,2075,Knowsley,KNOW,Eppalock
 02,2080,Bowenvale,BOWE,Goldfields
 02,2087,Carisbrook,CBRK,Goldfields
+02,2091,Carlsruhe,CARL,Coliban
 02,2093,Clarkefield & District,CLAR,Romsey
 02,2098,Costerfield,CFLD,Eppalock
 02,2101,Darraweit Guim,DARR,Romsey
@@ -24,10 +26,13 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 02,2210,Newstead & District,NDST,Strathloddon
 02,2212,Pastoria,PAST,Coliban
 02,2228,Riddell's Creek,RIDD,Mount Macedon
+02,2230,Romsey,ROMS,Romsey
 02,2251,Lockwood,LOCK,Fortuna
 02,2261,Spring Hill,SPRH,Coliban
 02,2279,Tylden,TYLD,Coliban
 02,2348,Axe Creek,AXEC,Eppalock
+02,2356,Axedale,AXED,Eppalock
+02,2364,Baringhup West,BARI,Strathloddon
 02,2385,Campbells Creek,CAMP,Strathloddon
 02,2402,Chewton,CHEW,Mt Alexander
 02,2430,Elmore,ELMO,Whipstick
@@ -37,13 +42,16 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 02,2470,Heathcote,HCOU,Eppalock
 02,2475,Hesket-Kerrie,HESK,Mount Macedon
 02,2488,Hunter-Diggora,HUND,Whipstick
+02,2496,Huntly,HUNL,Fortuna
 02,2526,Junortoun,JUNO,Eppalock
 02,2534,Kamarooka,KAMA,Whipstick
 02,2542,Langley-Barfold,LABR,Mt Alexander
 02,2555,Macedon,MACE,Mount Macedon
 02,2577,Mandurang,MDRG,Eppalock
+02,2586,Marong,MONG,Fortuna
 02,2588,Maryborough,MAGH,Goldfields
 02,2593,Metcalfe,MCAF,Mt Alexander
+02,2597,Mia Mia,MIAM,Eppalock
 02,2600,Moolort & Joyces Creek,MOOL,Goldfields
 02,2615,Mosquito Creek,MOSQ,Eppalock
 02,2620,Mount Macedon,MTMC,Mount Macedon
@@ -82,11 +90,16 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 04,4278,Heathmere,HMER,Heywood
 04,4286,Henty,HENT,Casterton
 04,4295,Heywood,HEYW,Heywood
+04,4316,Homerton,HOME,Heywood
+04,4324,Hotspur,HOTS,Heywood
 04,4332,Killara,KILL,Strathdownie
 04,4359,Lake Mundi,LMUN,Strathdownie
 04,4367,Lindsay,LSAY,Strathdownie
 04,4375,Lyons,LYON,Heywood
 04,4391,Merino,MINO,Merino
+04,4405,Milltown,MTWN,Heywood
+04,4413,Morven,MORV,Merino
+04,4421,Mumbannar,MUMB,Dartmoor
 04,4456,Myamyn,MYAM,Heywood
 04,4472,Narrawong,NWNG,Heywood
 04,4480,Nelson,NELS,Dartmoor
@@ -110,16 +123,20 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 05,5061,Broadwater,BWTR,Macarthur
 05,5088,Buckley Swamp,BUCK,Mount  Rouse
 05,5096,Bulart,BLRT,Dundas
+05,5111,Coleraine,COLE,Balmoral
+05,5118,Burn Brae,BRNB,Mount  Rouse
 05,5126,Byaduk,BYAD,Macarthur
 05,5134,Caramut,CMUT,Hawkesdale
 05,5142,Cavendish,CAVE,Dundas
 05,5169,Croxton East,CROX,Mount  Rouse
+05,5177,Cudgee,CUDG,Hopkins - Curdies
 05,5179,Culla,CULL,Nareen
 05,5207,Dunkeld,DUNK,Serra
 05,5215,Ellerslie,ELLE,Mortlake
 05,5223,Codrington,CODR,Belfast
 05,5231,Framlingham,FRAM,Merri
 05,5258,Garvoc,GARC,Hopkins - Curdies
+05,5266,Gazette,GAZE,Mount  Rouse
 05,5274,Glenthompson,GTOM,Serra
 05,5282,Grange,GRAN,Dundas
 05,5290,Grassmere,GRRE,Merri
@@ -128,20 +145,25 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 05,5304,Bainbridge,BAIN,Dundas
 05,5312,Hamilton,HAMI,Dundas
 05,5320,Hawkesdale,HAWK,Hawkesdale
+05,5339,Hensley Park,HENS,Dundas
 05,5347,Hexham,HEXH,Mortlake
 05,5349,Hilgay Settlers,HILG,Balmoral
 05,5363,Karabeal,KARA,Dundas
 05,5371,Kirkstall,KIRK,Belfast
 05,5401,Kolora,KOLO,Mortlake
 05,5405,Konongwootong,KONO,Nareen
+05,5428,Koroit,KORO,Merri
 05,5436,Laang,LAAN,Hopkins - Curdies
+05,5444,Linlithgow,LGOW,Mount  Rouse
 05,5452,Macarthur,MACA,Macarthur
 05,5455,Melville Forest,MFOR,Balmoral
 05,5460,Mepunga,MEPU,Hopkins - Curdies
 05,5479,Minhamite,MINH,Hawkesdale
+05,5487,Mirranatwa,MIRR,Dundas
 05,5495,Mooralla,MOLA,Dundas
 05,5511,Muntham,MUNT,Nareen
 05,5513,Nareen,NARE,Nareen
+05,5515,Mortlake,MLKU,Mortlake
 05,5517,Naringal,NGAL,Hopkins - Curdies
 05,5568,Nirranda South,NIRR,Hopkins - Curdies
 05,5571,North Balmoral,NTHB,Balmoral
@@ -153,6 +175,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 05,5622,Penshurst,PENS,Mount  Rouse
 05,5657,Peterborough,PETE,Hopkins - Curdies
 05,5659,Pigeon Ponds,PPND,Nareen
+05,5665,Port Fairy,PRTF,Belfast
 05,5681,Purnim,PURN,Merri
 05,5703,Ripponhurst,RIPP,Macarthur
 05,5711,Spring Creek,SPCR,Hawkesdale
@@ -163,10 +186,14 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 05,5761,Tarrenlea,TLEA,Balmoral
 05,5762,Tarrington,TTON,Dundas
 05,5770,The Sisters,THES,Mortlake
+05,5789,Toolong,TLNG,Belfast
 05,5795,Vasey,VASE,Balmoral
 05,5797,Victoria Valley,VICV,Dundas
+05,5798,Wando Heights,WHIG,Nareen
 05,5800,Wangoom,WAOM,Merri
 05,5819,Warrayure-Moutajup,WJUP,Dundas
+05,5827,Warrnambool,WBOL,Merri
+05,5835,Warrong,WAOG,Hawkesdale
 05,5843,Willatook & District,WTOK,Hawkesdale
 05,5851,Winslow & Yarpturk,WINS,Merri
 05,5878,Woodford,WFRD,Merri
@@ -175,6 +202,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 05,5898,Wootong Vale,WOTV,Balmoral
 05,5908,Wooriwyrite,WRIT,Mortlake
 05,5924,Yambuk,YAMB,Belfast
+05,5932,Yulecart,YULE,Dundas
 06,6017,Apollo Bay,APOL,Corangamite
 06,6025,Barongarook West,BARO,Corangamite
 06,6027,Barwon Downs,BARD,Beeac
@@ -182,23 +210,31 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 06,6041,Berrybank,BBNK,Lismore
 06,6050,Birregurra,BIRR,Beeac
 06,6068,Bookaar,BOOK,Camperdown
+06,6076,Boorcan,BOOR,Camperdown
 06,6084,Bostocks Creek,BOST,Cobden
 06,6092,Brucknell-Ayrford,BRUK,Timboon
 06,6106,Bungador,BUNG,Corangamite
 06,6114,Camperdown,CDWN,Camperdown
 06,6122,Carpendeit-Sth Purrumbete,CARP,Cobden
+06,6130,Chocolyn,CHOC,Camperdown
 06,6150,Cobden,COBD,Cobden
 06,6165,Cobrico,COCO,Cobden
 06,6173,Colac,COLA,Beeac
 06,6181,Cororooke,CRKE,Corangamite
 06,6203,Cressy,CRES,Lismore
 06,6211,Darlington,DARL,Lismore
+06,6218,Dixie,DIXI,Camperdown
 06,6238,Derrinallum,DERR,Lismore
 06,6246,Dreeite South,DREE,Corangamite
+06,6254,Duverney,DUVE,Lismore
 06,6262,Ecklin & District,ECKL,Cobden
+06,6289,Forrest,FORE,Beeac
 06,6297,Gellibrand,GELL,Corangamite
 06,6300,Gerangamete,GERE,Beeac
 06,6319,Irrewarra,IRRE,Beeac
+06,6327,Jancourt,JANC,Cobden
+06,6335,Kawarren,KAWA,Corangamite
+06,6343,Kennedy's Creek,KENN,Timboon
 06,6351,Larpent,LARP,Corangamite
 06,6378,Leslie Manor,LESM,Lismore
 06,6386,Lismore,LSMR,Lismore
@@ -214,6 +250,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 06,6483,Simpson,SIMP,Timboon
 06,6491,Stonyford,SFRD,Camperdown
 06,6505,Swan Marsh,SMSH,Corangamite
+06,6513,Terang,TERA,Camperdown
 06,6548,Tesbury,TESY,Camperdown
 06,6556,Timboon,TIMB,Timboon
 06,6564,Vite Vite North,VIVI,Lismore
@@ -235,6 +272,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 07,7080,Barwon Heads,BARW,Bellarine
 07,7110,Connewarre,CONN,Coastal
 07,7129,Dereel,DERE,Leigh
+07,7137,Deans Marsh,DEAN,Winchelsea
 07,7145,Drysdale,DRYS,Bellarine
 07,7161,Freshwater Creek,FRES,Coastal
 07,7188,Gnarwarre,GNAR,Winchelsea
@@ -248,6 +286,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 07,7307,Mannerim,MANN,Bellarine
 07,7315,Meredith,MERE,Anakie
 07,7323,Modewarre,MODE,Winchelsea
+07,7331,Mount Mercer,MTME,Leigh
 07,7358,Ocean Grove,OCEA,Bellarine
 07,7366,Portarlington,PORT,Bellarine
 07,7382,Queenscliff,QUEE,Bellarine
@@ -258,6 +297,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 07,7439,Teesdale,TEES,Leigh
 07,7447,Torquay,TRQY,Coastal
 07,7463,Wallington,WALN,Bellarine
+07,7471,Werneth,WERN,Leigh
 07,7500,Winchelsea,WSEA,Winchelsea
 07,7528,Wingeel,WING,Winchelsea
 07,7536,Wurdale,WURD,Winchelsea
@@ -272,6 +312,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 08,8028,Bass,BASS,Bass Coast
 08,8036,Baxter,BAXT,Westernport
 08,8044,Bayles,BAYL,Cardinia
+08,8052,Beaconsfield,BEAC,Cardinia
 08,8060,Beaconsfield Upper,BEUP,Cardinia
 08,8079,Berwick,BERW,Casey
 08,8087,Bittern,BITT,Westernport
@@ -280,9 +321,11 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 08,8117,Clyde,CLYD,Casey
 08,8125,Cockatoo,COAT,Cardinia
 08,8133,Cranbourne,CRAN,Casey
+08,8168,Crib Point,CRIB,Westernport
 08,8176,Devon Meadows,DEVO,Casey
 08,8184,Dromana,DROM,Peninsula
 08,8192,Flinders,FLIN,Peninsula
+08,8206,French Island,FRIS,Bass Coast
 08,8222,Gembrook,GEMB,Cardinia
 08,8230,Glen Alvie,GLEN,Bass Coast
 08,8240,Hallam,HALL,Casey
@@ -292,6 +335,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 08,8273,Kilcunda,KILC,Bass Coast
 08,8281,Koo Wee Rup,KOOW,Cardinia
 08,8303,Lang Lang,LANG,Cardinia
+08,8338,Main Ridge,MAIN,Peninsula
 08,8346,Moorooduc,MORO,Westernport
 08,8354,Mornington,MORN,Westernport
 08,8362,Mt Martha,MTMA,Peninsula
@@ -300,12 +344,15 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 08,8400,San Remo,SEMO,Bass Coast
 08,8419,Officer,OFFI,Cardinia
 08,8427,Pakenham,PKHM,Cardinia
+08,8443,Pakenham Upper,PAKU,Cardinia
 08,8446,Patterson River,PATR,South East
 08,8451,Pearcedale,PEAR,Casey
 08,8479,Phillip Island,PISL,Bass Coast
 08,8486,Dalyston,DALY,Bass Coast
 08,8494,Red Hill,REDH,Westernport
 08,8508,Rosebud,ROSE,Peninsula
+08,8524,Shoreham,SHOR,Westernport
+08,8526,Skye,SKYE,South East
 08,8532,Somers,SOME,Westernport
 08,8540,Somerville,SOVL,Westernport
 08,8567,Sorrento,SNTO,Peninsula
@@ -313,11 +360,14 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 08,8583,Tooradin,TOOR,Casey
 08,8605,Tyabb,TYAB,Westernport
 08,8613,Tynong,TYNO,Cardinia
+08,8621,Wonthaggi,WOGI,Bass Coast
 08,8648,Corinella,CORN,Bass Coast
 08,8656,Kernot-Grantville,KERN,Bass Coast
 08,8664,Warneet - Blind Bight,WARN,Casey
 08,8672,Maryknoll & District,MARY,Cardinia
 08,8680,Rye,RYEA,Peninsula
+08,8711,Carrum Downs,CADW,South East
+08,8737,Dandenong,DAND,South East
 08,8761,Edithvale,EDIT,South East
 08,8788,Frankston,FTON,South East
 08,8818,Hampton Park,HAMP,Casey
@@ -328,6 +378,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 08,8877,Langwarrin,LANW,Westernport
 09,9008,Allambee,ALLA,Strzelecki
 09,9016,Berry's Creek,BCRK,Strzelecki
+09,9024,Darnum & Ellinbank,DARN,Baw Baw
 09,9032,Drouin,DROU,Baw Baw
 09,9059,Drouin West,DWST,Baw Baw
 09,9067,Erica & District,ERIC,Baw Baw
@@ -341,6 +392,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 09,9156,Kongwak & District,KONG,Strzelecki
 09,9164,Koonwarra,KWAR,Strzelecki
 09,9172,Korumburra,KORU,Strzelecki
+09,9202,Leongatha,LEON,Strzelecki
 09,9210,Leongatha South,LSTH,Strzelecki
 09,9229,Loch,LOCH,Strzelecki
 09,9235,Longwarry & District,LONG,Baw Baw
@@ -353,6 +405,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 09,9350,Nilma North,NITH,Baw Baw
 09,9369,Poowong,POOW,Strzelecki
 09,9377,Pound Creek,PCRK,South Gippsland
+09,9393,Neerim South,NSTH,Baw Baw
 09,9407,Tarwin Lower District,TARW,South Gippsland
 09,9415,Thorpdale,THDL,Strzelecki
 09,9423,Toora,TORA,South Gippsland
@@ -371,6 +424,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 10,10146,Clydebank,CBNK,Avon
 10,10154,Cowwarr,COWW,Riverslea
 10,10162,Dargo,DARG,Avon
+10,10170,Seaton,SEAT,Riverslea
 10,10189,Devon North,DENT,Tarra
 10,10219,Giffard West,GIFF,Stradbroke
 10,10235,Glengarry East,GGET,Riverslea
@@ -385,13 +439,17 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 10,10448,Nambrok,NAMB,Riverslea
 10,10456,Newry,NEWR,Riverslea
 10,10472,Perry Bridge,PBRG,Avon
+10,10480,Port Albert,PRTA,Tarra
+10,10499,Rosedale,ROSR,Riverslea
 10,10510,Sale,SALE,Riverslea
 10,10529,Seaspray,SEAS,Stradbroke
 10,10537,Glenmaggie,GMAG,Riverslea
 10,10545,Stradbroke,STRD,Stradbroke
 10,10555,Stratford,STRT,Avon
+10,10588,Tinamba,TINA,Riverslea
 10,10669,Valencia Creek,VALE,Riverslea
 10,10677,Willung,WLNG,Stradbroke
+10,10685,Willung South,WSTH,Tarra
 10,10693,Winnindoo,WDOO,Riverslea
 10,10707,Won Wron,WONW,Tarra
 10,10715,Woodside,WSDE,Tarra
@@ -399,14 +457,18 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 10,10758,Yarram,YRAM,Tarra
 10,10812,Coongulla,COON,Riverslea
 10,10820,Jack River,JACK,Tarra
+11,11002,Bairnsdale,BDAL,Mitchell
 11,11010,Benambra,BBRA,Omeo
 11,11029,Bendoc,BDOC,Mount Delegate
 11,11037,Bengworden,BWDN,Mitchell
 11,11045,Bruthen,BRUT,Tambo
 11,11053,Mossi - Tambo,MTAM,Tambo
+11,11061,Buchan,BUCH,Tambo
 11,11096,Cann Valley,CVAL,Orbost
+11,11126,Ensay,ENSA,Omeo
 11,11134,Fernbank,FBNK,Mitchell
 11,11142,Flaggy Creek,FLAG,Mitchell
+11,11150,Gelantipy,GELA,Tambo
 11,11169,Glenaladale,GLDA,Mitchell
 11,11172,Goongerah,GOON,Mount Delegate
 11,11177,Hillside,HILL,Mitchell
@@ -427,11 +489,15 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 11,11347,Toorloo,TLOO,Tambo
 11,11355,Wairewa,WAIR,Orbost
 11,11371,Bonang,BONG,Mount Delegate
+11,11398,Bemm,BEMM,Orbost
 12,12009,Acheron,ACHE,Alexandra
 12,12020,Alexandra,ADRA,Alexandra
+12,12041,Broadford,BRFD,Mitchell Shire
 12,12076,Buxton,BUXT,Alexandra
 12,12092,Eildon,EILD,Alexandra
+12,12106,Flowerdale,FLOW,Yea
 12,12114,Glenaroua,GRUA,Mitchell Shire
+12,12122,Glenburn,GLBU,Yea
 12,12157,Highlands-Caveat,HLAN,Yea
 12,12160,Hilldene,HILD,Mitchell Shire
 12,12165,Homewood,HOMW,Yea
@@ -444,10 +510,12 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 12,12270,Nulla Vale,NULA,Mitchell Shire
 12,12289,Pyalong,PYAL,Mitchell Shire
 12,12297,Seymour,SEYM,Mitchell Shire
+12,12319,Strath Creek-Reedy Creek,SCRC,Yea
 12,12327,Taggerty,TAGG,Alexandra
 12,12335,Tallarook,TALA,Mitchell Shire
 12,12346,Terip Terip,TRIP,Alexandra
 12,12351,Thornton,THRN,Alexandra
+12,12360,Toolangi,TOLA,Yea
 12,12378,Tooborac,TOOB,Mitchell Shire
 12,12386,Trawool,TWOL,Mitchell Shire
 12,12390,Wallan,WALL,Mitchell Shire
@@ -461,6 +529,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 12,12483,Marysville,MVIL,Alexandra
 12,12491,Clonbinane,CLON,Mitchell Shire
 13,13005,Badger Creek,BADG,Maroondah
+13,13013,Bayswater,BAYS,Knox
 13,13021,Belgrave,BELG,Dandenong Ranges
 13,13056,Belgrave Heights & South,BELS,Dandenong Ranges
 13,13064,Boronia,BORO,Knox
@@ -472,6 +541,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 13,13188,Ferntree Gully,FERN,Knox
 13,13218,Gruyere,GRUY,Yarra Valley
 13,13226,Healesville,HVIL,Maroondah
+13,13236,Hillcrest,HILC,Yarra Valley
 13,13242,Hoddle's Creek,HODD,Yarra Valley
 13,13269,Kallista-The Patch,KALL,Dandenong Ranges
 13,13277,Kalorama & Mt Dandenong,KALO,Dandenong Ranges
@@ -493,6 +563,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 13,13595,Upwey,UPWE,Dandenong Ranges
 13,13617,Wandin,WAND,Yarra Valley
 13,13625,Warburton,WARB,Yarra Valley
+13,13676,South Warrandyte,STHW,Maroondah
 13,13692,Wesburn-Millgrove,WBRN,Yarra Valley
 13,13706,Wonga Park,WONG,Maroondah
 13,13722,Yarra Glen,YAGL,Maroondah
@@ -500,6 +571,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 13,13757,Yellingbo,YELL,Yarra Valley
 13,13781,The Basin,THEB,Knox
 13,13803,Warrandyte,WARR,Maroondah
+13,13811,Rowville,ROWV,Knox
 13,13838,Mooroolbark,MBRK,Maroondah
 13,13854,Reefton,REEF,Yarra Valley
 14,14001,Arthurs Creek,ARTH,Whittlesea/D.Valley
@@ -509,6 +581,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 14,14125,Diggers Rest,DIGG,Mount Cottrell
 14,14133,Doreen,DORE,Whittlesea/D.Valley
 14,14135,Eltham,EHAM,Nillumbik
+14,14151,Eynesbury,EYNE,Mount Cottrell
 14,14198,Hurstbridge,HURS,Nillumbik
 14,14206,Kalkallo,KAKA,Hume
 14,14210,Kangaroo Ground,KANG,Nillumbik
@@ -522,6 +595,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 14,14375,St Andrews,STAN,Nillumbik
 14,14389,Sunbury,SNBY,Hume
 14,14419,Toolern Vale,TOOL,Mount Cottrell
+14,14427,Truganina,TRUG,Mount Cottrell
 14,14438,Wattle Glen,WATT,Nillumbik
 14,14443,Werribee,WBEE,Mount Cottrell
 14,14478,Whittlesea,WHIT,Whittlesea/D.Valley
@@ -542,6 +616,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 15,15030,Balliang & District,BALL,Pentland
 15,15032,Blackwood,BLAC,Ballan
 15,15059,Bungaree,BREE,Buninyong
+15,15068,Buninyong-Mt Helen,BUNI,Eureka
 15,15075,Burrumbeet,BURR,Ballarat
 15,15105,Campbelltown,CTWN,Birch
 15,15113,Cape Clear,CAPE,Grenville
@@ -558,15 +633,18 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 15,15288,Glen Park,GLPK,Birch
 15,15296,Gordon,GORD,Ballan
 15,15318,Greendale,GRED,Ballan
+15,15326,Hardies Hill,HARD,Buninyong
 15,15342,Hepburn,HBRN,Glenlyon
 15,15350,Invermay,IMAY,Ballarat
 15,15369,Kingston,KSTN,Birch
 15,15385,Kooroocheang Werona,KONA,Birch
 15,15415,Learmonth-Addington,LEAR,Ballarat
 15,15423,Leonards Hill & District,LHIL,Glenlyon
+15,15458,Linton,LINT,Grenville
 15,15474,Mannibadar,MDAR,Grenville
 15,15490,Millbrook,MBOK,Ballan
 15,15504,Miners Rest,MRST,Ballarat
+15,15512,Mollongghip,MOLL,Birch
 15,15539,Morrisons & District,MORR,Ballan
 15,15547,Mt Buninyong,MTBU,Buninyong
 15,15563,Mt Egerton,MEGE,Ballan
@@ -593,6 +671,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 15,15881,Ballarat City,BRAT,Eureka
 16,16004,Amphitheatre,AMPH,Pyrenees
 16,16015,Ararat,ARAU,Ararat
+16,16047,Barkly & Frenchman's,BARK,Pyrenees
 16,16055,Beaufort,BEAF,Beaufort
 16,16068,Beazley's Bridge,BEAZ,St Arnaud
 16,16071,Bornes Hill,BORN,Westmere
@@ -603,13 +682,18 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 16,16136,Callawadda,CALL,Stawell
 16,16144,Carranballac,CLAC,Westmere
 16,16150,Chatsworth,CHAT,Westmere
+16,16156,Avoca,AVOU,Pyrenees
+16,16158,Coonooer Bridge,CBRG,St Arnaud
 16,16160,Cross Roads,CRRO,Beaufort
 16,16179,Crowlands,CROW,Pyrenees
+16,16187,Dadswells Bridge,DADS,Stawell
 16,16193,Dundonnell,DUND,Westmere
 16,16195,Elmhurst,ELMU,Pyrenees
 16,16209,Halls Gap,HGAP,Stawell
 16,16217,Glenorchy & Riachella,GLRI,Stawell
+16,16219,Gooroc,GROC,St Arnaud
 16,16225,Great Western,GRRN,Ararat
+16,16227,Gre Gre Village,GREG,St Arnaud
 16,16233,Joel Joel,JOEL,Stawell
 16,16236,Kooreh,KOOR,St Arnaud
 16,16241,Lake Bolac,LBOL,Westmere
@@ -623,17 +707,22 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 16,16330,Mininera,MINN,Westmere
 16,16349,Moyston,MOYS,Ararat
 16,16357,Navarre,NAVA,Pyrenees
+16,16365,Pomonal,POMO,Ararat
 16,16373,Raglan,RAGL,Beaufort
 16,16381,Redbank,REDB,Pyrenees
 16,16385,Rich Avon,RICH,St Arnaud
 16,16400,St Arnaud,STAR,St Arnaud
 16,16403,Skipton,SKIP,Beaufort
+16,16407,Slaty Creek,SLAT,St Arnaud
 16,16411,Snake Valley & District,SNAK,Beaufort
 16,16444,Stawell,SWEU,Stawell
 16,16454,Stoneleigh,SLEE,Westmere
 16,16462,Streatham,SHAM,Westmere
 16,16465,Stuart Mill,SMIL,St Arnaud
 16,16470,Tatyoon,TATY,Westmere
+16,16479,Traynor's Lagoon,TRAY,St Arnaud
+16,16489,Wallaloo East,WLOO,Stawell
+16,16497,Warrak,WRAK,Ararat
 16,16500,Warrenmang & District,WARD,Pyrenees
 16,16527,Westmere,WMER,Westmere
 16,16533,Narrapumelap South,NPUM,Westmere
@@ -666,6 +755,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 17,17213,Dinyarrak,DINY,Kaniva
 17,17221,Dooen,DOOE,Horsham
 17,17248,Douglas,DOUG,Jilpanger
+17,17264,Edenhope,EHPE,Edenhope
 17,17280,Gerang,GERA,Ebenezer
 17,17299,Goroke,GORO,Goroke
 17,17302,Green Lake,GLAK,Grampians
@@ -677,10 +767,12 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 17,17361,Kadnook,KADN,Edenhope
 17,17388,Kaniva,KANI,Kaniva
 17,17396,Karnak,KARN,Goroke
+17,17418,Kellalac,KELL,Warracknabeal
 17,17426,Kenmare,KENM,Rainbow
 17,17434,Lah,LAHB,Warracknabeal
 17,17442,Laharum,LAHA,Grampians
 17,17450,Langkoop,LKOP,Apsley
+17,17469,Lawloit,LAWL,Kaniva
 17,17477,Leeor,LEEO,Kaniva
 17,17485,Lorquon,LORQ,Lowan
 17,17493,Lubeck,LUBE,Dunmunkle
@@ -695,6 +787,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 17,17620,Neuarpurr,NEUA,Goroke
 17,17639,Nhill,NHIL,Lowan
 17,17647,Noradjuha,NORA,Natimuk
+17,17655,North Wimmera,NWIM,Warracknabeal
 17,17663,Patyah,PATY,Edenhope
 17,17671,Peronne,PERO,Goroke
 17,17698,Pigick,PIGI,Rainbow
@@ -703,6 +796,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 17,17728,Propodollah,PROP,Lowan
 17,17735,Rainbow,RAIU,Rainbow
 17,17754,Rupanyup,RUPR,Dunmunkle
+17,17779,Sandsmere,SMER,Kaniva
 17,17787,Sheep Hills,SHLS,Warracknabeal
 17,17795,South Lillimur,SLIL,Kaniva
 17,17809,Tarranyurk,TARR,Ebenezer
@@ -712,13 +806,18 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 17,17841,Ullswater,ULLS,Edenhope
 17,17868,Vectis,VECT,Horsham
 17,17876,Warracknabeal,WBEL,Warracknabeal
+17,17884,Werrap,WRAP,Rainbow
 17,17892,Wilkur South,WILK,Warracknabeal
 17,17906,Willenabrina,WRIN,Warracknabeal
 17,17914,Winiam & District,WINI,Lowan
 17,17922,Wonwondah,WDAH,Grampians
+17,17930,Woorak,WOOR,Lowan
+17,17949,Yanac,YANA,Lowan
 17,17957,Yearinga - Yarrock,YEYA,Kaniva
+17,17965,Antwerp,ANTW,Ebenezer
 17,17973,Ozenkadnook,OZEN,Goroke
 18,18007,Annuello,ANNU,Robinvale and District
+18,18011,Berriwillock,BLCK,Tyrrell
 18,18023,Beulah,BEUL,Southern Mallee
 18,18025,Beverford & District,BEVE,Mid Murray
 18,18028,Birchip,BIRC,Buloke West
@@ -734,8 +833,10 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 18,18083,Culgoa,CULG,Tyrrell
 18,18084,Curyo,CURY,Buloke West
 18,18086,Donald,DONA,Buloke West
+18,18088,Dumosa,DUMO,Tyrrell
 18,18089,Glenloth East,GLET,Charlton
 18,18090,Goschen,GOSC,Mid Murray
+18,18110,Hopetoun,HOPU,Southern Mallee
 18,18120,Hopetoun West,HWES,Southern Mallee
 18,18139,Irymple,IRYM,Sunraysia
 18,18140,Jeffcott,JEFF,Buloke West
@@ -746,10 +847,12 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 18,18175,Litchfield,LITC,Buloke West
 18,18198,Manangatang,MANA,Robinvale and District
 18,18201,Merbein,MERB,Sunraysia
+18,18230,Meringur & District,MERI,Sunraysia
 18,18236,Mildura,MILD,Sunraysia
 18,18244,Mittyack,MYAK,Ouyen and District
 18,18256,Murrayville,MUVU,Murrayville and Border
 18,18279,Nangiloc,NANG,Sunraysia
+18,18281,Narraport,NPRT,Tyrrell
 18,18287,Natya,NATY,Mid Murray
 18,18292,Nullawil,NWIL,Tyrrell
 18,18297,Nyah Nyah West,NWST,Mid Murray
@@ -760,6 +863,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 18,18368,Red Cliffs,REDC,Sunraysia
 18,18376,Robinvale,ROBI,Robinvale and District
 18,18384,Rosebery,RBRY,Southern Mallee
+18,18388,Sea Lake,SLKU,Tyrrell
 18,18392,Speed,SPED,Ouyen and District
 18,18417,Swan Hill,SWAU,Mid Murray
 18,18420,Teddywaddy,TEDY,Charlton
@@ -769,16 +873,21 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 18,18457,Underbool,UNBL,Ouyen and District
 18,18465,Waitchie,WAIT,Mid Murray
 18,18473,Walpeup,WAUP,Ouyen and District
+18,18474,Warmur,WARM,Buloke West
 18,18475,Watchem,WATC,Buloke West
 18,18476,Wemen,WEME,Robinvale and District
 18,18477,Watchupga,WAGU,Buloke West
+18,18511,Woomelang,WOOM,Southern Mallee
 18,18538,Woorinen South,WNEN,Mid Murray
 18,18539,Wooroonook,WNOK,Charlton
+18,18540,Wycheproof,WYCH,Tyrrell
 18,18542,Wycheproof South,WYSH,Tyrrell
 18,18546,Yaapeet,YAAP,Southern Mallee
+18,18548,Yeungroon,YRON,Charlton
 18,18554,Nandaly,NAND,Tyrrell
 20,20001,Appin South,APSH,Gannawarra
 20,20028,Bamawm Extension,BEXT,Northern Campaspe
+20,20040,Barraport-Gredgwin,BAGR,Terrick
 20,20044,Beauchamp,BEAU,Gannawarra
 20,20049,Berrimal,BERR,Wedderburn
 20,20087,Lockington,LTON,Northern Campaspe
@@ -791,9 +900,12 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 20,20200,Corop,CORP,Waranga
 20,20202,Corop West,COWT,Waranga
 20,20218,Dingee-Tandarra,DING,Terrick
+20,20235,Echuca,ECHU,Deakin
+20,20238,Echuca Village,EVIL,Deakin
 20,20253,Fentons Creek,FENT,Wedderburn
 20,20255,Girgarre,GIRG,Deakin
 20,20265,Gunbower,GUNB,Northern Campaspe
+20,20270,Inglewood,INGL,Loddon South
 20,20272,Jarklin,JARK,Terrick
 20,20281,Kerang,KERA,Gannawarra
 20,20311,Koondrook,KORK,Gannawarra
@@ -805,21 +917,30 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 20,20370,Leitchville,LVIL,Gannawarra
 20,20400,Loddon Vale,LODD,Terrick
 20,20419,Macorna,MACO,Gannawarra
+20,20427,Meering West,MWST,Gannawarra
 20,20433,Mitiamo,MITI,Terrick
 20,20435,Murrabit,MURR,Gannawarra
+20,20438,Murphy's Creek,MCRK,Loddon South
 20,20440,Mysia,MYSI,Wedderburn
 20,20455,Newbridge,NBRG,Loddon South
 20,20494,Pine Grove,PINE,Northern Campaspe
+20,20501,Powlett-Salisbury,POWL,Loddon South
 20,20512,Pyramid Hill,PYRU,Terrick
 20,20532,Quambatook,QUAM,Gannawarra
 20,20545,Rheola,RHEO,Loddon South
+20,20569,Rushworth,RUSH,Waranga
+20,20575,Sandhill Lake & District,SHIL,Gannawarra
 20,20598,Serpentine,SERP,Terrick
+20,20599,Stanhope,STPE,Waranga
 20,20600,Tarnagulla,TARN,Loddon South
 20,20613,Tennyson,TENN,Northern Campaspe
+20,20617,Timmering,TIMM,Deakin
 20,20619,Tongala,TGAL,Deakin
 20,20620,Toolleen,TLEN,Waranga
+20,20621,Torrumbarry,TBRY,Northern Campaspe
 20,20675,Wedderburn,WEDR,Wedderburn
 20,20678,Woodstock West,WSTO,Loddon South
+20,20683,Woosang,WSNG,Wedderburn
 20,20704,Wychitella,WTEL,Wedderburn
 20,20706,Wyuna,WYUN,Deakin
 20,20708,Yambuna,YBUN,Deakin
@@ -835,6 +956,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 22,22065,Bundalong,BUND,Yarrawonga
 22,22068,Burramine,BMIN,Yarrawonga
 22,22071,Caniambo,CANI,Cogs
+22,22098,Cobram,COBR,Tungamah
 22,22101,Cobram East & Boosey,BOOS,Tungamah
 22,22136,Cooma,COOM,Cogs
 22,22160,Cosgrove & Pine Lodge,COSG,Cogs
@@ -842,8 +964,10 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 22,22209,Dookie,DOOK,Cogs
 22,22217,Currawa,CURR,Cogs
 22,22225,Drumanure,DRUM,Moira West
+22,22233,Earlston,EARL,Violet Town
 22,22241,Euroa,EURO,Euroa
 22,22276,Gooram,GRAM,Euroa
+22,22292,Kaarimba,KAAR,Moira West
 22,22306,Karramomus,KARR,Cogs
 22,22314,Katamatite,KATA,Tungamah
 22,22322,Katandra,KDRA,Cogs
@@ -855,23 +979,32 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 22,22403,Locksley,LLEY,Euroa
 22,22411,Longwood,LOWD,Euroa
 22,22438,Marraweeny,MARR,Euroa
+22,22446,Merrigum,MGUM,Cogs
+22,22462,Miepoll,MIEP,Euroa
 22,22470,Molka,MOLK,Euroa
 22,22497,Moorilim,MLIM,Cogs
+22,22500,Muckatah,MUCK,Tungamah
 22,22519,Mooroopna,MPNA,Cogs
 22,22527,Murchison,MURC,Cogs
+22,22545,Nagambie,NAGU,Tabilk
 22,22578,Naring,NRNG,Moira West
 22,22586,Nathalia,NATH,Moira West
+22,22594,Nw Mooroopna,NWMO,Cogs
+22,22600,Peechelba,PECH,Yarrawonga
 22,22608,Numurkah,NKAH,Moira West
 22,22624,Picola,PICO,Moira West
 22,22632,Rigg's Creek,RIGG,Euroa
 22,22640,Ruffy,RUFF,Euroa
 22,22667,St James & District,SJAM,Tungamah
 22,22675,Shean's Creek,SHEK,Euroa
+22,22683,Shepparton,SHEP,Cogs
 22,22691,Tallygaroopna,TGNA,Cogs
 22,22713,Strathbogie,SBOG,Euroa
 22,22721,Strathmerton,STRN,Moira West
+22,22748,Tatura,TATU,Cogs
 22,22799,Toolamba,TOBA,Cogs
 22,22810,Tungamah,TUNG,Tungamah
+22,22837,Undera,UNDE,Cogs
 22,22840,Upton Hill,UPTO,Euroa
 22,22853,Violet Town,VTWN,Violet Town
 22,22861,Waaia,WAAI,Moira West
@@ -898,6 +1031,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 23,23159,Cheshunt,CHNT,Moyhu
 23,23167,Chesney Vale,CHES,Benalla
 23,23183,Devenish,DEVE,Benalla
+23,23191,Edi,EDII,Moyhu
 23,23205,Eldorado,ELDO,Wangaratta
 23,23213,Everton,EVER,Wangaratta
 23,23221,Glenrowan,GRWN,Wangaratta
@@ -907,6 +1041,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 23,23272,Greta,GRET,Wangaratta
 23,23280,Goughs Bay - Howes Creek,GBAY,Mansfield
 23,23299,Jamieson,JAMI,Mansfield
+23,23302,Killawarra,KWRA,Wangaratta
 23,23310,Laceby West,LACE,Wangaratta
 23,23329,Lima South,LIMA,Benalla
 23,23337,Lurg,LURG,Benalla
@@ -924,6 +1059,7 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 23,23515,South Wangaratta,SRAT,Wangaratta
 23,23523,Springhurst,SHRT,Wangaratta
 23,23558,Swanpool,SPOL,Benalla
+23,23566,Taminick & North Winton,TANW,Benalla
 23,23574,Tarrawingee & District,TADI,Wangaratta
 23,23582,Tatong,TATO,Benalla
 23,23590,Thoona,THNA,Benalla
@@ -939,19 +1075,33 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 23,23752,Baddaginnie,BADD,Benalla
 24,24007,Allans Flat,AFLT,Bogong
 24,24015,Baranduda,BDUD,Wodonga
+24,24023,Barnawartha,BAWA,Rutherglen
+24,24031,Beechworth,BECU,Bogong
+24,24058,Beechworth,BECU,Bogong
+24,24066,Berringama,BGAM,Corryong
+24,24074,Bethanga,BETH,Tallangatta
+24,24082,Biggara,BIGG,Corryong
 24,24090,Bonegilla,BONA,Wodonga
 24,24112,Bright,BRIG,Ovens Valley
 24,24120,Browns Plains,BPLN,Rutherglen
 24,24139,Buffalo River,BUFR,Ovens Valley
+24,24147,Bullioh,BIOH,Tallangatta
+24,24155,Burrowye,BWYE,Corryong
+24,24157,Carlyle,CYLE,Rutherglen
 24,24170,Chiltern,CHIU,Rutherglen
+24,24180,Cornishtown,CORT,Rutherglen
 24,24205,Corryong,CONU,Corryong
 24,24228,Cudgewa,CUWA,Corryong
 24,24236,Dederang,DEDE,Bogong
+24,24244,Eskdale,ESKD,Tallangatta
 24,24252,Gapsted,GAPS,Ovens Valley
 24,24260,Granya,GYRA,Tallangatta
+24,24279,Gundowring,GUND,Bogong
 24,24287,Harrietville,HARV,Ovens Valley
 24,24295,Indigo Valley,INDI,Rutherglen
 24,24309,Kergunyah,KERG,Bogong
+24,24317,Kiewa,KIEW,Bogong
+24,24325,Leneva,LEVA,Wodonga
 24,24333,Mitta Mitta,MITT,Tallangatta
 24,24341,Mt Beauty,MBTY,Bogong
 24,24349,Mt Hotham - Dinner Plain,MHDP,Ovens Valley
@@ -965,12 +1115,15 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 24,24422,Rosewhite,RWHT,Ovens Valley
 24,24426,Rutherglen,RUTR,Rutherglen
 24,24430,Sandy Creek & Charleroi,SCRK,Bogong
+24,24457,Talgarno,TALG,Tallangatta
 24,24466,Tallangatta,TALU,Tallangatta
 24,24481,Tallangatta Valley,TVLY,Tallangatta
 24,24503,Tawonga,TAWO,Bogong
 24,24511,Tintaldra,TINT,Corryong
 24,24542,Wahgunyah,WAHG,Rutherglen
 24,24546,Walwa,WALW,Corryong
+24,24562,Wodonga,WODO,Wodonga
+24,24570,Wodonga West,WWST,Wodonga
 24,24589,Wooragee,WGEE,Bogong
 24,24600,Yackandandah,YACR,Bogong
 24,24627,Dartmouth,DMTH,Tallangatta
@@ -999,235 +1152,3 @@ distrct_no,brig_no,brig_name,short_name,grp_name
 27,27774,Yinnar,YINN,Merton
 27,27782,Yinnar South,YINS,Merton
 27,27790,Churchill,CHUR,Merton
-02,2046,Kangaroo Flat,KFLT,Fortuna
-02,2091,Carlsruhe,CARL,Coliban
-02,2093,Clarkefield & District,CLAR,Romsey
-02,2230,Romsey,ROMS,Romsey
-02,2356,Axedale,AXED,Eppalock
-02,2364,Baringhup West,BARI,Strathloddon
-02,2364,Baringhup West,BARI,Strathloddon
-02,2364,Baringhup West,BARI,Strathloddon
-02,2475,Hesket-Kerrie,HESK,Mount Macedon
-02,2496,Huntly,HUNL,Fortuna
-02,2586,Marong,MONG,Fortuna
-02,2597,Mia Mia,MIAM,Eppalock
-02,2676,Springfield,SFLD,Romsey
-02,2682,Sutton Grange & Myrtle Ck,SUTT,Mt Alexander
-02,2739,Walmer,WALM,Strathloddon
-04,4219,Dunrobin & Nangeela,DUNN,Casterton
-04,4235,Gorae West,GWST,Heywood
-04,4316,Homerton,HOME,Heywood
-04,4324,Hotspur,HOTS,Heywood
-04,4405,Milltown,MTWN,Heywood
-04,4413,Morven,MORV,Merino
-04,4421,Mumbannar,MUMB,Dartmoor
-04,4554,Tahara,TAHA,Merino
-05,5111,Coleraine,COLE,Balmoral
-05,5118,Burn Brae,BRNB,Mount  Rouse
-05,5126,Byaduk,BYAD,Macarthur
-05,5177,Cudgee,CUDG,Hopkins - Curdies
-05,5266,Gazette,GAZE,Mount  Rouse
-05,5339,Hensley Park,HENS,Dundas
-05,5428,Koroit,KORO,Merri
-05,5444,Linlithgow,LGOW,Mount  Rouse
-05,5487,Mirranatwa,MIRR,Dundas
-05,5515,Mortlake,MLKU,Mortlake
-05,5665,Port Fairy,PRTF,Belfast
-05,5789,Toolong,TLNG,Belfast
-05,5798,Wando Heights,WHIG,Nareen
-05,5827,Warrnambool,WBOL,Merri
-05,5835,Warrong,WAOG,Hawkesdale
-05,5851,Winslow & Yarpturk,WINS,Merri
-05,5932,Yulecart,YULE,Dundas
-06,6076,Boorcan,BOOR,Camperdown
-06,6130,Chocolyn,CHOC,Camperdown
-06,6218,Dixie,DIXI,Camperdown
-06,6254,Duverney,DUVE,Lismore
-06,6289,Forrest,FORE,Beeac
-06,6327,Jancourt,JANC,Cobden
-06,6335,Kawarren,KAWA,Corangamite
-06,6343,Kennedy's Creek,KENN,Timboon
-06,6513,Terang,TERA,Camperdown
-07,7048,Anglesea,ANGL,Coastal
-07,7137,Deans Marsh,DEAN,Winchelsea
-07,7331,Mount Mercer,MTME,Leigh
-07,7382,Queenscliff,QUEE,Bellarine
-07,7471,Werneth,WERN,Leigh
-08,8052,Beaconsfield,BEAC,Cardinia
-08,8168,Crib Point,CRIB,Westernport
-08,8176,Devon Meadows,DEVO,Casey
-08,8206,French Island,FRIS,Bass Coast
-08,8338,Main Ridge,MAIN,Peninsula
-08,8427,Pakenham,PKHM,Cardinia
-08,8443,Pakenham Upper,PAKU,Cardinia
-08,8524,Shoreham,SHOR,Westernport
-08,8526,Skye,SKYE,South East
-08,8567,Sorrento,SNTO,Peninsula
-08,8621,Wonthaggi,WOGI,Bass Coast
-08,8621,Wonthaggi,WOGI,Bass Coast
-08,8656,Kernot-Grantville,KERN,Bass Coast
-08,8711,Carrum Downs,CADW,South East
-08,8737,Dandenong,DAND,South East
-09,9024,Darnum & Ellinbank,DARN,Baw Baw
-09,9067,Erica & District,ERIC,Baw Baw
-09,9080,Fish Creek & District,FISH,South Gippsland
-09,9110,Hallora & District,HALO,Baw Baw
-09,9202,Leongatha,LEON,Strzelecki
-09,9229,Loch,LOCH,Strzelecki
-09,9235,Longwarry & District,LONG,Baw Baw
-09,9393,Neerim South,NSTH,Baw Baw
-09,9407,Tarwin Lower District,TARW,South Gippsland
-09,9407,Tarwin Lower District,TARW,South Gippsland
-10,10170,Seaton,SEAT,Riverslea
-10,10480,Port Albert,PRTA,Tarra
-10,10499,Rosedale,ROSR,Riverslea
-10,10510,Sale,SALE,Riverslea
-10,10588,Tinamba,TINA,Riverslea
-10,10685,Willung South,WSTH,Tarra
-10,10685,Willung South,WSTH,Tarra
-10,10820,Jack River,JACK,Tarra
-11,11002,Bairnsdale,BDAL,Mitchell
-11,11061,Buchan,BUCH,Tambo
-11,11126,Ensay,ENSA,Omeo
-11,11150,Gelantipy,GELA,Tambo
-11,11207,Lindenow South,LIND,Mitchell
-11,11215,Mallacoota,MALL,Orbost
-11,11280,Omeo,OMEO,Omeo
-11,11280,Omeo,OMEO,Omeo
-11,11312,Paynesville,PAYN,Mitchell
-11,11312,Paynesville,PAYN,Mitchell
-11,11320,Sarsfield,SARS,Mitchell
-11,11347,Toorloo,TLOO,Tambo
-11,11371,Bonang,BONG,Mount Delegate
-11,11398,Bemm,BEMM,Orbost
-12,12041,Broadford,BRFD,Mitchell Shire
-12,12106,Flowerdale,FLOW,Yea
-12,12122,Glenburn,GLBU,Yea
-12,12319,Strath Creek-Reedy Creek,SCRC,Yea
-12,12319,Strath Creek-Reedy Creek,SCRC,Yea
-12,12360,Toolangi,TOLA,Yea
-12,12410,Whiteheads Creek-Tarcombe,WCTM,Mitchell Shire
-13,13013,Bayswater,BAYS,Knox
-13,13226,Healesville,HVIL,Maroondah
-13,13236,Hillcrest,HILC,Yarra Valley
-13,13236,Hillcrest,HILC,Yarra Valley
-13,13310,Little Yarra,LTYA,Yarra Valley
-13,13625,Warburton,WARB,Yarra Valley
-13,13676,South Warrandyte,STHW,Maroondah
-13,13811,Rowville,ROWV,Knox
-14,14001,Arthurs Creek,ARTH,Whittlesea/D.Valley
-14,14058,Caroline Springs,CARO,Mount Cottrell
-14,14065,Christmas Hills,CHRI,Nillumbik
-14,14151,Eynesbury,EYNE,Mount Cottrell
-14,14206,Kalkallo,KAKA,Hume
-14,14249,Melton,MTON,Mount Cottrell
-14,14389,Sunbury,SNBY,Hume
-14,14427,Truganina,TRUG,Mount Cottrell
-14,14427,Truganina,TRUG,Mount Cottrell
-14,14478,Whittlesea,WHIT,Whittlesea/D.Valley
-15,15010,Bacchus Marsh,BMSH,Pentland
-15,15068,Buninyong-Mt Helen,BUNI,Eureka
-15,15068,Buninyong-Mt Helen,BUNI,Eureka
-15,15113,Cape Clear,CAPE,Grenville
-15,15326,Hardies Hill,HARD,Buninyong
-15,15369,Kingston,KSTN,Birch
-15,15458,Linton,LINT,Grenville
-15,15512,Mollongghip,MOLL,Birch
-15,15601,Napoleons-Enfield,NAPO,Buninyong
-15,15697,Smythesdale,SMYT,Grenville
-15,15697,Smythesdale,SMYT,Grenville
-15,15733,Trentham,TREN,Glenlyon
-15,15806,Haddon,HADD,Grenville
-16,16047,Barkly & Frenchman's,BARK,Pyrenees
-16,16156,Avoca,AVOU,Pyrenees
-16,16158,Coonooer Bridge,CBRG,St Arnaud
-16,16187,Dadswells Bridge,DADS,Stawell
-16,16219,Gooroc,GROC,St Arnaud
-16,16227,Gre Gre Village,GREG,St Arnaud
-16,16365,Pomonal,POMO,Ararat
-16,16407,Slaty Creek,SLAT,St Arnaud
-16,16479,Traynor's Lagoon,TRAY,St Arnaud
-16,16489,Wallaloo East,WLOO,Stawell
-16,16497,Warrak,WRAK,Ararat
-17,17086,Brimpaen,BPEN,Grampians
-17,17170,Dergholm,DERG,Apsley
-17,17264,Edenhope,EHPE,Edenhope
-17,17302,Green Lake,GLAK,Grampians
-17,17418,Kellalac,KELL,Warracknabeal
-17,17442,Laharum,LAHA,Grampians
-17,17469,Lawloit,LAWL,Kaniva
-17,17647,Noradjuha,NORA,Natimuk
-17,17655,North Wimmera,NWIM,Warracknabeal
-17,17779,Sandsmere,SMER,Kaniva
-17,17833,Toolondo,TLOD,Jilpanger
-17,17868,Vectis,VECT,Horsham
-17,17884,Werrap,WRAP,Rainbow
-17,17930,Woorak,WOOR,Lowan
-17,17949,Yanac,YANA,Lowan
-17,17965,Antwerp,ANTW,Ebenezer
-18,18011,Berriwillock,BLCK,Tyrrell
-18,18088,Dumosa,DUMO,Tyrrell
-18,18110,Hopetoun,HOPU,Southern Mallee
-18,18230,Meringur & District,MERI,Sunraysia
-18,18230,Meringur & District,MERI,Sunraysia
-18,18281,Narraport,NPRT,Tyrrell
-18,18388,Sea Lake,SLKU,Tyrrell
-18,18474,Warmur,WARM,Buloke West
-18,18511,Woomelang,WOOM,Southern Mallee
-18,18540,Wycheproof,WYCH,Tyrrell
-18,18548,Yeungroon,YRON,Charlton
-20,20040,Barraport-Gredgwin,BAGR,Terrick
-20,20040,Barraport-Gredgwin,BAGR,Terrick
-20,20235,Echuca,ECHU,Deakin
-20,20238,Echuca Village,EVIL,Deakin
-20,20270,Inglewood,INGL,Loddon South
-20,20427,Meering West,MWST,Gannawarra
-20,20438,Murphy's Creek,MCRK,Loddon South
-20,20501,Powlett-Salisbury,POWL,Loddon South
-20,20569,Rushworth,RUSH,Waranga
-20,20575,Sandhill Lake & District,SHIL,Gannawarra
-20,20599,Stanhope,STPE,Waranga
-20,20617,Timmering,TIMM,Deakin
-20,20621,Torrumbarry,TBRY,Northern Campaspe
-20,20683,Woosang,WSNG,Wedderburn
-22,22098,Cobram,COBR,Tungamah
-22,22233,Earlston,EARL,Violet Town
-22,22292,Kaarimba,KAAR,Moira West
-22,22446,Merrigum,MGUM,Cogs
-22,22462,Miepoll,MIEP,Euroa
-22,22500,Muckatah,MUCK,Tungamah
-22,22545,Nagambie,NAGU,Tabilk
-22,22594,Nw Mooroopna,NWMO,Cogs
-22,22600,Peechelba,PECH,Yarrawonga
-22,22683,Shepparton,SHEP,Cogs
-22,22721,Strathmerton,STRN,Moira West
-22,22748,Tatura,TATU,Cogs
-22,22837,Undera,UNDE,Cogs
-23,23191,Edi,EDII,Moyhu
-23,23268,Goorambat Stewarton,GBST,Benalla
-23,23302,Killawarra,KWRA,Wangaratta
-23,23566,Taminick & North Winton,TANW,Benalla
-24,24023,Barnawartha,BAWA,Rutherglen
-24,24023,Barnawartha,BAWA,Rutherglen
-24,24023,Barnawartha,BAWA,Rutherglen
-24,24031,Beechworth,BECU,Bogong
-24,24058,Beechworth,BECU,Bogong
-24,24066,Berringama,BGAM,Corryong
-24,24074,Bethanga,BETH,Tallangatta
-24,24074,Bethanga,BETH,Tallangatta
-24,24082,Biggara,BIGG,Corryong
-24,24147,Bullioh,BIOH,Tallangatta
-24,24155,Burrowye,BWYE,Corryong
-24,24157,Carlyle,CYLE,Rutherglen
-24,24180,Cornishtown,CORT,Rutherglen
-24,24236,Dederang,DEDE,Bogong
-24,24244,Eskdale,ESKD,Tallangatta
-24,24279,Gundowring,GUND,Bogong
-24,24317,Kiewa,KIEW,Bogong
-24,24325,Leneva,LEVA,Wodonga
-24,24349,Mt Hotham - Dinner Plain,MHDP,Ovens Valley
-24,24457,Talgarno,TALG,Tallangatta
-24,24562,Wodonga,WODO,Wodonga
-24,24570,Wodonga West,WWST,Wodonga
-24,24600,Yackandandah,YACR,Bogong
-27,27081,Boolarra,BOOL,Merton
