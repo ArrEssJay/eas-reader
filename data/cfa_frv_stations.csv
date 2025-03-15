@@ -1,0 +1,1240 @@
+org,district,name,short_name,cfa_grp_name
+CFA,02,Bendigo,BEND,Fortuna
+CFA,02,Golden Square,GOLD,Fortuna
+CFA,02,Eaglehawk,EAGL,Fortuna
+CFA,02,Kangaroo Flat,KFLT,Fortuna
+CFA,02,Bealiba,BEAL,Goldfields
+CFA,02,Benloch,BENL,Coliban
+CFA,02,Bolinda & Monegeetta,BOLI,Romsey
+CFA,02,Bullengarook,BULE,Mount Macedon
+CFA,02,Knowsley,KNOW,Eppalock
+CFA,02,Bowenvale,BOWE,Goldfields
+CFA,02,Carisbrook,CBRK,Goldfields
+CFA,02,Carlsruhe,CARL,Coliban
+CFA,02,Clarkefield & District,CLAR,Romsey
+CFA,02,Costerfield,CFLD,Eppalock
+CFA,02,Darraweit Guim,DARR,Romsey
+CFA,02,Dunolly,DUNU,Goldfields
+CFA,02,Fryerstown,FRYE,Strathloddon
+CFA,02,Gisborne,GBRN,Mount Macedon
+CFA,02,Guildford,GUIL,Strathloddon
+CFA,02,Lancefield,LANC,Romsey
+CFA,02,Kyneton,KYNE,Coliban
+CFA,02,Mt Camel,MCAM,Eppalock
+CFA,02,Maldon,MALD,Strathloddon
+CFA,02,Malmsbury,MALM,Coliban
+CFA,02,Newstead & District,NDST,Strathloddon
+CFA,02,Pastoria,PAST,Coliban
+CFA,02,Riddell's Creek,RIDD,Mount Macedon
+CFA,02,Romsey,ROMS,Romsey
+CFA,02,Lockwood,LOCK,Fortuna
+CFA,02,Spring Hill,SPRH,Coliban
+CFA,02,Tylden,TYLD,Coliban
+CFA,02,Axe Creek,AXEC,Eppalock
+CFA,02,Axedale,AXED,Eppalock
+CFA,02,Baringhup West,BARI,Strathloddon
+CFA,02,Campbells Creek,CAMP,Strathloddon
+CFA,02,Chewton,CHEW,Mt Alexander
+CFA,02,Elmore,ELMO,Whipstick
+CFA,02,Elphinstone,ELPH,Mt Alexander
+CFA,02,Goornong,GNON,Whipstick
+CFA,02,Harcourt,HARC,Mt Alexander
+CFA,02,Heathcote,HCOU,Eppalock
+CFA,02,Hesket-Kerrie,HESK,Mount Macedon
+CFA,02,Hunter-Diggora,HUND,Whipstick
+CFA,02,Huntly,HUNL,Fortuna
+CFA,02,Junortoun,JUNO,Eppalock
+CFA,02,Kamarooka,KAMA,Whipstick
+CFA,02,Langley-Barfold,LABR,Mt Alexander
+CFA,02,Macedon,MACE,Mount Macedon
+CFA,02,Mandurang,MDRG,Eppalock
+CFA,02,Marong,MONG,Fortuna
+CFA,02,Maryborough,MAGH,Goldfields
+CFA,02,Metcalfe,MCAF,Mt Alexander
+CFA,02,Mia Mia,MIAM,Eppalock
+CFA,02,Moolort & Joyces Creek,MOOL,Goldfields
+CFA,02,Mosquito Creek,MOSQ,Eppalock
+CFA,02,Mount Macedon,MTMC,Mount Macedon
+CFA,02,Mt Cameron,MCRM,Goldfields
+CFA,02,Raywood,RAYW,Whipstick
+CFA,02,Redesdale,REDE,Eppalock
+CFA,02,Sedgwick,SEDG,Eppalock
+CFA,02,Springfield,SFLD,Romsey
+CFA,02,Sutton Grange & Myrtle Ck,SUTT,Mt Alexander
+CFA,02,Talbot,TALB,Goldfields
+CFA,02,Taradale,TARA,Mt Alexander
+CFA,02,Woodvale,WVAL,Whipstick
+CFA,02,Castlemaine,CMAI,Mt Alexander
+CFA,02,Woodend,WOOD,Mount Macedon
+CFA,02,Walmer,WALM,Strathloddon
+CFA,02,Wareek & Bung Bong,WBBG,Goldfields
+CFA,02,Natte Yallock,NYLK,Goldfields
+CFA,02,Maiden Gully,MAID,Fortuna
+CFA,02,Strathfieldsaye,SAYE,Fortuna
+CFA,02,Newham,NEWH,Mount Macedon
+CFA,04,Bahgallah,BAHG,Casterton
+CFA,04,Cape Bridgewater,CBRI,Heywood
+CFA,04,Carapook,CPOK,Casterton
+CFA,04,Cashmore,CASH,Heywood
+CFA,04,Casterton,CAST,Casterton
+CFA,04,Condah,COND,Heywood
+CFA,04,Corndale,CDAL,Casterton
+CFA,04,Dartmoor,DART,Dartmoor
+CFA,04,Digby,DIGB,Merino
+CFA,04,Drik Drik,DRIK,Dartmoor
+CFA,04,Drumborg,DBRG,Heywood
+CFA,04,Dunrobin & Nangeela,DUNN,Casterton
+CFA,04,Glenorchy Estate,GEST,Merino
+CFA,04,Gorae West,GWST,Heywood
+CFA,04,Grassdale,GDAL,Merino
+CFA,04,Heathmere,HMER,Heywood
+CFA,04,Henty,HENT,Casterton
+CFA,04,Heywood,HEYW,Heywood
+CFA,04,Homerton,HOME,Heywood
+CFA,04,Hotspur,HOTS,Heywood
+CFA,04,Killara,KILL,Strathdownie
+CFA,04,Lake Mundi,LMUN,Strathdownie
+CFA,04,Lindsay,LSAY,Strathdownie
+CFA,04,Lyons,LYON,Heywood
+CFA,04,Merino,MINO,Merino
+CFA,04,Milltown,MTWN,Heywood
+CFA,04,Morven,MORV,Merino
+CFA,04,Mumbannar,MUMB,Dartmoor
+CFA,04,Myamyn,MYAM,Heywood
+CFA,04,Narrawong,NWNG,Heywood
+CFA,04,Nelson,NELS,Dartmoor
+CFA,04,Paschendale,PDAL,Merino
+CFA,04,Portland,PLND,Heywood
+CFA,04,Sandford,SAND,Casterton
+CFA,04,Strathdownie,SDWN,Strathdownie
+CFA,04,Tahara,TAHA,Merino
+CFA,04,Tyrendarra,TYRE,Heywood
+CFA,04,Wallacedale,WDAL,Merino
+CFA,04,Wando Bridge,WADO,Casterton
+CFA,04,Wando Vale,WANV,Casterton
+CFA,05,Abbey Hills,ABBE,Hawkesdale
+CFA,05,Allansford,AFRD,Hopkins - Curdies
+CFA,05,Ardachy,ARDA,Dundas
+CFA,05,Ardonachie,ARDO,Macarthur
+CFA,05,Balmoral,BRAL,Balmoral
+CFA,05,Bessiebelle,BESS,Macarthur
+CFA,05,Bochara,BOCH,Dundas
+CFA,05,Branxholme,BLME,Dundas
+CFA,05,Broadwater,BWTR,Macarthur
+CFA,05,Buckley Swamp,BUCK,Mount  Rouse
+CFA,05,Bulart,BLRT,Dundas
+CFA,05,Coleraine,COLE,Balmoral
+CFA,05,Burn Brae,BRNB,Mount  Rouse
+CFA,05,Byaduk,BYAD,Macarthur
+CFA,05,Caramut,CMUT,Hawkesdale
+CFA,05,Cavendish,CAVE,Dundas
+CFA,05,Croxton East,CROX,Mount  Rouse
+CFA,05,Cudgee,CUDG,Hopkins - Curdies
+CFA,05,Culla,CULL,Nareen
+CFA,05,Dunkeld,DUNK,Serra
+CFA,05,Ellerslie,ELLE,Mortlake
+CFA,05,Codrington,CODR,Belfast
+CFA,05,Framlingham,FRAM,Merri
+CFA,05,Garvoc,GARC,Hopkins - Curdies
+CFA,05,Gazette,GAZE,Mount  Rouse
+CFA,05,Glenthompson,GTOM,Serra
+CFA,05,Grange,GRAN,Dundas
+CFA,05,Grassmere,GRRE,Merri
+CFA,05,Gringe,GRIN,Balmoral
+CFA,05,Gritjurk,GRIT,Balmoral
+CFA,05,Bainbridge,BAIN,Dundas
+CFA,05,Hamilton,HAMI,Dundas
+CFA,05,Hawkesdale,HAWK,Hawkesdale
+CFA,05,Hensley Park,HENS,Dundas
+CFA,05,Hexham,HEXH,Mortlake
+CFA,05,Hilgay Settlers,HILG,Balmoral
+CFA,05,Karabeal,KARA,Dundas
+CFA,05,Kirkstall,KIRK,Belfast
+CFA,05,Kolora,KOLO,Mortlake
+CFA,05,Konongwootong,KONO,Nareen
+CFA,05,Koroit,KORO,Merri
+CFA,05,Laang,LAAN,Hopkins - Curdies
+CFA,05,Linlithgow,LGOW,Mount  Rouse
+CFA,05,Macarthur,MACA,Macarthur
+CFA,05,Melville Forest,MFOR,Balmoral
+CFA,05,Mepunga,MEPU,Hopkins - Curdies
+CFA,05,Minhamite,MINH,Hawkesdale
+CFA,05,Mirranatwa,MIRR,Dundas
+CFA,05,Mooralla,MOLA,Dundas
+CFA,05,Muntham,MUNT,Nareen
+CFA,05,Nareen,NARE,Nareen
+CFA,05,Mortlake,MLKU,Mortlake
+CFA,05,Naringal,NGAL,Hopkins - Curdies
+CFA,05,Nirranda South,NIRR,Hopkins - Curdies
+CFA,05,North Balmoral,NTHB,Balmoral
+CFA,05,North Byaduk,NBYA,Macarthur
+CFA,05,North Hamilton,NHTN,Dundas
+CFA,05,Nullawarre,NWAR,Hopkins - Curdies
+CFA,05,Orford,ORFO,Macarthur
+CFA,05,Panmure,PANM,Hopkins - Curdies
+CFA,05,Penshurst,PENS,Mount  Rouse
+CFA,05,Peterborough,PETE,Hopkins - Curdies
+CFA,05,Pigeon Ponds,PPND,Nareen
+CFA,05,Port Fairy,PRTF,Belfast
+CFA,05,Purnim,PURN,Merri
+CFA,05,Ripponhurst,RIPP,Macarthur
+CFA,05,Spring Creek,SPCR,Hawkesdale
+CFA,05,St Helens,STNS,Belfast
+CFA,05,Strathkellar,SKEL,Dundas
+CFA,05,Strathmore,SMOR,Serra
+CFA,05,Tarrayoukyan,TYAN,Nareen
+CFA,05,Tarrenlea,TLEA,Balmoral
+CFA,05,Tarrington,TTON,Dundas
+CFA,05,The Sisters,THES,Mortlake
+CFA,05,Toolong,TLNG,Belfast
+CFA,05,Vasey,VASE,Balmoral
+CFA,05,Victoria Valley,VICV,Dundas
+CFA,05,Wando Heights,WHIG,Nareen
+CFA,05,Wangoom,WAOM,Merri
+CFA,05,Warrayure-Moutajup,WJUP,Dundas
+CFA,05,Warrnambool,WBOL,Merri
+CFA,05,Warrong,WAOG,Hawkesdale
+CFA,05,Willatook & District,WTOK,Hawkesdale
+CFA,05,Winslow & Yarpturk,WINS,Merri
+CFA,05,Woodford,WFRD,Merri
+CFA,05,Woodhouse,WHOU,Serra
+CFA,05,Woolsthorpe,WTHO,Hawkesdale
+CFA,05,Wootong Vale,WOTV,Balmoral
+CFA,05,Wooriwyrite,WRIT,Mortlake
+CFA,05,Yambuk,YAMB,Belfast
+CFA,05,Yulecart,YULE,Dundas
+CFA,06,Apollo Bay,APOL,Corangamite
+CFA,06,Barongarook West,BARO,Corangamite
+CFA,06,Barwon Downs,BARD,Beeac
+CFA,06,Beeac,BEEA,Beeac
+CFA,06,Berrybank,BBNK,Lismore
+CFA,06,Birregurra,BIRR,Beeac
+CFA,06,Bookaar,BOOK,Camperdown
+CFA,06,Boorcan,BOOR,Camperdown
+CFA,06,Bostocks Creek,BOST,Cobden
+CFA,06,Brucknell-Ayrford,BRUK,Timboon
+CFA,06,Bungador,BUNG,Corangamite
+CFA,06,Camperdown,CDWN,Camperdown
+CFA,06,Carpendeit-Sth Purrumbete,CARP,Cobden
+CFA,06,Chocolyn,CHOC,Camperdown
+CFA,06,Cobden,COBD,Cobden
+CFA,06,Cobrico,COCO,Cobden
+CFA,06,Colac,COLA,Beeac
+CFA,06,Cororooke,CRKE,Corangamite
+CFA,06,Cressy,CRES,Lismore
+CFA,06,Darlington,DARL,Lismore
+CFA,06,Dixie,DIXI,Camperdown
+CFA,06,Derrinallum,DERR,Lismore
+CFA,06,Dreeite South,DREE,Corangamite
+CFA,06,Duverney,DUVE,Lismore
+CFA,06,Ecklin & District,ECKL,Cobden
+CFA,06,Forrest,FORE,Beeac
+CFA,06,Gellibrand,GELL,Corangamite
+CFA,06,Gerangamete,GERE,Beeac
+CFA,06,Irrewarra,IRRE,Beeac
+CFA,06,Jancourt,JANC,Cobden
+CFA,06,Kawarren,KAWA,Corangamite
+CFA,06,Kennedy's Creek,KENN,Timboon
+CFA,06,Larpent,LARP,Corangamite
+CFA,06,Leslie Manor,LESM,Lismore
+CFA,06,Lismore,LSMR,Lismore
+CFA,06,Lower Heytesbury,LHEY,Timboon
+CFA,06,Mingay & District,MDST,Lismore
+CFA,06,Nalangil,NALA,Corangamite
+CFA,06,Noorat & District,NOOR,Camperdown
+CFA,06,Otway,OTWY,Corangamite
+CFA,06,Pomborneit & Dist,POMB,Camperdown
+CFA,06,Port Campbell,PRTC,Timboon
+CFA,06,Princetown,PRIN,Timboon
+CFA,06,Scotts Ck-Cowleys Ck.,SCOT,Timboon
+CFA,06,Simpson,SIMP,Timboon
+CFA,06,Stonyford,SFRD,Camperdown
+CFA,06,Swan Marsh,SMSH,Corangamite
+CFA,06,Terang,TERA,Camperdown
+CFA,06,Tesbury,TESY,Camperdown
+CFA,06,Timboon,TIMB,Timboon
+CFA,06,Vite Vite North,VIVI,Lismore
+CFA,06,Warrion,WARI,Corangamite
+CFA,06,Weering-Eurack,WEER,Beeac
+CFA,06,Weerite,WRTE,Camperdown
+CFA,06,Wye River,WYER,Corangamite
+CFA,06,Yeo & District,YEOA,Beeac
+CFA,06,Yeodene,YEOD,Beeac
+CFA,06,Irrewillipe,IRWI,Corangamite
+CFA,06,Carlisle River,CRIV,Corangamite
+CFA,07,Aireys Inlet,AIRE,Coastal
+CFA,07,Anakie,ANAK,Anakie
+CFA,07,Anglesea,ANGL,Coastal
+CFA,07,Bellbrae,BBRE,Coastal
+CFA,07,Bannockburn,BBRN,Anakie
+CFA,07,Barrabool,BARR,Anakie
+CFA,07,Barunah Plains North,BARU,Leigh
+CFA,07,Barwon Heads,BARW,Bellarine
+CFA,07,Connewarre,CONN,Coastal
+CFA,07,Dereel,DERE,Leigh
+CFA,07,Deans Marsh,DEAN,Winchelsea
+CFA,07,Drysdale,DRYS,Bellarine
+CFA,07,Freshwater Creek,FRES,Coastal
+CFA,07,Gnarwarre,GNAR,Winchelsea
+CFA,07,Grovedale,GROV,Geelong
+CFA,07,Inverleigh,INVE,Winchelsea
+CFA,07,Lara,LARA,Geelong
+CFA,07,Leopold,LEOP,Bellarine
+CFA,07,Lethbridge,LETH,Anakie
+CFA,07,Lorne,LRNE,Coastal
+CFA,07,Lovely Banks,LOVE,Anakie
+CFA,07,Mannerim,MANN,Bellarine
+CFA,07,Meredith,MERE,Anakie
+CFA,07,Modewarre,MODE,Winchelsea
+CFA,07,Mount Mercer,MTME,Leigh
+CFA,07,Ocean Grove,OCEA,Bellarine
+CFA,07,Portarlington,PORT,Bellarine
+CFA,07,Queenscliff,QUEE,Bellarine
+CFA,07,Rokewood,ROKE,Leigh
+CFA,07,St Leonards-Indented Head,STLE,Bellarine
+CFA,07,Shelford,SHEL,Leigh
+CFA,07,Stonehaven,STON,Anakie
+CFA,07,Teesdale,TEES,Leigh
+CFA,07,Torquay,TRQY,Coastal
+CFA,07,Wallington,WALN,Bellarine
+CFA,07,Werneth,WERN,Leigh
+CFA,07,Winchelsea,WSEA,Winchelsea
+CFA,07,Wingeel,WING,Winchelsea
+CFA,07,Wurdale,WURD,Winchelsea
+CFA,07,Maude,MAUD,Anakie
+CFA,07,Geelong City,GONG,Geelong
+CFA,07,Geelong West,GEWE,Geelong
+CFA,07,Little River,LITT,Anakie
+CFA,07,Highton,HIGH,Geelong
+CFA,07,Belmont,BELM,Geelong
+CFA,07,Corio,CORO,Geelong
+CFA,08,Balnarring,BALN,Westernport
+CFA,08,Bass,BASS,Bass Coast
+CFA,08,Baxter,BAXT,Westernport
+CFA,08,Bayles,BAYL,Cardinia
+CFA,08,Beaconsfield,BEAC,Cardinia
+CFA,08,Beaconsfield Upper,BEUP,Cardinia
+CFA,08,Berwick,BERW,Casey
+CFA,08,Bittern,BITT,Westernport
+CFA,08,Boneo,BONE,Peninsula
+CFA,08,Bunyip,BUNY,Cardinia
+CFA,08,Clyde,CLYD,Casey
+CFA,08,Cockatoo,COAT,Cardinia
+CFA,08,Cranbourne,CRAN,Casey
+CFA,08,Crib Point,CRIB,Westernport
+CFA,08,Devon Meadows,DEVO,Casey
+CFA,08,Dromana,DROM,Peninsula
+CFA,08,Flinders,FLIN,Peninsula
+CFA,08,French Island,FRIS,Bass Coast
+CFA,08,Gembrook,GEMB,Cardinia
+CFA,08,Glen Alvie,GLEN,Bass Coast
+CFA,08,Hallam,HALL,Casey
+CFA,08,Hastings,HSTG,Westernport
+CFA,08,Heath Hill - Yannathan,HEAT,Cardinia
+CFA,08,Keysborough,KEYS,South East
+CFA,08,Kilcunda,KILC,Bass Coast
+CFA,08,Koo Wee Rup,KOOW,Cardinia
+CFA,08,Lang Lang,LANG,Cardinia
+CFA,08,Main Ridge,MAIN,Peninsula
+CFA,08,Moorooduc,MORO,Westernport
+CFA,08,Mornington,MORN,Westernport
+CFA,08,Mt Martha,MTMA,Peninsula
+CFA,08,Nar Nar Goon,NARN,Cardinia
+CFA,08,Narre Warren North,NNTH,Casey
+CFA,08,San Remo,SEMO,Bass Coast
+CFA,08,Officer,OFFI,Cardinia
+CFA,08,Pakenham,PKHM,Cardinia
+CFA,08,Pakenham Upper,PAKU,Cardinia
+CFA,08,Patterson River,PATR,South East
+CFA,08,Pearcedale,PEAR,Casey
+CFA,08,Phillip Island,PISL,Bass Coast
+CFA,08,Dalyston,DALY,Bass Coast
+CFA,08,Red Hill,REDH,Westernport
+CFA,08,Rosebud,ROSE,Peninsula
+CFA,08,Shoreham,SHOR,Westernport
+CFA,08,Skye,SKYE,South East
+CFA,08,Somers,SOME,Westernport
+CFA,08,Somerville,SOVL,Westernport
+CFA,08,Sorrento,SNTO,Peninsula
+CFA,08,Toomuc,TOOM,Cardinia
+CFA,08,Tooradin,TOOR,Casey
+CFA,08,Tyabb,TYAB,Westernport
+CFA,08,Tynong,TYNO,Cardinia
+CFA,08,Wonthaggi,WOGI,Bass Coast
+CFA,08,Corinella,CORN,Bass Coast
+CFA,08,Kernot-Grantville,KERN,Bass Coast
+CFA,08,Warneet - Blind Bight,WARN,Casey
+CFA,08,Maryknoll & District,MARY,Cardinia
+CFA,08,Rye,RYEA,Peninsula
+CFA,08,Carrum Downs,CADW,South East
+CFA,08,Dandenong,DAND,South East
+CFA,08,Edithvale,EDIT,South East
+CFA,08,Frankston,FTON,South East
+CFA,08,Hampton Park,HAMP,Casey
+CFA,08,Mt Eliza,MTEL,South East
+CFA,08,Noble Park,NOBL,South East
+CFA,08,Springvale,SVAL,South East
+CFA,08,Narre Warren,NARR,Casey
+CFA,08,Langwarrin,LANW,Westernport
+CFA,09,Allambee,ALLA,Strzelecki
+CFA,09,Berry's Creek,BCRK,Strzelecki
+CFA,09,Darnum & Ellinbank,DARN,Baw Baw
+CFA,09,Drouin,DROU,Baw Baw
+CFA,09,Drouin West,DWST,Baw Baw
+CFA,09,Erica & District,ERIC,Baw Baw
+CFA,09,Ruby,RUBY,Strzelecki
+CFA,09,Fish Creek & District,FISH,South Gippsland
+CFA,09,Foster,FOST,South Gippsland
+CFA,09,Hallora & District,HALO,Baw Baw
+CFA,09,Hallston-Mt Eccles,HMTE,Strzelecki
+CFA,09,Hedley,HEDL,South Gippsland
+CFA,09,Inverloch,INVL,South Gippsland
+CFA,09,Kongwak & District,KONG,Strzelecki
+CFA,09,Koonwarra,KWAR,Strzelecki
+CFA,09,Korumburra,KORU,Strzelecki
+CFA,09,Leongatha,LEON,Strzelecki
+CFA,09,Leongatha South,LSTH,Strzelecki
+CFA,09,Loch,LOCH,Strzelecki
+CFA,09,Longwarry & District,LONG,Baw Baw
+CFA,09,Dumbalk,DUMB,South Gippsland
+CFA,09,Meeniyan & Stony Creek,MEEN,South Gippsland
+CFA,09,Milford,MILF,South Gippsland
+CFA,09,Mirboo North,MNTH,Strzelecki
+CFA,09,Nerrena,NERR,Strzelecki
+CFA,09,Noojee,NOOJ,Baw Baw
+CFA,09,Nilma North,NITH,Baw Baw
+CFA,09,Poowong,POOW,Strzelecki
+CFA,09,Pound Creek,PCRK,South Gippsland
+CFA,09,Neerim South,NSTH,Baw Baw
+CFA,09,Tarwin Lower District,TARW,South Gippsland
+CFA,09,Thorpdale,THDL,Strzelecki
+CFA,09,Toora,TORA,South Gippsland
+CFA,09,Trafalgar,TRAF,Baw Baw
+CFA,09,Trida,TRID,Baw Baw
+CFA,09,Welshpool,WELS,South Gippsland
+CFA,09,Westbury,WBRY,Baw Baw
+CFA,09,Willowgrove,WGRO,Baw Baw
+CFA,09,Yarragon,YGON,Baw Baw
+CFA,09,Yanakie,YKIE,South Gippsland
+CFA,09,Warragul,WARA,Baw Baw
+CFA,10,Alberton West,ALBE,Tarra
+CFA,10,Boisdale,BOIS,Riverslea
+CFA,10,Briagolong,BRIA,Avon
+CFA,10,Carrajung,CJNG,Tarra
+CFA,10,Clydebank,CBNK,Avon
+CFA,10,Cowwarr,COWW,Riverslea
+CFA,10,Dargo,DARG,Avon
+CFA,10,Seaton,SEAT,Riverslea
+CFA,10,Devon North,DENT,Tarra
+CFA,10,Giffard West,GIFF,Stradbroke
+CFA,10,Glengarry East,GGET,Riverslea
+CFA,10,Golden Beach,GBCH,Stradbroke
+CFA,10,Heyfield,HEYF,Riverslea
+CFA,10,Licola,LICO,Riverslea
+CFA,10,Loch Sport,LSPT,Stradbroke
+CFA,10,Longford,LFRD,Stradbroke
+CFA,10,Maffra,MAFF,Riverslea
+CFA,10,Meerlieu,MEER,Avon
+CFA,10,Munro,MNRO,Avon
+CFA,10,Nambrok,NAMB,Riverslea
+CFA,10,Newry,NEWR,Riverslea
+CFA,10,Perry Bridge,PBRG,Avon
+CFA,10,Port Albert,PRTA,Tarra
+CFA,10,Rosedale,ROSR,Riverslea
+CFA,10,Sale,SALE,Riverslea
+CFA,10,Seaspray,SEAS,Stradbroke
+CFA,10,Glenmaggie,GMAG,Riverslea
+CFA,10,Stradbroke,STRD,Stradbroke
+CFA,10,Stratford,STRT,Avon
+CFA,10,Tinamba,TINA,Riverslea
+CFA,10,Valencia Creek,VALE,Riverslea
+CFA,10,Willung,WLNG,Stradbroke
+CFA,10,Willung South,WSTH,Tarra
+CFA,10,Winnindoo,WDOO,Riverslea
+CFA,10,Won Wron,WONW,Tarra
+CFA,10,Woodside,WSDE,Tarra
+CFA,10,Woranga,WAGA,Tarra
+CFA,10,Yarram,YRAM,Tarra
+CFA,10,Coongulla,COON,Riverslea
+CFA,10,Jack River,JACK,Tarra
+CFA,11,Bairnsdale,BDAL,Mitchell
+CFA,11,Benambra,BBRA,Omeo
+CFA,11,Bendoc,BDOC,Mount Delegate
+CFA,11,Bengworden,BWDN,Mitchell
+CFA,11,Bruthen,BRUT,Tambo
+CFA,11,Mossi - Tambo,MTAM,Tambo
+CFA,11,Buchan,BUCH,Tambo
+CFA,11,Cann Valley,CVAL,Orbost
+CFA,11,Ensay,ENSA,Omeo
+CFA,11,Fernbank,FBNK,Mitchell
+CFA,11,Flaggy Creek,FLAG,Mitchell
+CFA,11,Gelantipy,GELA,Tambo
+CFA,11,Glenaladale,GLDA,Mitchell
+CFA,11,Goongerah,GOON,Mount Delegate
+CFA,11,Hillside,HILL,Mitchell
+CFA,11,Johnsonville,JHNS,Tambo
+CFA,11,Kalimna West,KALW,Tambo
+CFA,11,Lakes Entrance,LENT,Tambo
+CFA,11,Lindenow South,LIND,Mitchell
+CFA,11,Mallacoota,MALL,Orbost
+CFA,11,Marlo,MARL,Orbost
+CFA,11,Metung,METU,Tambo
+CFA,11,Mount Taylor,MTAY,Mitchell
+CFA,11,Newmerella,NEWM,Orbost
+CFA,11,Omeo,OMEO,Omeo
+CFA,11,Orbost,ORBO,Orbost
+CFA,11,Paynesville,PAYN,Mitchell
+CFA,11,Sarsfield,SARS,Mitchell
+CFA,11,Swifts Creek,SWCR,Omeo
+CFA,11,Toorloo,TLOO,Tambo
+CFA,11,Wairewa,WAIR,Orbost
+CFA,11,Bonang,BONG,Mount Delegate
+CFA,11,Bemm,BEMM,Orbost
+CFA,12,Acheron,ACHE,Alexandra
+CFA,12,Alexandra,ADRA,Alexandra
+CFA,12,Broadford,BRFD,Mitchell Shire
+CFA,12,Buxton,BUXT,Alexandra
+CFA,12,Eildon,EILD,Alexandra
+CFA,12,Flowerdale,FLOW,Yea
+CFA,12,Glenaroua,GRUA,Mitchell Shire
+CFA,12,Glenburn,GLBU,Yea
+CFA,12,Highlands-Caveat,HLAN,Yea
+CFA,12,Hilldene,HILD,Mitchell Shire
+CFA,12,Homewood,HOMW,Yea
+CFA,12,Kilmore,KILM,Mitchell Shire
+CFA,12,Kinglake West,KIWE,Yea
+CFA,12,Kinglake District,KING,Yea
+CFA,12,Koriella,KORI,Alexandra
+CFA,12,Molesworth,MOLE,Yea
+CFA,12,Murrindindi & Woodbourne,MUWD,Yea
+CFA,12,Nulla Vale,NULA,Mitchell Shire
+CFA,12,Pyalong,PYAL,Mitchell Shire
+CFA,12,Seymour,SEYM,Mitchell Shire
+CFA,12,Strath Creek-Reedy Creek,SCRC,Yea
+CFA,12,Taggerty,TAGG,Alexandra
+CFA,12,Tallarook,TALA,Mitchell Shire
+CFA,12,Terip Terip,TRIP,Alexandra
+CFA,12,Thornton,THRN,Alexandra
+CFA,12,Toolangi,TOLA,Yea
+CFA,12,Tooborac,TOOB,Mitchell Shire
+CFA,12,Trawool,TWOL,Mitchell Shire
+CFA,12,Wallan,WALL,Mitchell Shire
+CFA,12,Wandong,WANG,Mitchell Shire
+CFA,12,Whanregarwen,WHAN,Alexandra
+CFA,12,Whiteheads Creek-Tarcombe,WCTM,Mitchell Shire
+CFA,12,Yarck,YARK,Alexandra
+CFA,12,Yea,YEAA,Yea
+CFA,12,Limestone,LIME,Yea
+CFA,12,Narbethong,NARB,Alexandra
+CFA,12,Marysville,MVIL,Alexandra
+CFA,12,Clonbinane,CLON,Mitchell Shire
+CFA,13,Badger Creek,BADG,Maroondah
+CFA,13,Bayswater,BAYS,Knox
+CFA,13,Belgrave,BELG,Dandenong Ranges
+CFA,13,Belgrave Heights & South,BELS,Dandenong Ranges
+CFA,13,Boronia,BORO,Knox
+CFA,13,Chirnside Park,CHIR,Maroondah
+CFA,13,Clematis,CLEM,Dandenong Ranges
+CFA,13,Coldstream,COLD,Maroondah
+CFA,13,Dixons Creek,DIXO,Maroondah
+CFA,13,Emerald,EMLD,Dandenong Ranges
+CFA,13,Ferntree Gully,FERN,Knox
+CFA,13,Gruyere,GRUY,Yarra Valley
+CFA,13,Healesville,HVIL,Maroondah
+CFA,13,Hillcrest,HILC,Yarra Valley
+CFA,13,Hoddle's Creek,HODD,Yarra Valley
+CFA,13,Kallista-The Patch,KALL,Dandenong Ranges
+CFA,13,Kalorama & Mt Dandenong,KALO,Dandenong Ranges
+CFA,13,Lilydale,LDAL,Maroondah
+CFA,13,Little Yarra,LTYA,Yarra Valley
+CFA,13,Macclesfield,MACC,Dandenong Ranges
+CFA,13,Menzies Creek,MENZ,Dandenong Ranges
+CFA,13,Monbulk,MONB,Dandenong Ranges
+CFA,13,Montrose,MONT,Knox
+CFA,13,Mt Evelyn,MTEV,Maroondah
+CFA,13,Narre Warren East,NAWE,Dandenong Ranges
+CFA,13,Olinda,OLIN,Dandenong Ranges
+CFA,13,Sassafras & Ferny Creek,SASS,Dandenong Ranges
+CFA,13,Scoresby,SCOR,Knox
+CFA,13,Selby,SELB,Dandenong Ranges
+CFA,13,Seville,SEVI,Yarra Valley
+CFA,13,Silvan,SILV,Dandenong Ranges
+CFA,13,Upper Ferntree Gully,UPPE,Knox
+CFA,13,Upwey,UPWE,Dandenong Ranges
+CFA,13,Wandin,WAND,Yarra Valley
+CFA,13,Warburton,WARB,Yarra Valley
+CFA,13,South Warrandyte,STHW,Maroondah
+CFA,13,Wesburn-Millgrove,WBRN,Yarra Valley
+CFA,13,Wonga Park,WONG,Maroondah
+CFA,13,Yarra Glen,YAGL,Maroondah
+CFA,13,Yarra Junction,YAJU,Yarra Valley
+CFA,13,Yellingbo,YELL,Yarra Valley
+CFA,13,The Basin,THEB,Knox
+CFA,13,Warrandyte,WARR,Maroondah
+CFA,13,Rowville,ROWV,Knox
+CFA,13,Mooroolbark,MBRK,Maroondah
+CFA,13,Reefton,REEF,Yarra Valley
+CFA,14,Arthurs Creek,ARTH,Whittlesea/D.Valley
+CFA,14,Caroline Springs,CARO,Mount Cottrell
+CFA,14,Christmas Hills,CHRI,Nillumbik
+CFA,14,Diamond Creek,DIAM,Whittlesea/D.Valley
+CFA,14,Diggers Rest,DIGG,Mount Cottrell
+CFA,14,Doreen,DORE,Whittlesea/D.Valley
+CFA,14,Eltham,EHAM,Nillumbik
+CFA,14,Eynesbury,EYNE,Mount Cottrell
+CFA,14,Hurstbridge,HURS,Nillumbik
+CFA,14,Kalkallo,KAKA,Hume
+CFA,14,Kangaroo Ground,KANG,Nillumbik
+CFA,14,Melton,MTON,Mount Cottrell
+CFA,14,North Warrandyte,WANT,Nillumbik
+CFA,14,Panton Hill,PANT,Nillumbik
+CFA,14,Point Cook,PTCO,Mount Cottrell
+CFA,14,Research,RESE,Nillumbik
+CFA,14,Rockbank,ROCK,Mount Cottrell
+CFA,14,South Morang,STHM,Whittlesea/D.Valley
+CFA,14,St Andrews,STAN,Nillumbik
+CFA,14,Sunbury,SNBY,Hume
+CFA,14,Toolern Vale,TOOL,Mount Cottrell
+CFA,14,Truganina,TRUG,Mount Cottrell
+CFA,14,Wattle Glen,WATT,Nillumbik
+CFA,14,Werribee,WBEE,Mount Cottrell
+CFA,14,Whittlesea,WHIT,Whittlesea/D.Valley
+CFA,14,Wollert & District,WOLL,Hume
+CFA,14,Wyndham Vale,WYDV,Mount Cottrell
+CFA,14,Yarrambat,YARR,Whittlesea/D.Valley
+CFA,14,Mernda,MERN,Whittlesea/D.Valley
+CFA,14,Wildwood,WILD,Hume
+CFA,14,Hoppers Crossing,HOPP,Mount Cottrell
+CFA,14,Craigieburn,CBRN,Hume
+CFA,14,Bulla,BULL,Hume
+CFA,14,Epping,EPPI,Hume
+CFA,14,Greenvale,GREE,Hume
+CFA,14,Plenty,PLEN,Whittlesea/D.Valley
+CFA,15,Ascot & District,ASCO,Ballarat
+CFA,15,Bacchus Marsh,BMSH,Pentland
+CFA,15,Ballan,BALA,Ballan
+CFA,15,Balliang & District,BALL,Pentland
+CFA,15,Blackwood,BLAC,Ballan
+CFA,15,Bungaree,BREE,Buninyong
+CFA,15,Buninyong-Mt Helen,BUNI,Eureka
+CFA,15,Burrumbeet,BURR,Ballarat
+CFA,15,Campbelltown,CTWN,Birch
+CFA,15,Cape Clear,CAPE,Grenville
+CFA,15,Cardigan & Windermere,CWIN,Ballarat
+CFA,15,Clunes,CLUN,Birch
+CFA,15,Coimadai,COIM,Pentland
+CFA,15,Creswick,CWIC,Birch
+CFA,15,Daylesford,DAYL,Glenlyon
+CFA,15,Ullina,ULLI,Birch
+CFA,15,Elaine,ELAI,Buninyong
+CFA,15,Franklinford,FFRD,Glenlyon
+CFA,15,Glendaruel & Mt Beckworth,GMTB,Ballarat
+CFA,15,Glenlyon,GLYN,Glenlyon
+CFA,15,Glen Park,GLPK,Birch
+CFA,15,Gordon,GORD,Ballan
+CFA,15,Greendale,GRED,Ballan
+CFA,15,Hardies Hill,HARD,Buninyong
+CFA,15,Hepburn,HBRN,Glenlyon
+CFA,15,Invermay,IMAY,Ballarat
+CFA,15,Kingston,KSTN,Birch
+CFA,15,Kooroocheang Werona,KONA,Birch
+CFA,15,Learmonth-Addington,LEAR,Ballarat
+CFA,15,Leonards Hill & District,LHIL,Glenlyon
+CFA,15,Linton,LINT,Grenville
+CFA,15,Mannibadar,MDAR,Grenville
+CFA,15,Millbrook,MBOK,Ballan
+CFA,15,Miners Rest,MRST,Ballarat
+CFA,15,Mollongghip,MOLL,Birch
+CFA,15,Morrisons & District,MORR,Ballan
+CFA,15,Mt Buninyong,MTBU,Buninyong
+CFA,15,Mt Egerton,MEGE,Ballan
+CFA,15,Mt Wallace,MTWA,Ballan
+CFA,15,Musk,MUSK,Glenlyon
+CFA,15,Myrniong,MYRN,Pentland
+CFA,15,Napoleons-Enfield,NAPO,Buninyong
+CFA,15,Newlyn Dean,NEWL,Birch
+CFA,15,Parwan,PARW,Pentland
+CFA,15,Porcupine Ridge,PORC,Glenlyon
+CFA,15,Rokewood Junction & Dist,ROJU,Grenville
+CFA,15,Rowsley,ROWS,Pentland
+CFA,15,Smeaton,SMET,Birch
+CFA,15,Smythesdale,SMYT,Grenville
+CFA,15,Trentham,TREN,Glenlyon
+CFA,15,Wallace,WALA,Ballan
+CFA,15,Wallinduc & District,WDUC,Grenville
+CFA,15,Haddon,HADD,Grenville
+CFA,15,Mt Warrenheip,MWAR,Buninyong
+CFA,15,Wendouree,WENO,Eureka
+CFA,15,Waubra,WBRA,Ballarat
+CFA,15,Ballarat,BARA,Eureka
+CFA,15,Sebastopol,SEBA,Eureka
+CFA,15,Ballarat City,BRAT,Eureka
+CFA,16,Amphitheatre,AMPH,Pyrenees
+CFA,16,Ararat,ARAU,Ararat
+CFA,16,Barkly & Frenchman's,BARK,Pyrenees
+CFA,16,Beaufort,BEAF,Beaufort
+CFA,16,Beazley's Bridge,BEAZ,St Arnaud
+CFA,16,Bornes Hill,BORN,Westmere
+CFA,16,Brewster,BREW,Beaufort
+CFA,16,Buangor & Middle Creek,BMCK,Ararat
+CFA,16,Burnbank,BUBK,Pyrenees
+CFA,16,Carapooee,CARA,St Arnaud
+CFA,16,Callawadda,CALL,Stawell
+CFA,16,Carranballac,CLAC,Westmere
+CFA,16,Chatsworth,CHAT,Westmere
+CFA,16,Avoca,AVOU,Pyrenees
+CFA,16,Coonooer Bridge,CBRG,St Arnaud
+CFA,16,Cross Roads,CRRO,Beaufort
+CFA,16,Crowlands,CROW,Pyrenees
+CFA,16,Dadswells Bridge,DADS,Stawell
+CFA,16,Dundonnell,DUND,Westmere
+CFA,16,Elmhurst,ELMU,Pyrenees
+CFA,16,Halls Gap,HGAP,Stawell
+CFA,16,Glenorchy & Riachella,GLRI,Stawell
+CFA,16,Gooroc,GROC,St Arnaud
+CFA,16,Great Western,GRRN,Ararat
+CFA,16,Gre Gre Village,GREG,St Arnaud
+CFA,16,Joel Joel,JOEL,Stawell
+CFA,16,Kooreh,KOOR,St Arnaud
+CFA,16,Lake Bolac,LBOL,Westmere
+CFA,16,Lake Goldsmith-Stockyard,LGLD,Beaufort
+CFA,16,Landsborough,LAND,Pyrenees
+CFA,16,Langi Kal Kal,LKKL,Beaufort
+CFA,16,Langi Logan,LLOG,Ararat
+CFA,16,Lexton,LEXT,Pyrenees
+CFA,16,Marnoo,MARN,Stawell
+CFA,16,Maroona,MARO,Westmere
+CFA,16,Mininera,MINN,Westmere
+CFA,16,Moyston,MOYS,Ararat
+CFA,16,Navarre,NAVA,Pyrenees
+CFA,16,Pomonal,POMO,Ararat
+CFA,16,Raglan,RAGL,Beaufort
+CFA,16,Redbank,REDB,Pyrenees
+CFA,16,Rich Avon,RICH,St Arnaud
+CFA,16,St Arnaud,STAR,St Arnaud
+CFA,16,Skipton,SKIP,Beaufort
+CFA,16,Slaty Creek,SLAT,St Arnaud
+CFA,16,Snake Valley & District,SNAK,Beaufort
+CFA,16,Stawell,SWEU,Stawell
+CFA,16,Stoneleigh,SLEE,Westmere
+CFA,16,Streatham,SHAM,Westmere
+CFA,16,Stuart Mill,SMIL,St Arnaud
+CFA,16,Tatyoon,TATY,Westmere
+CFA,16,Traynor's Lagoon,TRAY,St Arnaud
+CFA,16,Wallaloo East,WLOO,Stawell
+CFA,16,Warrak,WRAK,Ararat
+CFA,16,Warrenmang & District,WARD,Pyrenees
+CFA,16,Westmere,WMER,Westmere
+CFA,16,Narrapumelap South,NPUM,Westmere
+CFA,16,Wickliffe,WICK,Westmere
+CFA,16,Nerrin Nerrin,NENE,Westmere
+CFA,16,Willaura,WURR,Westmere
+CFA,16,Yalla Y Poora,YAPO,Westmere
+CFA,16,Pura Pura,PURA,Westmere
+CFA,16,Woorndoo,WNDO,Westmere
+CFA,17,Apsley,APSL,Apsley
+CFA,17,Areegra,AREE,Warracknabeal
+CFA,17,Bangerang,BANG,Warracknabeal
+CFA,17,Benayeo,BYEO,Apsley
+CFA,17,Boolite,BLTE,Warracknabeal
+CFA,17,Brim,BRIM,Warracknabeal
+CFA,17,Brimpaen,BPEN,Grampians
+CFA,17,Bringalbert South,BSTH,Apsley
+CFA,17,Broughton,BROU,Lowan
+CFA,17,Cannum,CNUM,Warracknabeal
+CFA,17,Charam,CHAR,Edenhope
+CFA,17,Clear Lake,CLLK,Jilpanger
+CFA,17,Connewirricoo,CCOO,Jilpanger
+CFA,17,Chetwynd,CHET,Jilpanger
+CFA,17,Coromby,CMBY,Dunmunkle
+CFA,17,Crymelon,CRYM,Warracknabeal
+CFA,17,Dergholm,DERG,Apsley
+CFA,17,Detpa & Lake Hindmarsh,DETP,Ebenezer
+CFA,17,Diapur,DAIP,Lowan
+CFA,17,Dimboola,DIMB,Ebenezer
+CFA,17,Dinyarrak,DINY,Kaniva
+CFA,17,Dooen,DOOE,Horsham
+CFA,17,Douglas,DOUG,Jilpanger
+CFA,17,Edenhope,EHPE,Edenhope
+CFA,17,Gerang,GERA,Ebenezer
+CFA,17,Goroke,GORO,Goroke
+CFA,17,Green Lake,GLAK,Grampians
+CFA,17,Gymbowen,GYNB,Goroke
+CFA,17,Harrow,HROW,Jilpanger
+CFA,17,Horsham,HORS,Horsham
+CFA,17,Jeparit,JEPA,Ebenezer
+CFA,17,Jung,JUNG,Horsham
+CFA,17,Kadnook,KADN,Edenhope
+CFA,17,Kaniva,KANI,Kaniva
+CFA,17,Karnak,KARN,Goroke
+CFA,17,Kellalac,KELL,Warracknabeal
+CFA,17,Kenmare,KENM,Rainbow
+CFA,17,Lah,LAHB,Warracknabeal
+CFA,17,Laharum,LAHA,Grampians
+CFA,17,Langkoop,LKOP,Apsley
+CFA,17,Lawloit,LAWL,Kaniva
+CFA,17,Leeor,LEEO,Kaniva
+CFA,17,Lorquon,LORQ,Lowan
+CFA,17,Lubeck,LUBE,Dunmunkle
+CFA,17,Grass Flat,GFLT,Natimuk
+CFA,17,Miga Lake,MIGA,Jilpanger
+CFA,17,Mitre,MITR,Natimuk
+CFA,17,Minimay,MINI,Goroke
+CFA,17,Minyip,MINU,Dunmunkle
+CFA,17,Murtoa,MTOU,Dunmunkle
+CFA,17,Natimuk,NATI,Natimuk
+CFA,17,Netherby,NEBY,Lowan
+CFA,17,Neuarpurr,NEUA,Goroke
+CFA,17,Nhill,NHIL,Lowan
+CFA,17,Noradjuha,NORA,Natimuk
+CFA,17,North Wimmera,NWIM,Warracknabeal
+CFA,17,Patyah,PATY,Edenhope
+CFA,17,Peronne,PERO,Goroke
+CFA,17,Pigick,PIGI,Rainbow
+CFA,17,Pimpinio,PIMP,Horsham
+CFA,17,Poolaijelo,POOL,Apsley
+CFA,17,Propodollah,PROP,Lowan
+CFA,17,Rainbow,RAIU,Rainbow
+CFA,17,Rupanyup,RUPR,Dunmunkle
+CFA,17,Sandsmere,SMER,Kaniva
+CFA,17,Sheep Hills,SHLS,Warracknabeal
+CFA,17,South Lillimur,SLIL,Kaniva
+CFA,17,Tarranyurk,TARR,Ebenezer
+CFA,17,Telangatuk,TELA,Jilpanger
+CFA,17,Telopea Downs,TELO,Kaniva
+CFA,17,Toolondo,TLOD,Jilpanger
+CFA,17,Ullswater,ULLS,Edenhope
+CFA,17,Vectis,VECT,Horsham
+CFA,17,Warracknabeal,WBEL,Warracknabeal
+CFA,17,Werrap,WRAP,Rainbow
+CFA,17,Wilkur South,WILK,Warracknabeal
+CFA,17,Willenabrina,WRIN,Warracknabeal
+CFA,17,Winiam & District,WINI,Lowan
+CFA,17,Wonwondah,WDAH,Grampians
+CFA,17,Woorak,WOOR,Lowan
+CFA,17,Yanac,YANA,Lowan
+CFA,17,Yearinga - Yarrock,YEYA,Kaniva
+CFA,17,Antwerp,ANTW,Ebenezer
+CFA,17,Ozenkadnook,OZEN,Goroke
+CFA,18,Annuello,ANNU,Robinvale and District
+CFA,18,Berriwillock,BLCK,Tyrrell
+CFA,18,Beulah,BEUL,Southern Mallee
+CFA,18,Beverford & District,BEVE,Mid Murray
+CFA,18,Birchip,BIRC,Buloke West
+CFA,18,Boundary Bend,BBND,Robinvale and District
+CFA,18,Buckrabanyule,BYUL,Charlton
+CFA,18,Carwarp,CWRP,Sunraysia
+CFA,18,Charlton,CTON,Charlton
+CFA,18,Chinkapook,CHIN,Robinvale and District
+CFA,18,Cope Cope,COPE,Buloke West
+CFA,18,Corack,CRCK,Buloke West
+CFA,18,Corack East,CEST,Buloke West
+CFA,18,Cowangie,COWA,Murrayville and Border
+CFA,18,Culgoa,CULG,Tyrrell
+CFA,18,Curyo,CURY,Buloke West
+CFA,18,Donald,DONA,Buloke West
+CFA,18,Dumosa,DUMO,Tyrrell
+CFA,18,Glenloth East,GLET,Charlton
+CFA,18,Goschen,GOSC,Mid Murray
+CFA,18,Hopetoun,HOPU,Southern Mallee
+CFA,18,Hopetoun West,HWES,Southern Mallee
+CFA,18,Irymple,IRYM,Sunraysia
+CFA,18,Jeffcott,JEFF,Buloke West
+CFA,18,Kooloonong,KOOL,Robinvale and District
+CFA,18,Lake Boga,LBOG,Mid Murray
+CFA,18,Laen East,LAEN,Buloke West
+CFA,18,Lascelles,LASC,Southern Mallee
+CFA,18,Litchfield,LITC,Buloke West
+CFA,18,Manangatang,MANA,Robinvale and District
+CFA,18,Merbein,MERB,Sunraysia
+CFA,18,Meringur & District,MERI,Sunraysia
+CFA,18,Mildura,MILD,Sunraysia
+CFA,18,Mittyack,MYAK,Ouyen and District
+CFA,18,Murrayville,MUVU,Murrayville and Border
+CFA,18,Nangiloc,NANG,Sunraysia
+CFA,18,Narraport,NPRT,Tyrrell
+CFA,18,Natya,NATY,Mid Murray
+CFA,18,Nullawil,NWIL,Tyrrell
+CFA,18,Nyah Nyah West,NWST,Mid Murray
+CFA,18,Ouyen,OUYU,Ouyen and District
+CFA,18,Patchewollock,PATC,Southern Mallee
+CFA,18,Piangil,PIAN,Mid Murray
+CFA,18,Reedy Dam,REED,Buloke West
+CFA,18,Red Cliffs,REDC,Sunraysia
+CFA,18,Robinvale,ROBI,Robinvale and District
+CFA,18,Rosebery,RBRY,Southern Mallee
+CFA,18,Sea Lake,SLKU,Tyrrell
+CFA,18,Speed,SPED,Ouyen and District
+CFA,18,Swan Hill,SWAU,Mid Murray
+CFA,18,Teddywaddy,TEDY,Charlton
+CFA,18,Tempy,TEMP,Ouyen and District
+CFA,18,Turriff,TURR,Ouyen and District
+CFA,18,Ultima,ULTI,Mid Murray
+CFA,18,Underbool,UNBL,Ouyen and District
+CFA,18,Waitchie,WAIT,Mid Murray
+CFA,18,Walpeup,WAUP,Ouyen and District
+CFA,18,Warmur,WARM,Buloke West
+CFA,18,Watchem,WATC,Buloke West
+CFA,18,Wemen,WEME,Robinvale and District
+CFA,18,Watchupga,WAGU,Buloke West
+CFA,18,Woomelang,WOOM,Southern Mallee
+CFA,18,Woorinen South,WNEN,Mid Murray
+CFA,18,Wooroonook,WNOK,Charlton
+CFA,18,Wycheproof,WYCH,Tyrrell
+CFA,18,Wycheproof South,WYSH,Tyrrell
+CFA,18,Yaapeet,YAAP,Southern Mallee
+CFA,18,Yeungroon,YRON,Charlton
+CFA,18,Nandaly,NAND,Tyrrell
+CFA,20,Appin South,APSH,Gannawarra
+CFA,20,Bamawm Extension,BEXT,Northern Campaspe
+CFA,20,Barraport-Gredgwin,BAGR,Terrick
+CFA,20,Beauchamp,BEAU,Gannawarra
+CFA,20,Berrimal,BERR,Wedderburn
+CFA,20,Lockington,LTON,Northern Campaspe
+CFA,20,Boort,BORT,Terrick
+CFA,20,Bridgewater,BRIU,Loddon South
+CFA,20,Rochester,ROER,Northern Campaspe
+CFA,20,Campbells Forest,CFRT,Loddon South
+CFA,20,Cohuna,COHU,Gannawarra
+CFA,20,Colbinabbin,CBIN,Waranga
+CFA,20,Corop,CORP,Waranga
+CFA,20,Corop West,COWT,Waranga
+CFA,20,Dingee-Tandarra,DING,Terrick
+CFA,20,Echuca,ECHU,Deakin
+CFA,20,Echuca Village,EVIL,Deakin
+CFA,20,Fentons Creek,FENT,Wedderburn
+CFA,20,Girgarre,GIRG,Deakin
+CFA,20,Gunbower,GUNB,Northern Campaspe
+CFA,20,Inglewood,INGL,Loddon South
+CFA,20,Jarklin,JARK,Terrick
+CFA,20,Kerang,KERA,Gannawarra
+CFA,20,Koondrook,KORK,Gannawarra
+CFA,20,Korong Vale,KVAL,Wedderburn
+CFA,20,Kotta,KOTT,Northern Campaspe
+CFA,20,Kyabram,KYAB,Deakin
+CFA,20,Lake Charm,LCHR,Gannawarra
+CFA,20,Lalbert,LALB,Gannawarra
+CFA,20,Leitchville,LVIL,Gannawarra
+CFA,20,Loddon Vale,LODD,Terrick
+CFA,20,Macorna,MACO,Gannawarra
+CFA,20,Meering West,MWST,Gannawarra
+CFA,20,Mitiamo,MITI,Terrick
+CFA,20,Murrabit,MURR,Gannawarra
+CFA,20,Murphy's Creek,MCRK,Loddon South
+CFA,20,Mysia,MYSI,Wedderburn
+CFA,20,Newbridge,NBRG,Loddon South
+CFA,20,Pine Grove,PINE,Northern Campaspe
+CFA,20,Powlett-Salisbury,POWL,Loddon South
+CFA,20,Pyramid Hill,PYRU,Terrick
+CFA,20,Quambatook,QUAM,Gannawarra
+CFA,20,Rheola,RHEO,Loddon South
+CFA,20,Rushworth,RUSH,Waranga
+CFA,20,Sandhill Lake & District,SHIL,Gannawarra
+CFA,20,Serpentine,SERP,Terrick
+CFA,20,Stanhope,STPE,Waranga
+CFA,20,Tarnagulla,TARN,Loddon South
+CFA,20,Tennyson,TENN,Northern Campaspe
+CFA,20,Timmering,TIMM,Deakin
+CFA,20,Tongala,TGAL,Deakin
+CFA,20,Toolleen,TLEN,Waranga
+CFA,20,Torrumbarry,TBRY,Northern Campaspe
+CFA,20,Wedderburn,WEDR,Wedderburn
+CFA,20,Woodstock West,WSTO,Loddon South
+CFA,20,Woosang,WSNG,Wedderburn
+CFA,20,Wychitella,WTEL,Wedderburn
+CFA,20,Wyuna,WYUN,Deakin
+CFA,20,Yambuna,YBUN,Deakin
+CFA,20,Yando,YAND,Terrick
+CFA,20,Yarrawalla,YWAL,Terrick
+CFA,22,Almonds,ALMO,Tungamah
+CFA,22,Arcadia,ARCA,Cogs
+CFA,22,Avenel,AVEN,Tabilk
+CFA,22,Bailieston,BAIL,Tabilk
+CFA,22,Balmattum,BALM,Violet Town
+CFA,22,Boho,BOHO,Violet Town
+CFA,22,Branjee,BRAN,Euroa
+CFA,22,Bundalong,BUND,Yarrawonga
+CFA,22,Burramine,BMIN,Yarrawonga
+CFA,22,Caniambo,CANI,Cogs
+CFA,22,Cobram,COBR,Tungamah
+CFA,22,Cobram East & Boosey,BOOS,Tungamah
+CFA,22,Cooma,COOM,Cogs
+CFA,22,Cosgrove & Pine Lodge,COSG,Cogs
+CFA,22,Creightons Creek,CCRK,Euroa
+CFA,22,Dookie,DOOK,Cogs
+CFA,22,Currawa,CURR,Cogs
+CFA,22,Drumanure,DRUM,Moira West
+CFA,22,Earlston,EARL,Violet Town
+CFA,22,Euroa,EURO,Euroa
+CFA,22,Gooram,GRAM,Euroa
+CFA,22,Kaarimba,KAAR,Moira West
+CFA,22,Karramomus,KARR,Cogs
+CFA,22,Katamatite,KATA,Tungamah
+CFA,22,Katandra,KDRA,Cogs
+CFA,22,Katunga,KATU,Moira West
+CFA,22,Kelvin View,KELV,Euroa
+CFA,22,Kialla & District,KIAL,Cogs
+CFA,22,Koonda,KOON,Violet Town
+CFA,22,Kotupna,KOTU,Moira West
+CFA,22,Locksley,LLEY,Euroa
+CFA,22,Longwood,LOWD,Euroa
+CFA,22,Marraweeny,MARR,Euroa
+CFA,22,Merrigum,MGUM,Cogs
+CFA,22,Miepoll,MIEP,Euroa
+CFA,22,Molka,MOLK,Euroa
+CFA,22,Moorilim,MLIM,Cogs
+CFA,22,Muckatah,MUCK,Tungamah
+CFA,22,Mooroopna,MPNA,Cogs
+CFA,22,Murchison,MURC,Cogs
+CFA,22,Nagambie,NAGU,Tabilk
+CFA,22,Naring,NRNG,Moira West
+CFA,22,Nathalia,NATH,Moira West
+CFA,22,Nw Mooroopna,NWMO,Cogs
+CFA,22,Peechelba,PECH,Yarrawonga
+CFA,22,Numurkah,NKAH,Moira West
+CFA,22,Picola,PICO,Moira West
+CFA,22,Rigg's Creek,RIGG,Euroa
+CFA,22,Ruffy,RUFF,Euroa
+CFA,22,St James & District,SJAM,Tungamah
+CFA,22,Shean's Creek,SHEK,Euroa
+CFA,22,Shepparton,SHEP,Cogs
+CFA,22,Tallygaroopna,TGNA,Cogs
+CFA,22,Strathbogie,SBOG,Euroa
+CFA,22,Strathmerton,STRN,Moira West
+CFA,22,Tatura,TATU,Cogs
+CFA,22,Toolamba,TOBA,Cogs
+CFA,22,Tungamah,TUNG,Tungamah
+CFA,22,Undera,UNDE,Cogs
+CFA,22,Upton Hill,UPTO,Euroa
+CFA,22,Violet Town,VTWN,Violet Town
+CFA,22,Waaia,WAAI,Moira West
+CFA,22,Wahring,WAHR,Tabilk
+CFA,22,Wilby,WILB,Yarrawonga
+CFA,22,Wirrate,WIRR,Tabilk
+CFA,22,Yabba North,YABN,Tungamah
+CFA,22,Yalca & Yielima,YALC,Moira West
+CFA,22,Yarrawonga,YWOU,Yarrawonga
+CFA,22,Yarroweyah,YYAH,Moira West
+CFA,22,Shepparton East,SEST,Cogs
+CFA,22,Wunghnu,WHNU,Moira West
+CFA,22,Barmah,BARM,Moira West
+CFA,23,Barjarg,BARJ,Mansfield
+CFA,23,Benalla,BENU,Benalla
+CFA,23,Bobinawarrah,BOBI,Moyhu
+CFA,23,Bonnie Doon,BONN,Mansfield
+CFA,23,Boorhaman,BMAN,Wangaratta
+CFA,23,Booroolite & District,BDIS,Mansfield
+CFA,23,Boweya,BOYA,Benalla
+CFA,23,Bowman-Murmungee,BOWM,Wangaratta
+CFA,23,Bowser,BOWS,Wangaratta
+CFA,23,Carboor,CBOR,Moyhu
+CFA,23,Cheshunt,CHNT,Moyhu
+CFA,23,Chesney Vale,CHES,Benalla
+CFA,23,Devenish,DEVE,Benalla
+CFA,23,Edi,EDII,Moyhu
+CFA,23,Eldorado,ELDO,Wangaratta
+CFA,23,Everton,EVER,Wangaratta
+CFA,23,Glenrowan,GRWN,Wangaratta
+CFA,23,Glenroy & Merrijig,GMER,Mansfield
+CFA,23,Goomalibee & Upotipotpon,GOUP,Benalla
+CFA,23,Goorambat Stewarton,GBST,Benalla
+CFA,23,Greta,GRET,Wangaratta
+CFA,23,Goughs Bay - Howes Creek,GBAY,Mansfield
+CFA,23,Jamieson,JAMI,Mansfield
+CFA,23,Killawarra,KWRA,Wangaratta
+CFA,23,Laceby West,LACE,Wangaratta
+CFA,23,Lima South,LIMA,Benalla
+CFA,23,Lurg,LURG,Benalla
+CFA,23,Maindample,MPLE,Mansfield
+CFA,23,Mansfield,MANU,Mansfield
+CFA,23,Merton,MERT,Mansfield
+CFA,23,Milawa,MILW,Moyhu
+CFA,23,Molyullah,MOLY,Benalla
+CFA,23,Moyhu,MOYH,Moyhu
+CFA,23,Mt Buller,MBUL,Mansfield
+CFA,23,Myrrhee,MYRH,Moyhu
+CFA,23,Oxley,OXLE,Wangaratta
+CFA,23,Oxley Flats,OXFT,Wangaratta
+CFA,23,Samaria,SAMA,Benalla
+CFA,23,South Wangaratta,SRAT,Wangaratta
+CFA,23,Springhurst,SHRT,Wangaratta
+CFA,23,Swanpool,SPOL,Benalla
+CFA,23,Taminick & North Winton,TANW,Benalla
+CFA,23,Tarrawingee & District,TADI,Wangaratta
+CFA,23,Tatong,TATO,Benalla
+CFA,23,Thoona,THNA,Benalla
+CFA,23,Tolmie & District,TOLM,Mansfield
+CFA,23,Wangaratta,WRAT,Wangaratta
+CFA,23,Wangaratta North,WNTH,Wangaratta
+CFA,23,Warrenbayne,WBYN,Benalla
+CFA,23,Whitegate,WGAT,Benalla
+CFA,23,Whitfield & District,WDIS,Moyhu
+CFA,23,Whorouly,WHOR,Moyhu
+CFA,23,Winton,WINT,Benalla
+CFA,23,Woods Point,WPNT,Mansfield
+CFA,23,Baddaginnie,BADD,Benalla
+CFA,24,Allans Flat,AFLT,Bogong
+CFA,24,Baranduda,BDUD,Wodonga
+CFA,24,Barnawartha,BAWA,Rutherglen
+CFA,24,Beechworth,BECU,Bogong
+CFA,24,Beechworth,BECU,Bogong
+CFA,24,Berringama,BGAM,Corryong
+CFA,24,Bethanga,BETH,Tallangatta
+CFA,24,Biggara,BIGG,Corryong
+CFA,24,Bonegilla,BONA,Wodonga
+CFA,24,Bright,BRIG,Ovens Valley
+CFA,24,Browns Plains,BPLN,Rutherglen
+CFA,24,Buffalo River,BUFR,Ovens Valley
+CFA,24,Bullioh,BIOH,Tallangatta
+CFA,24,Burrowye,BWYE,Corryong
+CFA,24,Carlyle,CYLE,Rutherglen
+CFA,24,Chiltern,CHIU,Rutherglen
+CFA,24,Cornishtown,CORT,Rutherglen
+CFA,24,Corryong,CONU,Corryong
+CFA,24,Cudgewa,CUWA,Corryong
+CFA,24,Dederang,DEDE,Bogong
+CFA,24,Eskdale,ESKD,Tallangatta
+CFA,24,Gapsted,GAPS,Ovens Valley
+CFA,24,Granya,GYRA,Tallangatta
+CFA,24,Gundowring,GUND,Bogong
+CFA,24,Harrietville,HARV,Ovens Valley
+CFA,24,Indigo Valley,INDI,Rutherglen
+CFA,24,Kergunyah,KERG,Bogong
+CFA,24,Kiewa,KIEW,Bogong
+CFA,24,Leneva,LEVA,Wodonga
+CFA,24,Mitta Mitta,MITT,Tallangatta
+CFA,24,Mt Beauty,MBTY,Bogong
+CFA,24,Mt Hotham - Dinner Plain,MHDP,Ovens Valley
+CFA,24,Mudgegonga,MUDG,Ovens Valley
+CFA,24,Myrtleford,MYRU,Ovens Valley
+CFA,24,Nariel Valley,NARI,Corryong
+CFA,24,Noorongong,NONG,Tallangatta
+CFA,24,Norong,NORO,Rutherglen
+CFA,24,Old Tallangatta,TALR,Tallangatta
+CFA,24,Porepunkah,PORE,Ovens Valley
+CFA,24,Rosewhite,RWHT,Ovens Valley
+CFA,24,Rutherglen,RUTR,Rutherglen
+CFA,24,Sandy Creek & Charleroi,SCRK,Bogong
+CFA,24,Talgarno,TALG,Tallangatta
+CFA,24,Tallangatta,TALU,Tallangatta
+CFA,24,Tallangatta Valley,TVLY,Tallangatta
+CFA,24,Tawonga,TAWO,Bogong
+CFA,24,Tintaldra,TINT,Corryong
+CFA,24,Wahgunyah,WAHG,Rutherglen
+CFA,24,Walwa,WALW,Corryong
+CFA,24,Wodonga,WODO,Wodonga
+CFA,24,Wodonga West,WWST,Wodonga
+CFA,24,Wooragee,WGEE,Bogong
+CFA,24,Yackandandah,YACR,Bogong
+CFA,24,Dartmouth,DMTH,Tallangatta
+CFA,24,Ovens-Eurobin,OEUR,Ovens Valley
+CFA,24,Stanley,SLEY,Bogong
+CFA,24,Falls Creek,FCRK,Bogong
+CFA,27,Boolarra,BOOL,Merton
+CFA,27,Callignee,CNEE,Hyland
+CFA,27,Driffield,DRIF,Merton
+CFA,27,Flynn,FLNN,Hyland
+CFA,27,Glengarry,GGRY,Hyland
+CFA,27,Moe,MOEE,Merton
+CFA,27,Newborough,NEWB,Merton
+CFA,27,Maryvale,MVAL,Hyland
+CFA,27,Morwell,MORW,Merton
+CFA,27,Hazelwood North,HWOD,Merton
+CFA,27,Yallourn North,YALN,Merton
+CFA,27,Tanjil,TANJ,Merton
+CFA,27,Moe South,MSTH,Merton
+CFA,27,Toongabbie,TBIE,Hyland
+CFA,27,Traralgon,TRAR,Hyland
+CFA,27,Traralgon South,TRAS,Hyland
+CFA,27,Traralgon East,TRAE,Hyland
+CFA,27,Traralgon West,TRAW,Hyland
+CFA,27,Tyers,TYER,Hyland
+CFA,27,Yinnar,YINN,Merton
+CFA,27,Yinnar South,YINS,Merton
+CFA,27,Churchill,CHUR,Merton
+FRV,Central,City,FS01_,,
+FRV,Central,East Melbourne,FS02_,,
+FRV,Central,Carlton,FS03_,,
+FRV,Central,Brunswick,FS04_,,
+FRV,Northern,Broadmeadows,FS05_,,
+FRV,Northern,Pascoe Vale,FS06_,,
+FRV,Northern,Thomastown,FS07_,,
+FRV,Northern,Somerton,FS09_,,
+FRV,Central,Richmond,FS10_,,
+FRV,Northern,Epping,FS11_,,
+FRV,Northern,Preston,FS12_,,
+FRV,Central,Northcote,FS13_,,
+FRV,Northern,Bundoora,FS14_,,
+FRV,Northern,Heidelberg,FS15_,,
+FRV,Northern,Greensborough,FS16_,,
+FRV,Central,Hawthorn,FS18_,,
+FRV,Eastern,North Balwyn,FS19_,,
+FRV,Eastern,Box Hill,FS20_,,
+FRV,Eastern,Ringwood,FS22_,,
+FRV,Eastern,Burwood,FS23_,,
+FRV,Southern,Glen Iris,FS24_,,
+FRV,Southern,Oakleigh,FS25_,,
+FRV,Eastern,Croydon,FS26_,,
+FRV,Eastern,Nunawading,FS27_,,
+FRV,Eastern,Vermont South,FS28_,,
+FRV,Southern,Clayton,FS29_,,
+FRV,Eastern,Templestowe,FS30_,,
+FRV,Southern,Glen Waverley,FS31_,,
+FRV,Southern,Ormond,FS32_,,
+FRV,Southern,Mentone,FS33_,,
+FRV,Southern,Highett,FS34_,,
+FRV,Central,Windsor,FS35_,,
+FRV,Central,South Melbourne,FS38_,,
+FRV,Central,Port Melbourne,FS39_,,
+FRV,Western,Laverton,FS40_,,
+FRV,Western,St Albans,FS41_,,
+FRV,Western,Newport,FS42_,,
+FRV,Western,Deer Park,FS43_,,
+FRV,Western,Sunshine,FS44_,,
+FRV,Western,Brooklyn,FS45_,,
+FRV,Western,Altona,FS46_,,
+FRV,Western,Footscray,FS47_,,
+FRV,Western,Taylors Lakes,FS48_,,
+FRV,Central,Ascot Vale,FS50_,,
+FRV,Western,Keilor,FS51_,,
+FRV,Western,Tullamarine,FS52_,,
+FRV,Western,Sunbury,FS53_,,
+FRV,Western,Greenvale,FS54_,,
+FRV,Western,Caroline Springs,FS55_,,
+FRV,Western,Melton,FS56_,,
+FRV,Western,Tarneit,FS57_,,
+FRV,Western,Point Cook,FS58_,,
+FRV,Western,Derrimut,FS59_,,
+FRV,Western,Lara,FS61_,,
+FRV,Western,Corio,FS62_,,
+FRV,Western,Geelong City,FS63_,,
+FRV,Western,Belmont,FS64_,,
+FRV,Western,Ocean Grove,FS66_,,
+FRV,North & West Regional,Ballarat City,FS67_,,
+FRV,North & West Regional,Lucas,FS68_,,
+FRV,North & West Regional,Warrnambool,FS70_,,
+FRV,North & West Regional,Portland,FS71_,,
+FRV,North & West Regional,Mildura,FS72_,,
+FRV,North & West Regional,Bendigo,FS73_,,
+FRV,South & East Regional,Wangaratta,FS74_,,
+FRV,South & East Regional,Shepparton,FS75_,,
+FRV,South & East Regional,Wodonga,FS76_,,
+FRV,South & East Regional,Traralgon,FS77_,,
+FRV,South & East Regional,Morwell,FS78_,,
+FRV,South & East Regional,Latrobe West,FS79_,,
+FRV,Northern,Craigieburn,FS80_,,
+FRV,Northern,South Morang,FS81_,,
+FRV,Eastern,Eltham City,FS82_,,
+FRV,Eastern,South Warrandyte,FS84_,,
+FRV,Eastern,Boronia,FS85_,,
+FRV,Southern,Rowville,FS86_,,
+FRV,Southern,Dandenong,FS87_,,
+FRV,Southern,Hallam,FS88_,,
+FRV,Southern,Springvale,FS89_,,
+FRV,Southern,Patterson River,FS90_,,
+FRV,Southern,Frankston,FS91_,,
+FRV,Southern,Cranbourne,FS92_,,
+FRV,Southern,Pakenham,FS93_,,
+FRV,Southern,Mornington,FS94_,,
+FRV,Southern,Rosebud,FS95_,,
+FRV,Southern,Clyde North,FS97_,,
