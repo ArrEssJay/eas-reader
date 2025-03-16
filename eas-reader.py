@@ -51,7 +51,10 @@ cfa_event_types = {
 }
 
 frv_event_types = {
-    "AAFIP": "Alarm Panel",
+    "AAFIP": "Panel Alarm",
+    "AAVMA": "Valve Alarm",
+    "AASPR": "Sprinkler Alarm",
+    "AAMCP": "Break Glass Alarm",
     "IN": "Incident",
     "NS": "Non-Structure Fire",
     "SF": "Structure Fire",
@@ -177,6 +180,7 @@ def parse_message(data):
         message_body_data['event_type'] = event_type_code['event_type']
         message_body_data['event_type_name'] = event_type_code['event_type_name']
         message_body_data['code'] = event_type_code['code']
+  
     # Extract Fireground channels
     fgd_chans = []
     fgd_chans_iter = list(set(re.finditer(r"(FGD)([0-9]{1,3})", message_body))) # Deduplicate list via set
@@ -186,8 +190,7 @@ def parse_message(data):
         message_body= message_body.replace(match.group(), "").lstrip()
     
     structured_message_body_data['fgd_chans_list'] = fgd_chans
-    message_body_data['fgd_chans'] =  ','.join(fgd_chans)  # Concatenate with comma
-
+    message_body_data['fgd_chans'] =  ' '.join(fgd_chans)  
 
     # Extract ESTA job ID
     job_ids = re.finditer(r"(?P<job_type>F|S|E)(?P<job_num>[0-9]{9})", message_body)
@@ -195,7 +198,7 @@ def parse_message(data):
 
     if jobs:
         structured_message_body_data['job_ids_list'] = jobs
-        message_body_data['job_ids'] =  ','.join(jobs)  # Concatenate with comma
+        message_body_data['job_ids'] =  ' '.join(jobs) 
         for j in jobs:
             message_body= message_body.replace(j, "").lstrip()
 
@@ -248,7 +251,7 @@ def parse_message(data):
             if "R" in agencies:
                 agency_list.append("R")
             structured_message_body_data['agencies_list'] = agency_list
-            message_body_data['agencies'] =  ','.join(agency_list)  # Concatenate with comma
+            message_body_data['agencies'] =  ' '.join(agency_list)  # Concatenate with comma
         
         if agencies_resources.group('resources'):
             message_body= message_body.replace(agencies_resources.group('resources'), "").lstrip()
@@ -268,7 +271,7 @@ def parse_message(data):
                     resources_dict['other'].append(r)
                 
             structured_message_body_data['resources_dict'] = resources_dict
-            message_body_data['resources'] = ','.join(resources_list) # Concatenate with comma
+            message_body_data['resources'] = ' '.join(resources_list)
 
         #advice
         if agencies_resources.group('advice'):
