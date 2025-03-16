@@ -195,7 +195,7 @@ def parse_message(data):
     message_body_data['fgd_chans'] =  ' '.join(fgd_chans)  
 
     # Extract ESTA job ID
-    job_ids = re.finditer(r"(?P<job_type>F|S|E)(?P<job_num>[0-9]{9})", message_body)
+    job_ids = re.finditer(r"(?P<job_type>F|S|E)(?P<job_num>[0-9]{9,11})", message_body)
     jobs = [j.group() for j in job_ids]
 
     if jobs:
