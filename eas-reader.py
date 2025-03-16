@@ -35,7 +35,7 @@ shutdown_event = threading.Event()
 
 
 # Map of event codes to descriptions
-event_descriptions = {
+cfa_event_types = {
     "G&S": "Grass & Scrub",
     "RESC": "Rescue",
     "ALAR": "Alarm Panel",
@@ -48,6 +48,15 @@ event_descriptions = {
     "CONF": "Confined Space Rescue",
     "STCO": "Structure Collapse",
     "MINE": "Mine Rescue"
+}
+
+frv_event_types = {
+    "AAFIP": "Alarm Panel",
+    "IN": "Incident",
+    "NS": "Non-Structure Fire",
+    "S": "Structure Fire",
+    "HZ": "Hazardous Materials",
+    "MR": "Medical Rescue",
 }
 
 def send_to_loki(log_entry):
@@ -79,14 +88,14 @@ def create_log_entry(parsed_message):
     timestamp_ns = str(round(time.time()) * 1000000000)
     stream_fields = {"service_name": "EAS"}
     for key, value in parsed_message.items():
-        if key != "message":
+        if key != "received_message":
             stream_fields[key] = value
     log_entry = {
         "streams": [
             {
                 "stream": stream_fields,
                 "values": [
-                    [timestamp_ns, parsed_message['message']]
+                    [timestamp_ns, parsed_message['received_message']]
                 ]
             }
         ]
@@ -98,7 +107,11 @@ def parse_message(data):
     """Parse the EAS message and extract relevant fields."""
     parsed_message = {}
     message_body= data['message']
-    parsed_message['message'] = message_body
+    # received message is sent as the log line. All other fields are sent as labels
+    # max 15 labels, so we send data we don't care to filter on as json in 'message_body_data'
+    # labels for table rendering, and another with structured json for more advanced rendering.
+    # until downstream transformation can handle the structured data
+    parsed_message['received_message'] = data['message']
 
     # Extract EAS priority
     if re.match(r"@@", message_body):
@@ -109,11 +122,10 @@ def parse_message(data):
         parsed_message['eas_priority'] = "ADMIN"
 
     message_body = re.sub(r"@@|Hb|QD", "", message_body)
-    #parsed_message['message'] = message_body
 
     # Extract address and address range
     capcode = int(data['address'])
-    #parsed_message['capcode'] = data['address']
+    parsed_message['capcode'] = capcode
 
     if capcode % 8 == 0:
         parsed_message['address'] = capcode >> 3
@@ -121,17 +133,13 @@ def parse_message(data):
     elif  (capcode -1) % 8 == 0:
         parsed_message['address'] = (capcode-1) >> 3
         parsed_message['address_range'] = "SES"
-    else:
-        parsed_message['address'] = capcode
-        parsed_message['address_range'] = "Unknown"
     
-
-
     #Fire call matching is somewhat tricky as pages can be sent manually, and there may
     #be followup messages. Generally we're looking for something sent high priority with a job number
     #to a group capcode
 
-    parsed_data = {}
+    structured_message_body_data = {}
+    message_body_data = {}
 
     # Alert
     alert = re.match(r"ALERT", message_body)
@@ -146,25 +154,35 @@ def parse_message(data):
         parsed_message['area'] = area.group()
     
     # Extract event type and code
-    event_type_code = re.match(
+    cfa_event_type_code = re.match(
         r"(?P<event_type>G&S|RESC|ALAR|INCI|NOST|NS&R|STRU|TRCH|CONF|STCO|MINE|HIAR)C(?P<code>\d)", message_body
     )
     
-    if event_type_code:
-        message_body= message_body.replace(event_type_code.group(), "").lstrip()
-        event_data = event_type_code.groupdict()
-        event_data['event_type_long'] = event_descriptions.get(event_data['event_type'], "")
-        parsed_data['event_type_code'] = event_data
+    if cfa_event_type_code:
+        message_body= message_body.replace(cfa_event_type_code.group(), "").lstrip()
+        event_data = cfa_event_type_code.groupdict()
+        event_data['event_type_long'] = cfa_event_types.get(event_data['event_type'], "")
+        message_body_data['event_type_code'] = event_data
+    
+    # Otherwise check FRV event types/codes
+    else:
+        frv_event_type_code = re.match(r"(?P<event_type>AAFIP|IN|NS|HZ|S|MR)(?: )?(?P<code>\d[A-Z]?)", message_body)
+        if frv_event_type_code:
+            message_body= message_body.replace(frv_event_type_code.group(), "").lstrip()
+            event_data = frv_event_type_code.groupdict()
+            message_body_data['event_type_code'] = event_data
+
 
     # Extract Fireground channels
     fgd_chans = []
-    fgd_chans_iter = re.finditer(r"(FGD)([0-9]{1,3})", message_body)
+    fgd_chans_iter = list(set(re.finditer(r"(FGD)([0-9]{1,3})", message_body))) # Deduplicate list via set
     
     for match in fgd_chans_iter:
         fgd_chans.append(match.group(2))
         message_body= message_body.replace(match.group(), "").lstrip()
     
-    parsed_data['fgd_chans'] = fgd_chans
+    structured_message_body_data['fgd_chans_list'] = fgd_chans
+    message_body_data['fgd_chans'] =  ','.join(fgd_chans)  # Concatenate with comma
 
 
     # Extract ESTA job ID
@@ -172,7 +190,8 @@ def parse_message(data):
     jobs = [j.group() for j in job_ids]
 
     if jobs:
-        parsed_data['job_ids'] = jobs
+        structured_message_body_data['job_ids_list'] = jobs
+        message_body_data['job_ids'] =  ','.join(jobs)  # Concatenate with comma
         for j in jobs:
             message_body= message_body.replace(j, "").lstrip()
 
@@ -183,70 +202,88 @@ def parse_message(data):
     if paged_group:
         message_body= message_body.replace(paged_group.group(), "").lstrip()
         # remove underscores from paged group
-        parsed_message['paged'] = paged_group.group(2).replace("_", "")
+        parsed_message['paged_group'] = paged_group.group(2).replace("_", "")
         paged_lookup = brigades_lookup.get( paged_group.group(2))
 
-        if paged_lookup: 
-            parsed_message['district'] = paged_lookup.get("district", "")
-            parsed_message['paged_name'] = paged_lookup.get("name", "")
-            parsed_message['org'] = paged_lookup.get("org", "")
+        if paged_lookup:
+            parsed_message['paged_group_district'] = paged_lookup.get('district', "")
+            message_body_data['paged_group_name'] = paged_lookup.get("name", "")
+            parsed_message['paged_group_org'] = paged_lookup.get("org", "")
 
-    # SES don't share an address space
-    if parsed_message['address_range'] == "SES":
-        parsed_message['org'] = 'SES'
-    
+    # use address range defaults if we don't know group details
+    if 'paged_group_name' not in message_body_data.keys():
+        if parsed_message['address_range'] == "SES":
+            parsed_message['paged_group_org'] = "Unknown SES"
+            message_body_data['paged_group_name'] = "Unknown SES"
+            parsed_message['paged_group_district'] = "Unknown SES"
+        
+        elif parsed_message['address_range'] == "CFA":
+            parsed_message['paged_group_org'] = "Unknown Fire"
+            message_body_data['paged_group_name'] = "Unknown Fire"
+            parsed_message['paged_group_district'] = "Unknown Fire"
+
     # Resources paged
     # After the map ref (XXXXXX) <agencies> <resources>
     # agencies is optional and not sent in soem resource request messages
     agencies_resources = re.search(r"(?<=\([0-9]{6}\))(?:.)(\* (?P<advice>.+) \*)?\s?(?P<agencies>(?:A|F|P|EM|R)+ )?(?P<resources>.*)", message_body)
     if agencies_resources:
-        # agencies
+    
         if agencies_resources.group('agencies'):
             message_body= message_body.replace(agencies_resources.group('agencies'), "").lstrip()
             agencies = agencies_resources.group('agencies').strip()
             agency_list = []
             if "A" in agencies:
-                agency_list.append("Ambulance")
+                agency_list.append("A")
             if "F" in agencies:
-                agency_list.append("Fire")
+                agency_list.append("F")
             if "P" in agencies:
-                agency_list.append("Police")
+                agency_list.append("P")
             if "EM" in agencies:
-                agency_list.append("Emergency Medical Response")
+                agency_list.append("EM")
             if "R" in agencies:
-                agency_list.append("Rescue")
-            parsed_data['agencies'] = agency_list
+                agency_list.append("R")
+            structured_message_body_data['agencies_list'] = agency_list
+            message_body_data['agencies'] =  ','.join(agency_list)  # Concatenate with comma
+        
+        if agencies_resources.group('resources'):
+            message_body= message_body.replace(agencies_resources.group('resources'), "").lstrip()
+            resources = agencies_resources.group('resources').split()
 
-        # resources
-        message_body= message_body.replace(agencies_resources.group('resources'), "").lstrip()
-        resources = agencies_resources.group('resources').split()
+            resources_dict = {'CFA_BRIGADE': [], 'FRV': [], 'other': [] }
+            resources_list = []
 
-        resource_dict = {'CFA_BRIGADE': [], 'FRV': [], 'other': [] }
-        for r in resources:
-            if re.match(r"C[A-Z]{4}", r):
-                resource_dict['CFA_BRIGADE'].append(r[1:])
-            elif r.startswith("P"):
-                resource_dict['FRV'].append(r)
-            else:
-                resource_dict['other'].append(r)
-        parsed_data['resources'] = resource_dict
+            for r in resources:
+                #Also send a simple list for table rendering without transforming
+                resources_list.append(r)
+                if re.match(r"C[A-Z]{4}", r):
+                    resources_dict['CFA_BRIGADE'].append(r[1:])
+                elif r.startswith("P"):
+                    resources_dict['FRV'].append(r)
+                else:
+                    resources_dict['other'].append(r)
+                
+            structured_message_body_data['resources_dict'] = resources_dict
+            message_body_data['resources'] = ','.join(resources_list) # Concatenate with comma
 
         #advice
         if agencies_resources.group('advice'):
             message_body= message_body.replace(agencies_resources.group('advice'), "").lstrip()
-            parsed_data['advice'] = agencies_resources.group('advice')
+            message_body_data['advice'] = agencies_resources.group('advice')
 
     # Extract book + page + grid refs
     location = re.search(r"(?P<book>SV[A-Z]{2}|M) (?P<page>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
     if location:
         message_body= message_body.replace(location.group(), "").lstrip()
-        parsed_data['location'] = location.groupdict()
+        structured_message_body_data['location_dict'] = location.groupdict()
+        message_body_data['location'] = location.group()
    
     # Trim whitespace
     parsed_message['message_body'] = " ".join(message_body.split())
 
     # Add additional parsed data json
-    parsed_message['parsed_data'] = json.dumps(parsed_data)
+    parsed_message['message_body_data'] = json.dumps(message_body_data)
+    parsed_message['structured_message_body_data'] = json.dumps(structured_message_body_data)
+
     return parsed_message
 
 def start_client(server_url, shutdown_event):
@@ -337,8 +374,8 @@ def main():
                     processed_messages.append(parse_message(msg))
                 #fieldnames =  set().union(*(d.keys() for d in processed_messages))
                 fieldnames = [
-                    'address', 'eas_priority', 'message', 'paged', 'org', 'paged_name', 'parsed_data',
-                              'district',
+                    'address', 'eas_priority', 'received_message', 'paged_group', 'paged_group_org', 'structured_message_body_data', 'message_body_data',
+                              'paged_group_district', 'capcode', 
                                 'address_range', 'alert',  'area', 'message_body'
                               ]
                 writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
