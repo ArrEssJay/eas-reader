@@ -55,11 +55,13 @@ frv_event_types = {
     "AAVMA": "Valve Alarm",
     "AASPR": "Sprinkler Alarm",
     "AAMCP": "Break Glass Alarm",
+    "GS": "Grass & Scrub",
     "IN": "Incident",
     "NS": "Non-Structure Fire",
     "SF": "Structure Fire",
     "HZ": "Hazardous Materials",
-    "MR": "Medical Rescue",
+    "MR": "Medical Response",
+    "UN": "Unknown",
 }
 
 def send_to_loki(log_entry):
