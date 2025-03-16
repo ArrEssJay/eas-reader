@@ -279,7 +279,7 @@ def parse_message(data):
             message_body_data['advice'] = agencies_resources.group('advice')
 
     # Extract book + page + grid refs
-    location = re.search(r"(?P<book>SV[A-Z]{2}|M) (?P<page>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
+    location = re.search(r"(?P<book>SV[A-Z]{1,2}|M) (?P<page>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
     if location:
         message_body= message_body.replace(location.group(), "").lstrip()
         structured_message_body_data['location_dict'] = location.groupdict()
