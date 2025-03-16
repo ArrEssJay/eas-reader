@@ -54,7 +54,7 @@ frv_event_types = {
     "AAFIP": "Alarm Panel",
     "IN": "Incident",
     "NS": "Non-Structure Fire",
-    "S": "Structure Fire",
+    "SF": "Structure Fire",
     "HZ": "Hazardous Materials",
     "MR": "Medical Rescue",
 }
@@ -157,22 +157,26 @@ def parse_message(data):
     cfa_event_type_code = re.match(
         r"(?P<event_type>G&S|RESC|ALAR|INCI|NOST|NS&R|STRU|TRCH|CONF|STCO|MINE|HIAR)C(?P<code>\d)", message_body
     )
-    
+
     if cfa_event_type_code:
         message_body= message_body.replace(cfa_event_type_code.group(), "").lstrip()
-        event_data = cfa_event_type_code.groupdict()
-        event_data['event_type_long'] = cfa_event_types.get(event_data['event_type'], "")
-        message_body_data['event_type_code'] = event_data
+        structured_message_body_data['event_type_code'] = cfa_event_type_code.groupdict()
+        structured_message_body_data['event_type_code']['event_type_name'] = cfa_event_types.get(cfa_event_type_code.group('event_type'), "")
     
     # Otherwise check FRV event types/codes
     else:
-        frv_event_type_code = re.match(r"(?P<event_type>AAFIP|IN|NS|HZ|S|MR)(?: )?(?P<code>\d[A-Z]?)", message_body)
+        frv_event_type_code = re.match(r"(?P<event_type>AAFIP|IN|NS|HZ|SF|MR)(?: )(?P<code>\d[A-Z]?)", message_body)
         if frv_event_type_code:
             message_body= message_body.replace(frv_event_type_code.group(), "").lstrip()
-            event_data = frv_event_type_code.groupdict()
-            message_body_data['event_type_code'] = event_data
-
-
+            structured_message_body_data['event_type_code'] = frv_event_type_code.groupdict()
+            structured_message_body_data['event_type_code']['event_type_name'] = frv_event_types.get(frv_event_type_code.group('event_type'), "")
+    
+    # copy to unsctructured message body data
+    if 'event_type_code' in structured_message_body_data.keys():
+        event_type_code = structured_message_body_data['event_type_code']
+        message_body_data['event_type'] = event_type_code['event_type']
+        message_body_data['event_type_name'] = event_type_code['event_type_name']
+        message_body_data['code'] = event_type_code['code']
     # Extract Fireground channels
     fgd_chans = []
     fgd_chans_iter = list(set(re.finditer(r"(FGD)([0-9]{1,3})", message_body))) # Deduplicate list via set
@@ -229,7 +233,8 @@ def parse_message(data):
     if agencies_resources:
     
         if agencies_resources.group('agencies'):
-            message_body= message_body.replace(agencies_resources.group('agencies'), "").lstrip()
+            # careful, ensure we don't match words like OF with a stripped 'F' or other single character
+            message_body= message_body.replace(f' {agencies_resources.group('agencies').strip()} ', "")
             agencies = agencies_resources.group('agencies').strip()
             agency_list = []
             if "A" in agencies:
