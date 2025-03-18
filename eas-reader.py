@@ -75,6 +75,7 @@ frv_event_types = {
     "HZ": "Hazardous Materials",
     "MR": "Medical Response",
     "UN": "Unknown",
+    "AFEM": "Emergency Medical",
 }
 
 def send_to_loki(log_entry):
