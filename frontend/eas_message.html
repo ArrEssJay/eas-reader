@@ -1,0 +1,84 @@
+<table>
+  <thead>
+    <tr>
+      <th class="center">🕛</th>
+      <th class="center">To</th>
+      <th class="center">Area</th>
+      <th>Type</th>
+      <th class="center">↑</th>
+      <th class="expand">Msg</th>
+      <th class="center">📡 </th>
+      <th class="center">A</th>
+      <th>R</th>
+      <th class="center">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <td>{{this.Time}}</td>
+      <td>
+        <div class="paged-container">
+          <div class="paged {{this.paged.org}}">{{this.paged.alias}}</div>
+          <div class="paged paged-name">{{this.paged.name}}</div>
+        </div>
+      </td>
+      <td>
+        <div class="area">{{this.area.name}}</div>
+      </td>
+      <td>{{this.event_type_code.event_type_name}}</td>
+      <td>
+        <div class="code code-{{this.event_type_code.code}}">{{this.event_type_code.code}}</div>
+      </td>
+      <td class="expand">
+        <div class="message-container">
+          {{#if this.advice}}
+          <div class="message advice">{{this.advice}}</div>
+          {{/if}}
+          <div class="message">{{this.message_body}}</div>
+        </div>
+      </td>
+      <td>
+        <div class="radio-container">
+          {{#each this.fgd_chans_list}}
+          <div class="radio">{{this}}</div>
+          {{/each}}
+        </div>
+      </td>
+      <td>
+        <div class="agency-container">
+          {{#each this.agencies_list}}
+          <div class="agency {{this}}">{{this}}</div>
+          {{/each}}
+        </div>
+      </td>
+      <td>
+        <div class="resource-container">
+          {{#each this.resources_dict.CFA }}
+          <div class="resource CFA">{{this}}</div>
+          {{/each}}
+          {{#each this.resources_dict.FRV }}
+          <div class="resource FRV">{{this}}</div>
+          {{/each}}
+          {{#each this.resources_dict.EMR }}
+          <div class="resource EMR">{{this}}</div>
+          {{/each}}
+          {{#each this.resources_dict.air }}
+          <div class="resource air">{{this}}</div>
+          {{/each}}
+          {{#each this.resources_dict.other }}
+          <div class="resource">{{this}}</div>
+          {{/each}}
+        </div>
+      </td>
+      <td>
+        <div class="resource-container">
+          {{#each this.job_ids_list}}
+          <div class="job">{{this}}</div>
+          {{/each}}
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

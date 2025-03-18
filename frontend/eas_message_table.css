@@ -1,0 +1,159 @@
+* {
+  color: oklch(90% 0.02 270); /* Light gray text */
+}
+
+.message {
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  margin: 0;
+  /* white-space: no-wrap; */
+  background-color: oklch(15% 0.02 270); /* Dark gray */
+  flex-grow: 1;
+}
+
+.message-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.advice {
+  font-size: 1rem;
+
+  font-weight: bold;
+  outline-color: #d4d4d4;
+  text-align: center;
+  outline: 0.1rem solid;
+  margin: 0.1rem;
+}
+
+.job {
+  font-size: 0.75rem;
+  padding: 0;
+  margin: 0;
+
+  text-align: center;
+}
+
+.agency {
+  font-size: 1rem;
+  font-weight: bold;
+  /* padding: 0rem 0.3rem; */
+  margin: 0.2rem;
+  /* outline: 0.1rem solid; */
+  width: 1.3rem;
+  border-radius: 50%;
+}
+
+.intersection {
+  outline: 0.1rem solid;
+}
+
+.agency-container,
+.radio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.paged-container {
+  display: block;
+  /* //flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.resource-container {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  align-items: flex-start;
+  justify-content: center;
+  width: fit-content;
+}
+
+/* Allow the message column to expand */
+td.expand,
+th.expand {
+  width: max-content;
+  white-space: normal;
+}
+
+table {
+  width: 100%;
+}
+td,
+th {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  width: min-content;
+}
+
+.center {
+  text-align: center;
+}
+
+.resource {
+  font-weight: bold;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.8rem;
+  background-color: oklch(40% 0.2 270); /* Muted dark gray */
+}
+
+.paged {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.paged-name {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.FRV {
+  background-color: oklch(43% 0.175 325.28); /* Balanced magenta */
+}
+
+.CFA,
+.agency.F,
+.code-1 {
+  background-color: oklch(43% 0.175 20); /* Balanced Red */
+}
+
+.agency.P {
+  background-color: oklch(43% 0.175 260.48); /* Vibrant blue */
+}
+
+.agency.A,
+.agency.EM,
+.EMR {
+  background-color: oklch(43% 0.175 141.89); /* Green */
+}
+
+.SES,
+.agency.R {
+  background-color: oklch(58.83% 0.175 51.35); /* Orange */
+}
+
+.air {
+  background-color: oklch(43.03% 0.1762 219.53); /* Teal */
+}
+
+.code {
+  padding: 0.3rem;
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: center;
+
+  font-weight: bold;
+}
+
+.radio {
+  font-size: 1.5rem;
+}
