@@ -32,7 +32,20 @@ message_buffer = deque(maxlen=10)
 
 shutdown_event = threading.Event()
 
-
+frv_appliance_prefixes = {
+    "P": "Pumper",
+    "PT": "Pumper-Tanker",
+    "UP": "Ultra Large Pumper",
+    "LP": "Ladder Platform",
+    "AP": "Aerial Pumper",
+    "TB": "Teleboom",
+    "T": "Transporter",
+    "PP": "Pumper Platform",
+    "CU": "Control Unit",
+    "DC": "District Car",
+    "R": "Rescue",
+    "POD": "Pod",
+}
 
 # Map of event codes to descriptions
 cfa_event_types = {
@@ -170,7 +183,8 @@ def parse_message(data):
     
     # Otherwise check FRV event types/codes
     else:
-        frv_event_type_code = re.match(r"(?P<event_type>AAFIP|IN|NS|HZ|SF|MR)(?: )(?P<code>\d[A-Z]?)", message_body)
+        frv_event_keys = "|".join(frv_event_types.keys())
+        frv_event_type_code = re.match(fr"(?P<event_type>{frv_event_keys})(?: )(?P<code>\d[A-Z]?)", message_body)
         if frv_event_type_code:
             message_body= message_body.replace(frv_event_type_code.group(), "").lstrip()
             structured_message_body_data['event_type_code'] = frv_event_type_code.groupdict()
@@ -185,12 +199,13 @@ def parse_message(data):
   
     # Extract Fireground channels
     fgd_chans = []
-    fgd_chans_iter = list(set(re.finditer(r"(FGD)([0-9]{1,3})", message_body))) # Deduplicate list via set
+    fgd_chans_iter = re.finditer(r"(FGD)([0-9]{1,3})", message_body)
     
     for match in fgd_chans_iter:
         fgd_chans.append(match.group(2))
         message_body= message_body.replace(match.group(), "").lstrip()
     
+    fgd_chans = list(set(fgd_chans)) # remove duplicates
     structured_message_body_data['fgd_chans_list'] = fgd_chans
     message_body_data['fgd_chans'] =  ' '.join(fgd_chans)  
 
@@ -259,16 +274,24 @@ def parse_message(data):
             message_body= message_body.replace(agencies_resources.group('resources'), "").lstrip()
             resources = agencies_resources.group('resources').split()
 
-            resources_dict = {'CFA_BRIGADE': [], 'FRV': [], 'other': [] }
+            resources_dict = {'CFA': [], 'FRV': [], 'EMR': [], 'air': [], 'other': [] }
             resources_list = []
 
             for r in resources:
                 #Also send a simple list for table rendering without transforming
                 resources_list.append(r)
-                if re.match(r"C[A-Z]{4}", r):
-                    resources_dict['CFA_BRIGADE'].append(r[1:])
-                elif r.startswith("P"):
+                if re.match(r"C[A-Z]{4}\b", r): 
+                    resources_dict['CFA'].append(r[1:])
+                elif r.startswith(("CFA")):
+                    resources_dict['CFA'].append(r)
+                elif re.search(r"T\d$", r):
+                    resources_dict['CFA'].append(r)
+                elif r.startswith(tuple(frv_appliance_prefixes.keys())):
                     resources_dict['FRV'].append(r)
+                elif r.startswith(("AIR","HEL","FBD")):
+                    resources_dict['air'].append(r)
+                elif r.startswith(("EMR")):
+                    resources_dict['EMR'].append(r)
                 else:
                     resources_dict['other'].append(r)
                 
@@ -278,6 +301,9 @@ def parse_message(data):
         #advice
         if agencies_resources.group('advice'):
             message_body= message_body.replace(agencies_resources.group('advice'), "").lstrip()
+            advice = agencies_resources.group('advice')
+            advice.replace("INFO:","\nINFO:")
+            advice.replace("RISK:","\nRISK:")
             message_body_data['advice'] = agencies_resources.group('advice')
 
     # Extract book + page + grid refs
