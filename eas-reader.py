@@ -15,7 +15,7 @@ import os, base64, json, sys
 NO_WRITE = False
 
 # Load brigade lookup from CSV
-def load_stations_lookup(csv_file="data/cfa_frv_stations.csv"):
+def load_aliases(csv_file="data/paging_aliases.csv"):
 
     lookup = {}
     with open(csv_file, "r", newline="") as csvfile:
@@ -60,7 +60,7 @@ cfa_event_types = {
     "TRCH": "Trench Rescue",
     "CONF": "Confined Space Rescue",
     "STCO": "Structure Collapse",
-    "MINE": "Mine Rescue"
+    "MINE": "Mine Rescue",
 }
 
 frv_event_types = {
@@ -75,7 +75,12 @@ frv_event_types = {
     "HZ": "Hazardous Materials",
     "MR": "Medical Response",
     "UN": "Unknown",
-    "AFEM": "Emergency Medical",
+}
+
+emr_event_types = {
+    "AFEM": "EMR - AFEM",
+    "AFPE": "EMR- AFPE",
+    "AFPEM": "EMR - AFPEM",
 }
 
 def send_to_loki(log_entry):
@@ -100,21 +105,20 @@ def send_to_loki(log_entry):
     except Exception as e:
         print(f"Error sending log to Loki: {e}", file=sys.stderr)
 
-def create_log_entry(parsed_message):
+def create_log_entry(message_data):
     """Create a log entry in Loki format."""
 
     #round the timestamp to the nearest second
     timestamp_ns = str(round(time.time()) * 1000000000)
-    stream_fields = {"service_name": "EAS"}
-    for key, value in parsed_message.items():
-        if key != "received_message":
-            stream_fields[key] = value
+    stream_fields = message_data['labels']
+    stream_fields['service_name']= "EAS"
+    
     log_entry = {
         "streams": [
             {
                 "stream": stream_fields,
                 "values": [
-                    [timestamp_ns, parsed_message['received_message']]
+                    [timestamp_ns, json.dumps(message_data['message'])]
                 ]
             }
         ]
@@ -125,6 +129,7 @@ def create_log_entry(parsed_message):
 def parse_message(data):
     """Parse the EAS message and extract relevant fields."""
     parsed_message = {}
+    labels = {}
     message_body= data['message']
     # received message is sent as the log line. All other fields are sent as labels
     # max 15 labels, so we send data we don't care to filter on as json in 'message_body_data'
@@ -134,31 +139,28 @@ def parse_message(data):
 
     # Extract EAS priority
     if re.match(r"@@", message_body):
-        parsed_message['eas_priority'] = "EMERGENCY"
+        labels['eas_priority'] = "EMERGENCY"
     elif re.match(r"Hb", message_body):
-        parsed_message['eas_priority'] = "NON_EMERGENCY"
+        labels['eas_priority'] = "NON_EMERGENCY"
     elif re.match(r"QD", message_body):
-        parsed_message['eas_priority'] = "ADMIN"
+        labels['eas_priority'] = "ADMIN"
 
     message_body = re.sub(r"@@|Hb|QD", "", message_body)
 
     # Extract address and address range
     capcode = int(data['address'])
-    parsed_message['capcode'] = capcode
+    labels['capcode'] = capcode
 
     if capcode % 8 == 0:
-        parsed_message['address'] = capcode >> 3
+        labels['address'] = capcode >> 3
         parsed_message['address_range'] = "CFA"
     elif  (capcode -1) % 8 == 0:
-        parsed_message['address'] = (capcode-1) >> 3
+        labels['address'] = (capcode-1) >> 3
         parsed_message['address_range'] = "SES"
     
     #Fire call matching is somewhat tricky as pages can be sent manually, and there may
     #be followup messages. Generally we're looking for something sent high priority with a job number
     #to a group capcode
-
-    structured_message_body_data = {}
-    message_body_data = {}
 
     # Alert
     alert = re.match(r"ALERT", message_body)
@@ -167,37 +169,67 @@ def parse_message(data):
         message_body= message_body.replace(alert.group(), "").lstrip()
 
     # Area code will follow alert
-    area = re.match(r"[A-Z]{4,6}[0-9]{1,2}[A-Z]{0,1}|[0-9]{5}[A-Z]?", message_body)
+    area_type = None
+    area = re.match(r"[A-Z]{4,6}[0-9]{1,2}[A-Z]{0,1}", message_body)
+    if area:
+        area_type = "CFA"
+       
+    else: 
+        area = re.match(r"[0-9]{5}[A-Z]?", message_body)
+        if area:
+            area_type = "FRV"
+
     if area:
         message_body= message_body.replace(area.group(), "").lstrip()
-        parsed_message['area'] = area.group()
-    
+        parsed_message['area'] = {
+            'name': area.group(),
+            'authority': area_type
+        }
     # Extract event type and code
+    cfa_event_keys = "|".join(cfa_event_types.keys())
     cfa_event_type_code = re.match(
-        r"(?P<event_type>G&S|RESC|ALAR|INCI|NOST|NS&R|STRU|TRCH|CONF|STCO|MINE|HIAR)C(?P<code>\d)", message_body
+        fr"(?P<event_type>{cfa_event_keys})C(?P<code>\d)", message_body
     )
 
     if cfa_event_type_code:
         message_body= message_body.replace(cfa_event_type_code.group(), "").lstrip()
-        structured_message_body_data['event_type_code'] = cfa_event_type_code.groupdict()
-        structured_message_body_data['event_type_code']['event_type_name'] = cfa_event_types.get(cfa_event_type_code.group('event_type'), "")
+        parsed_message['event_type_code'] = cfa_event_type_code.groupdict()
+        parsed_message['event_type_code']['event_type_name'] = cfa_event_types.get(cfa_event_type_code.group('event_type'), "")
     
     # Otherwise check FRV event types/codes
     else:
         frv_event_keys = "|".join(frv_event_types.keys())
-        frv_event_type_code = re.match(fr"(?P<event_type>{frv_event_keys})(?: )(?P<code>\d[A-Z]?)", message_body)
+        frv_event_type_code = re.match(fr"(?P<event_type>{frv_event_keys})(?: )(?P<code>\dA)", message_body)
         if frv_event_type_code:
-            message_body= message_body.replace(frv_event_type_code.group(), "").lstrip()
-            structured_message_body_data['event_type_code'] = frv_event_type_code.groupdict()
-            structured_message_body_data['event_type_code']['event_type_name'] = frv_event_types.get(frv_event_type_code.group('event_type'), "")
+            parsed_message['event_type_code'] = frv_event_type_code.groupdict()
+            parsed_message['event_type_code']['event_type_name'] = frv_event_types.get(frv_event_type_code.group('event_type'), "")
     
-    # copy to unsctructured message body data
-    if 'event_type_code' in structured_message_body_data.keys():
-        event_type_code = structured_message_body_data['event_type_code']
-        message_body_data['event_type'] = event_type_code['event_type']
-        message_body_data['event_type_name'] = event_type_code['event_type_name']
-        message_body_data['code'] = event_type_code['code']
-  
+        else:
+            # lastly check EMR event types. EMR coding syntax varies somewhat so use less strict 'search' over 'match'
+            emr_event_keys = "|".join(emr_event_types.keys())
+            emr_event_type = re.search(fr"{emr_event_keys}", message_body)
+            if emr_event_type:
+                parsed_message['event_type_code'] = {}
+                parsed_message['event_type_code']['event_type'] = emr_event_type.group()
+                # there is no response priority code for EMR
+
+    # lat lon usually next in the message if pressent
+    message_body, latlon = parse_latlon(message_body)
+    if latlon:
+        parsed_message['latlon'] = latlon
+    
+    # Resource request priority may be different to the incident priority
+    
+    response_code = re.search(r"(CODE )(ONE|THREE)", message_body)
+    if response_code:
+        # may not be event/code present
+        if not parsed_message['event_type_code']:
+                parsed_message['event_type_code'] = {}
+        if response_code.group(2) == "ONE":
+            parsed_message['event_type_code']['code'] = '1'
+        elif response_code.group(2) == "THREE":
+            parsed_message['event_type_code']['code'] = '3'
+
     # Extract Fireground channels
     fgd_chans = []
     fgd_chans_iter = re.finditer(r"(FGD)([0-9]{1,3})", message_body)
@@ -207,16 +239,14 @@ def parse_message(data):
         message_body= message_body.replace(match.group(), "").lstrip()
     
     fgd_chans = list(set(fgd_chans)) # remove duplicates
-    structured_message_body_data['fgd_chans_list'] = fgd_chans
-    message_body_data['fgd_chans'] =  ' '.join(fgd_chans)  
+    parsed_message['fgd_chans_list'] = fgd_chans
 
     # Extract ESTA job ID
     job_ids = re.finditer(r"(?P<job_type>F|S|E)(?P<job_num>[0-9]{9,11})", message_body)
     jobs = [j.group() for j in job_ids]
 
     if jobs:
-        structured_message_body_data['job_ids_list'] = jobs
-        message_body_data['job_ids'] =  ' '.join(jobs) 
+        parsed_message['job_ids_list'] = jobs
         for j in jobs:
             message_body= message_body.replace(j, "").lstrip()
 
@@ -227,25 +257,46 @@ def parse_message(data):
     if paged_group:
         message_body= message_body.replace(paged_group.group(), "").lstrip()
         # remove underscores from paged group
-        parsed_message['paged_group'] = paged_group.group(2).replace("_", "")
-        paged_lookup = brigades_lookup.get( paged_group.group(2))
+        paged_alias  = paged_group.group(2).replace("_", "")
+        paged_lookup = aliases.get(paged_alias)
 
         if paged_lookup:
-            parsed_message['paged_group_district'] = paged_lookup.get('district', "")
-            message_body_data['paged_group_name'] = paged_lookup.get("name", "")
-            parsed_message['paged_group_org'] = paged_lookup.get("org", "")
-
-    # use address range defaults if we don't know group details
-    if 'paged_group_name' not in message_body_data.keys():
-        if parsed_message['address_range'] == "SES":
-            parsed_message['paged_group_org'] = "Unknown SES"
-            message_body_data['paged_group_name'] = "Unknown SES"
-            parsed_message['paged_group_district'] = "Unknown SES"
+            paged_district  = paged_lookup.get('district', "")
+            paged_org = paged_lookup.get('org', "")
+            paged_name = paged_lookup.get("name", ""),
         
-        elif parsed_message['address_range'] == "CFA":
-            parsed_message['paged_group_org'] = "Unknown Fire"
-            message_body_data['paged_group_name'] = "Unknown Fire"
-            parsed_message['paged_group_district'] = "Unknown Fire"
+        # try EMR brigade
+        else:
+            paged_alias = f'E{paged_alias}'
+            paged_lookup = aliases.get( paged_alias)
+            if paged_lookup:
+                paged_district  = paged_lookup.get('district', "")
+                paged_org = 'EMR'
+                paged_name = f'{paged_lookup.get("name", "")} EMR',
+
+            # use address range defaults if we don't know group details
+            else:
+                if parsed_message['address_range'] == "SES":
+                    paged_org = "SES"
+                    paged_name = "Unknown SES"
+                    paged_district = "Unknown SES"
+                
+                elif parsed_message['address_range'] == "CFA":
+                    paged_org = "Unknown Fire"
+                    paged_name = "Unknown Fire"
+                    paged_district = "Unknown Fire"
+        
+        if paged_alias:
+            parsed_message['paged'] = {
+                    'alias' : paged_alias,
+                    'name': paged_name,
+                    'district': paged_district,
+                    'org': paged_org
+                }
+        # set message labels needed for filtering
+        labels['paged_group'] = paged_alias
+        labels['paged_group_district'] = paged_district
+        labels['paged_group_org'] = paged_org
 
     # Resources paged
     # After the map ref (XXXXXX) <agencies> <resources>
@@ -268,8 +319,7 @@ def parse_message(data):
                 agency_list.append("EM")
             if "R" in agencies:
                 agency_list.append("R")
-            structured_message_body_data['agencies_list'] = agency_list
-            message_body_data['agencies'] =  ' '.join(agency_list)  # Concatenate with comma
+            parsed_message['agencies_list'] = agency_list
         
         if agencies_resources.group('resources'):
             message_body= message_body.replace(agencies_resources.group('resources'), "").lstrip()
@@ -296,8 +346,7 @@ def parse_message(data):
                 else:
                     resources_dict['other'].append(r)
                 
-            structured_message_body_data['resources_dict'] = resources_dict
-            message_body_data['resources'] = ' '.join(resources_list)
+            parsed_message['resources_dict'] = resources_dict
 
         #advice
         if agencies_resources.group('advice'):
@@ -305,24 +354,40 @@ def parse_message(data):
             advice = agencies_resources.group('advice')
             advice.replace("INFO:","\nINFO:")
             advice.replace("RISK:","\nRISK:")
-            message_body_data['advice'] = agencies_resources.group('advice')
+            parsed_message['advice'] = agencies_resources.group('advice')
 
     # Extract book + page + grid refs
-    location = re.search(r"(?P<book>SV[A-Z]{1,2}|M) (?P<page>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
-    if location:
-        message_body= message_body.replace(location.group(), "").lstrip()
-        structured_message_body_data['location_dict'] = location.groupdict()
-        message_body_data['location'] = location.group()
+    map_ref = re.search(r"(?P<book>SV[A-Z]{1,2}|M) (?P<page>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
+    if map_ref:
+        message_body= message_body.replace(map_ref.group(), "").lstrip()
+        parsed_message['map_ref'] = map_ref.groupdict()
    
     # Trim whitespace
     parsed_message['message_body'] = " ".join(message_body.split())
+    
+    message_data = {'message': parsed_message, 'labels': labels }  
+    return message_data
 
-    # Add additional parsed data json
-    parsed_message['message_body_data'] = json.dumps(message_body_data)
-    parsed_message['structured_message_body_data'] = json.dumps(structured_message_body_data)
+def dms_to_decimal(degrees, minutes, seconds):
+    """Convert DMS (Degrees, Minutes, Seconds) to Decimal Degrees."""
+    decimal = abs(int(degrees)) + (int(minutes) / 60) + (float(seconds) / 3600)
+    return -decimal if int(degrees) < 0 else decimal
 
-    return parsed_message
-
+def parse_latlon(message_body):
+    """Extract latitude and longitude from the given format and convert to decimal degrees."""
+    pattern = re.compile(r"LL\(([-+]?\d{1,3}):(\d{1,2}):([\d.]+),\s*([-+]?\d{1,3}):(\d{1,2}):([\d.]+)\)")
+    
+    data = (message_body, None)
+    match = pattern.search(message_body)
+    if match:
+        lat_deg, lat_min, lat_sec, lon_deg, lon_min, lon_sec = match.groups()
+        latitude = dms_to_decimal(lat_deg, lat_min, lat_sec)
+        longitude = dms_to_decimal(lon_deg, lon_min, lon_sec)
+        data[0] = data[0].replace(match.group(), "").lstrip()
+        data[1] = {'latitude':latitude, 'longitude':longitude}
+    
+    return data
+    
 def start_client(server_url, shutdown_event):
     sio_client = socketio.Client(logger=False, engineio_logger=False)
 
@@ -344,14 +409,15 @@ def start_client(server_url, shutdown_event):
 
             # print(f"Received event from {server_url} with data: {data}", file=sys.stderr)
 
-            parsed_message = parse_message(data)
-            parsed_message['server_url'] = server_url
+            message_data = parse_message(data)
+            message_data['server_url'] = server_url
 
-            log_entry = create_log_entry(parsed_message)
+            log_entry = create_log_entry(message_data)
             send_to_loki(log_entry)
         except Exception as e:
             print(f"Error processing message with data: {data} from {server_url}: {e}", file=sys.stderr)
-
+            import traceback  # Import the traceback module
+            traceback.print_exc()  # Print the full traceback
     try:
         sio_client.connect(server_url, socketio_path="socket.io", transports=["websocket"])
         # Loop until shutdown_event is set
@@ -363,7 +429,7 @@ def start_client(server_url, shutdown_event):
 
 def main():
     """Main execution: start a thread for each Socket.IO server and handle shutdown gracefully."""
-    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, brigades_lookup
+    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, aliases
 
     parser = argparse.ArgumentParser(
         description="EAS to Loki logger with optional no-write mode and configurable config file."
@@ -398,7 +464,7 @@ def main():
     LOKI_PASSWORD = config["loki_password"]
 
     # Reload the brigade lookup in case paths or data have changed
-    brigades_lookup = load_stations_lookup()
+    aliases = load_aliases()
 
     if args.test:
         print("Running in test mode...", file=sys.stderr)
@@ -411,9 +477,7 @@ def main():
                     processed_messages.append(parse_message(msg))
                 #fieldnames =  set().union(*(d.keys() for d in processed_messages))
                 fieldnames = [
-                    'address', 'eas_priority', 'received_message', 'paged_group', 'paged_group_org', 'structured_message_body_data', 'message_body_data',
-                              'paged_group_district', 'capcode', 
-                                'address_range', 'alert',  'area', 'message_body'
+                    'message', 'labels',
                               ]
                 writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames)
                 writer.writeheader()
