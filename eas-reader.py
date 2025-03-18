@@ -265,14 +265,15 @@ def parse_message(data):
             paged_org = paged_lookup.get('org', "")
             paged_name = paged_lookup.get("name", ""),
         
-        # try EMR brigade
+        # try EMR variant e.g. ECRAN (EMR Cranbourne)
         else:
-            paged_alias = f'E{paged_alias}'
-            paged_lookup = aliases.get( paged_alias)
-            if paged_lookup:
-                paged_district  = paged_lookup.get('district', "")
-                paged_org = 'EMR'
-                paged_name = f'{paged_lookup.get("name", "")} EMR',
+            emr_alias = re.match(r"(E)([A-Z]{4})", paged_alias)
+            if emr_alias:
+                emr_lookup = aliases.get( emr_alias.group(2))
+                if emr_lookup:
+                    paged_district  = emr_lookup.get('district', "")
+                    paged_org = 'EMR'
+                    paged_name = f'{emr_lookup.get("name", "")} EMR',
 
             # use address range defaults if we don't know group details
             else:
