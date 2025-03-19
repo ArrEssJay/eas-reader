@@ -10,6 +10,8 @@ import argparse
 import time
 import csv
 import os, base64, json, sys
+import pyproj
+
 
 # Global flag to control whether to write to Loki
 NO_WRITE = False
@@ -25,6 +27,28 @@ def load_aliases(csv_file="data/paging_aliases.csv"):
             if key:
                 lookup[key] = row
     return lookup
+
+def load_map_prefixes():
+    prefixes = {}
+    with open("data/state_utm_prefixes.csv", "r",newline="") as csvfile:
+        prefixes['state_prefixes'] = {};
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            key = row.get("map_no")
+            if key:
+                prefixes['state_prefixes'][key] = row
+    
+    with open("data/melways_utm_prefixes.csv", "r",newline="") as csvfile:
+        prefixes['melways_prefixes'] = {};
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            key = row.get("map_no")
+            if key:
+                prefixes['melways_prefixes'][key] = row
+        
+
+    return prefixes
+    
 
 
 # Global circular buffer for deduplication (max 10 items)
@@ -214,7 +238,7 @@ def parse_message(data):
                 # there is no response priority code for EMR
 
     # lat lon usually next in the message if pressent
-    message_body, latlon = parse_latlon(message_body)
+    message_body, latlon = parse_eas_latlon(message_body)
     if latlon:
         parsed_message['latlon'] = latlon
     
@@ -358,10 +382,15 @@ def parse_message(data):
             parsed_message['advice'] = agencies_resources.group('advice')
 
     # Extract book + page + grid refs
-    map_ref = re.search(r"(?P<book>SV[A-Z]{1,2}|M) (?P<page>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
+    map_ref = re.search(r"(?P<book>SV[A-Z]{1,2}|M) (?P<map_num>\S+) (?P<square>\S+) \((?P<grid_ref>[0-9]{6})\)", message_body)
     if map_ref:
         message_body= message_body.replace(map_ref.group(), "").lstrip()
         parsed_message['map_ref'] = map_ref.groupdict()
+
+        # Convert grid reference to lat/lon
+        latlon = grid_ref_to_latlon(parsed_message['map_ref'])
+        if latlon:
+            parsed_message['map_ref']['wgs84']= {'latitude': latlon[0], 'longitude': latlon[1]}
    
     # Trim whitespace
     parsed_message['message_body'] = " ".join(message_body.split())
@@ -374,7 +403,7 @@ def dms_to_decimal(degrees, minutes, seconds):
     decimal = abs(int(degrees)) + (int(minutes) / 60) + (float(seconds) / 3600)
     return -decimal if int(degrees) < 0 else decimal
 
-def parse_latlon(message_body):
+def parse_eas_latlon(message_body):
     """Extract latitude and longitude from the given format and convert to decimal degrees."""
     pattern = re.compile(r"LL\(([-+]?\d{1,3}):(\d{1,2}):([\d.]+),\s*([-+]?\d{1,3}):(\d{1,2}):([\d.]+)\)")
     
@@ -388,7 +417,56 @@ def parse_latlon(message_body):
         data[1] = {'latitude':latitude, 'longitude':longitude}
     
     return data
-    
+
+def grid_ref_to_latlon(map_ref_data):
+    try:
+        book = map_ref_data['book']
+        map_number = map_ref_data['map_num']
+        grid_ref = map_ref_data['grid_ref']
+
+        # Determine which prefix data to use based on the book
+        if book == 'M':
+            prefix_data = utm_prefixes['melways_prefixes']
+        else:
+            prefix_data = utm_prefixes['state_prefixes']
+
+        # Split grid reference into easting and northing
+        easting_str = grid_ref[:3]
+        northing_str = grid_ref[3:]
+
+        # Convert to integers and multiply by 100
+        x_offset = int(easting_str) * 100
+        y_offset = int(northing_str) * 100
+
+        # Find matching map prefix
+        map_prefix = prefix_data.get(map_number)
+        
+        if map_prefix:
+            mga_zone = int(map_prefix['mga_zone'])
+            x_base = int(map_prefix['x_base'])
+            y_base = int(map_prefix['y_base'])
+
+            # Calculate UTM coordinates
+            utm_easting = x_base + x_offset
+            utm_northing = y_base + y_offset
+
+            # Define GDA94 and WGS84 coordinate systems
+            # Define GDA94 and WGS84 coordinate systems
+            gda94 = pyproj.CRS.from_string(f'epsg:283{mga_zone}')  # GDA94 / MGA zone
+            wgs84 = pyproj.CRS.from_string('epsg:4326')  # WGS84
+
+            # Convert from GDA94 to WGS84
+            transformer = pyproj.Transformer.from_crs(gda94, wgs84, always_xy=True)
+            longitude, latitude = transformer.transform(utm_easting, utm_northing)
+
+            return latitude, longitude
+        else:
+            return None
+
+    except Exception as e:
+        print(f"Error converting grid reference: {e}")
+        return None
+
 def start_client(server_url, shutdown_event):
     sio_client = socketio.Client(logger=False, engineio_logger=False)
 
@@ -430,7 +508,7 @@ def start_client(server_url, shutdown_event):
 
 def main():
     """Main execution: start a thread for each Socket.IO server and handle shutdown gracefully."""
-    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, aliases
+    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, aliases, utm_prefixes
 
     parser = argparse.ArgumentParser(
         description="EAS to Loki logger with optional no-write mode and configurable config file."
@@ -466,6 +544,7 @@ def main():
 
     # Reload the brigade lookup in case paths or data have changed
     aliases = load_aliases()
+    utm_prefixes = load_map_prefixes()
 
     if args.test:
         print("Running in test mode...", file=sys.stderr)
