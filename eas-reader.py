@@ -28,26 +28,26 @@ def load_aliases(csv_file="data/paging_aliases.csv"):
                 lookup[key] = row
     return lookup
 
-def load_map_prefixes():
-    prefixes = {}
-    with open("data/state_utm_prefixes.csv", "r",newline="") as csvfile:
-        prefixes['state_prefixes'] = {};
+def load_utm_bounds():
+    utm_bounds = {}
+    with open("data/state_utm_bounds.csv", "r",newline="") as csvfile:
+        utm_bounds['state'] = {};
         reader = csv.DictReader(csvfile)
         for row in reader:
             key = row.get("map_no")
             if key:
-                prefixes['state_prefixes'][key] = row
+                utm_bounds['state'][key] = row
     
-    with open("data/melways_utm_prefixes.csv", "r",newline="") as csvfile:
-        prefixes['melways_prefixes'] = {};
+    with open("data/melways_utm_bounds.csv", "r",newline="") as csvfile:
+        utm_bounds['melways'] = {};
         reader = csv.DictReader(csvfile)
         for row in reader:
             key = row.get("map_no")
             if key:
-                prefixes['melways_prefixes'][key] = row
+                utm_bounds['melways'][key] = row
         
 
-    return prefixes
+    return utm_bounds
     
 
 
@@ -418,6 +418,40 @@ def parse_eas_latlon(message_body):
     
     return data
 
+def expand_utm_grid_ref(grid_ref, map_x_min, map_x_max, map_y_min, map_y_max):
+    """
+    Expands a 6-figure grid reference into full UTM coordinates.
+    
+    :param grid_ref: str, 6-figure grid reference (e.g., "054572")
+    :param map_x_min: int, minimum easting of the map
+    :param map_x_max: int, maximum easting of the map
+    :param map_y_min: int, minimum northing of the map
+    :param map_y_max: int, maximum northing of the map
+    :return: (int, int), full UTM coordinates (x_map, y_map)
+    """
+    # Extract the 3-digit easting and northing
+    x_6fig = int(grid_ref[:3])  # First 3 digits
+    y_6fig = int(grid_ref[3:])  # Last 3 digits
+    
+    # Convert to metres within the 100 km square
+    x_6fig_metres = x_6fig * 100
+    y_6fig_metres = y_6fig * 100
+    
+    # Solve for the correct 100 km prefix
+    k_x_min = (map_x_min - x_6fig_metres) // 100000
+    k_x_max = (map_x_max - x_6fig_metres) // 100000
+    k_x = next(k for k in range(k_x_min, k_x_max + 1) if map_x_min <= 100000 * k + x_6fig_metres <= map_x_max)
+
+    k_y_min = (map_y_min - y_6fig_metres) // 100000
+    k_y_max = (map_y_max - y_6fig_metres) // 100000
+    k_y = next(k for k in range(k_y_min, k_y_max + 1) if map_y_min <= 100000 * k + y_6fig_metres <= map_y_max)
+
+    # Compute full UTM coordinates
+    x_map = 100000 * k_x + x_6fig_metres
+    y_map = 100000 * k_y + y_6fig_metres
+    
+    return x_map, y_map
+
 def grid_ref_to_latlon(map_ref_data):
     try:
         book = map_ref_data['book']
@@ -426,29 +460,19 @@ def grid_ref_to_latlon(map_ref_data):
 
         # Determine which prefix data to use based on the book
         if book == 'M':
-            prefix_data = utm_prefixes['melways_prefixes']
+            bounds = utm_bounds['melways']
         else:
-            prefix_data = utm_prefixes['state_prefixes']
+            bounds = utm_bounds['state']
 
-        # Split grid reference into easting and northing
-        easting_str = grid_ref[:3]
-        northing_str = grid_ref[3:]
-
-        # Convert to integers and multiply by 100
-        x_offset = int(easting_str) * 100
-        y_offset = int(northing_str) * 100
-
+       
         # Find matching map prefix
-        map_prefix = prefix_data.get(map_number)
-        
-        if map_prefix:
-            mga_zone = int(map_prefix['mga_zone'])
-            x_base = int(map_prefix['x_base'])
-            y_base = int(map_prefix['y_base'])
+        mb = bounds.get(map_number)
 
-            # Calculate UTM coordinates
-            utm_easting = x_base + x_offset
-            utm_northing = y_base + y_offset
+        
+        if mb:
+            mga_zone = int(mb['mga_zone'])
+        
+            easting,northing = expand_utm_grid_ref(grid_ref, int(mb['x_min']),int(mb['x_max']),int(mb['y_min']),int(mb['y_max']))
 
             # Define GDA94 and WGS84 coordinate systems
             # Define GDA94 and WGS84 coordinate systems
@@ -457,7 +481,7 @@ def grid_ref_to_latlon(map_ref_data):
 
             # Convert from GDA94 to WGS84
             transformer = pyproj.Transformer.from_crs(gda94, wgs84, always_xy=True)
-            longitude, latitude = transformer.transform(utm_easting, utm_northing)
+            longitude, latitude = transformer.transform(easting, northing)
 
             return latitude, longitude
         else:
@@ -508,7 +532,8 @@ def start_client(server_url, shutdown_event):
 
 def main():
     """Main execution: start a thread for each Socket.IO server and handle shutdown gracefully."""
-    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, aliases, utm_prefixes
+    global NO_WRITE, SOCKETIO_SERVERS, LOKI_URL, LOKI_USERNAME, LOKI_PASSWORD, aliases, utm_bounds
+
 
     parser = argparse.ArgumentParser(
         description="EAS to Loki logger with optional no-write mode and configurable config file."
@@ -544,7 +569,7 @@ def main():
 
     # Reload the brigade lookup in case paths or data have changed
     aliases = load_aliases()
-    utm_prefixes = load_map_prefixes()
+    utm_bounds = load_utm_bounds()
 
     if args.test:
         print("Running in test mode...", file=sys.stderr)
