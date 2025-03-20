@@ -347,13 +347,15 @@ def parse_message(data):
             parsed_message['agencies_list'] = agency_list
         
         if agencies_resources.group('resources'):
-            message_body= message_body.replace(agencies_resources.group('resources'), "").lstrip()
+            
             resources = agencies_resources.group('resources').split()
 
             resources_dict = {'CFA': [], 'FRV': [], 'EMR': [], 'air': [], 'other': [] }
             resources_list = []
 
             for r in resources:
+                message_body= message_body.replace(r, "")
+
                 #Also send a simple list for table rendering without transforming
                 resources_list.append(r)
                 if re.match(r"C[A-Z]{4}\b", r): 
