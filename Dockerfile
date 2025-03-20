@@ -6,7 +6,11 @@ WORKDIR /app
 RUN ls
 # Copy the requirements file and install dependencies
 COPY . .
-RUN python3 -m pip install --user --no-cache-dir -r /app/requirements.txt
+RUN pip install poetry
+
+# Set up poetry virtual environment
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-interaction --no-ansi  --no-root
 
 # Copy the rest of the application code
 COPY . .
