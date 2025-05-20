@@ -1,3 +1,0 @@
-python-socketio==4.6.1
-requests
-websocket-client

@@ -6,7 +6,7 @@ WORKDIR /app
 RUN ls
 # Copy the requirements file and install dependencies
 COPY . .
-RUN pip install poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # Set up poetry virtual environment
 RUN poetry config virtualenvs.create false
