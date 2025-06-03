@@ -32,7 +32,7 @@ LOKI_PASSWORD = ""
 aliases = {}
 utm_bounds = {}
 
-message_buffer = deque(maxlen=20) 
+message_buffer = deque(maxlen=20)
 shutdown_event = threading.Event()
 
 frv_appliance_prefixes = {
@@ -70,7 +70,7 @@ RE_EAS_PRIORITY_NON_EMERGENCY = re.compile(r"Hb")
 RE_EAS_PRIORITY_ADMIN = re.compile(r"QD")
 RE_ALERT = re.compile(r"ALERT:?")
 
-RE_AREA_CFA = re.compile(r"[A-Z]{3,6}[0-9]{1,2}[A-Z]?") 
+RE_AREA_CFA = re.compile(r"[A-Z]{3,6}[0-9]{1,2}[A-Z]?")
 RE_AREA_FRV = re.compile(r"[0-9]{5}[A-Z]?")
 
 CFA_EVENT_KEYS_PATTERN = "|".join(re.escape(k) for k in cfa_event_types.keys())
@@ -86,13 +86,13 @@ RE_EMR_EVENT_TYPE = re.compile(fr"({EMR_EVENT_KEYS_PATTERN})")
 RE_FGD_CHANS = re.compile(r"(FGD)([0-9]{1,3})")
 RE_JOB_IDS_PATTERN_TEXT = r"(?P<job_type>[FSEJ])(?P<job_num>[0-9]{9,11})" # Added J
 RE_JOB_IDS = re.compile(RE_JOB_IDS_PATTERN_TEXT)
-RE_PAGED_GROUP = re.compile(r"\s*(\[)([A-Z,0-9,_]{3,8})(\])")
+RE_PAGED_GROUP = re.compile(r"\s*(\[)([A-Z,0-9,_]{3,8})(\])") # Max length increased slightly for robustness
 
 RE_AGENCIES_RESOURCES = re.compile(
     r"(?:\*\s*(?P<advice>.+?)\s*\*\s*)?"
     r"(?P<agencies>(?:A|F|P|EM|R)+)?\s*"
     r"(?P<resources>.*?)"
-    r"(?=(?:\s+(?:M|SV[A-Z]{1,2})\s+\S+\s+\S+\s+\([0-9]{6}\))|$)" 
+    r"(?=(?:\s+(?:M|SV[A-Z]{1,2})\s+\S+\s+\S+\s+\([0-9]{6}\))|$)"
 )
 RE_MAP_REF = re.compile(r"(?P<book>SV[A-Z]{1,2}|M)\s+(?P<map_num>\S+)\s+(?P<square>\S+)\s+\((?P<grid_ref>[0-9]{6})\)")
 RE_EAS_LATLON_DMS = re.compile(r"LL\(([-+]?\d{1,3}):(\d{1,2}):([\d.]+),\s*([-+]?\d{1,3}):(\d{1,2}):([\d.]+)\)")
@@ -109,7 +109,7 @@ def load_aliases(csv_file="data/paging_aliases.csv"):
             for row in reader:
                 key = row.get("short_name")
                 if key:
-                    lookup[key.upper()] = row 
+                    lookup[key.upper()] = row
     except FileNotFoundError:
         logger.error(f"Alias file not found: {csv_file}")
     except Exception as e:
@@ -124,7 +124,7 @@ def load_utm_bounds():
             for row in reader:
                 key = row.get("map_no")
                 if key:
-                    utm_data['state'][key.upper()] = row 
+                    utm_data['state'][key.upper()] = row
     except FileNotFoundError:
         logger.error("State UTM bounds file not found: data/state_utm_bounds.csv")
     except Exception as e:
@@ -135,7 +135,7 @@ def load_utm_bounds():
             for row in reader:
                 key = row.get("map_no")
                 if key:
-                    utm_data['melways'][key.upper()] = row 
+                    utm_data['melways'][key.upper()] = row
     except FileNotFoundError:
         logger.error("Melways UTM bounds file not found: data/melways_utm_bounds.csv")
     except Exception as e:
@@ -178,49 +178,61 @@ def create_log_entry(message_data):
 def parse_message(data):
     parsed_message = {}
     labels = {}
-    message_body_original_for_context = data['message'] 
-    message_body = data['message'] 
+    message_body_original_for_context = data['message']
+    message_body = data['message']
     parsed_message['received_message'] = data['message']
     job_ids_to_collect = []
 
+    paged_alias_raw = None # Will store the raw alias string from message, e.g., "SASS_BDE"
 
     priority_match = RE_EAS_PRIORITY_EMERGENCY.match(message_body)
     if priority_match: labels['eas_priority'] = "EMERGENCY"; message_body = message_body[priority_match.end():]
     elif (priority_match := RE_EAS_PRIORITY_NON_EMERGENCY.match(message_body)): labels['eas_priority'] = "NON_EMERGENCY"; message_body = message_body[priority_match.end():]
     elif (priority_match := RE_EAS_PRIORITY_ADMIN.match(message_body)): labels['eas_priority'] = "ADMIN"; message_body = message_body[priority_match.end():]
-    else: labels['eas_priority'] = "UNKNOWN" 
+    else: labels['eas_priority'] = "UNKNOWN"
     message_body = message_body.lstrip()
 
     capcode = int(data['address'])
     labels['capcode'] = capcode
     if capcode % 8 == 0: labels['address'] = capcode >> 3; parsed_message['address_range'] = "CFA"
     elif (capcode - 1) % 8 == 0: labels['address'] = (capcode - 1) >> 3; parsed_message['address_range'] = "SES"
-    else: parsed_message['address_range'] = "UNKNOWN" 
+    else: parsed_message['address_range'] = "UNKNOWN"
 
     alert_match = RE_ALERT.match(message_body)
     if alert_match:
         parsed_message['alert'] = True
         message_body = message_body[alert_match.end():].lstrip()
 
-    paged_group_match = RE_PAGED_GROUP.search(message_body_original_for_context) 
+    paged_group_match = RE_PAGED_GROUP.search(message_body_original_for_context)
     if paged_group_match:
-        paged_alias_raw = paged_group_match.group(2)
-        paged_alias = paged_alias_raw.replace("_", "").upper() 
+        paged_alias_raw = paged_group_match.group(2) # Store the raw alias, e.g., "SASS_BDE", "BELG"
+        paged_alias_for_lookup = paged_alias_raw.replace("_", "").upper() # For CSV lookup, e.g., "SASSBDE"
         paged_name, paged_district, paged_org = "Unknown", "Unknown", "Unknown"
-        paged_lookup = aliases.get(paged_alias)
-        if paged_lookup:
-            paged_district = paged_lookup.get('district', "Unknown"); paged_org = paged_lookup.get('org', "Unknown"); paged_name = paged_lookup.get("name", "Unknown")
-        elif (emr_alias_m := re.match(r"(E)([A-Z]{3,7})", paged_alias)):
+        
+        paged_lookup_result = aliases.get(paged_alias_for_lookup)
+        if paged_lookup_result:
+            paged_district = paged_lookup_result.get('district', "Unknown")
+            paged_org = paged_lookup_result.get('org', "Unknown").upper() # Ensure org is upper for consistency
+            paged_name = paged_lookup_result.get("name", "Unknown")
+        elif (emr_alias_m := re.match(r"(E)([A-Z]{3,7})", paged_alias_for_lookup)): # Check for EMR pattern if not in aliases
             emr_base_alias = emr_alias_m.group(2)
-            emr_lookup = aliases.get(emr_base_alias)
-            if emr_lookup: paged_district = emr_lookup.get('district', "Unknown"); paged_org = 'EMR'; paged_name = f'{emr_lookup.get("name", "Unknown")} EMR'
-        else:
+            emr_lookup_result = aliases.get(emr_base_alias)
+            if emr_lookup_result:
+                paged_district = emr_lookup_result.get('district', "Unknown")
+                paged_org = 'EMR'
+                paged_name = f'{emr_lookup_result.get("name", "Unknown")} EMR'
+        else: # Fallback if no alias match
             current_address_range = parsed_message.get('address_range')
-            if current_address_range == "SES": paged_org, paged_name, paged_district = "SES", "Unknown SES", "Unknown SES"
-            elif current_address_range == "CFA": paged_org, paged_name, paged_district = "Unknown Fire/EMR", "Unknown Fire/EMR", "Unknown Fire/EMR"
+            if current_address_range == "SES":
+                paged_org, paged_name, paged_district = "SES", "Unknown SES", "Unknown SES"
+            elif current_address_range == "CFA":
+                 # If in CFA range and no alias, assume it's a CFA paged group by default
+                paged_org, paged_name, paged_district = "CFA", f"Unknown CFA ({paged_alias_raw})", "Unknown CFA"
 
-        parsed_message['paged'] = {'alias': paged_alias_raw, 'name': paged_name, 'district': paged_district, 'org': paged_org} 
-        labels['paged_group'] = paged_alias_raw; labels['paged_group_district'] = paged_district; labels['paged_group_org'] = paged_org
+        parsed_message['paged'] = {'alias': paged_alias_raw, 'name': paged_name, 'district': paged_district, 'org': paged_org}
+        labels['paged_group'] = paged_alias_raw
+        labels['paged_group_district'] = paged_district
+        labels['paged_group_org'] = paged_org
         message_body = (message_body[:paged_group_match.start()] + message_body[paged_group_match.end():]).strip()
 
     temp_initial_job_ids = []
@@ -236,6 +248,46 @@ def parse_message(data):
         if area_match_cfa: parsed_message['area'] = {'name': area_match_cfa.group(0), 'authority': "CFA"}; message_body = message_body[area_match_cfa.end():].lstrip()
         elif (area_match_frv := RE_AREA_FRV.match(message_body)): parsed_message['area'] = {'name': area_match_frv.group(0), 'authority': "FRV"}; message_body = message_body[area_match_frv.end():].lstrip()
 
+    # --- START: Simplified Primary/Secondary Responder Logic for CFA ---
+    if (paged_alias_raw and # Check if paged_alias_raw was actually found (e.g., "SASS_BDE", "BELG")
+        parsed_message.get('address_range') == "CFA" and
+        parsed_message.get('area', {}).get('authority') == "CFA" and
+        parsed_message.get('paged', {}).get('org', '').upper() == 'CFA'): # Paged group is confirmed CFA
+
+        area_name_cfa = parsed_message['area'].get('name') # e.g., "SASS76"
+        if area_name_cfa:
+            # From paged_alias_raw (e.g., "SASS_BDE"), take part before first '_', uppercase, then first 4 chars.
+            # "SASS_BDE" -> "SASS" -> "SASS"
+            # "BELG"     -> "BELG" -> "BELG"
+            # "WON"      -> "WON"  -> "WON"  (if <4 chars, takes all)
+            # "WONTH"    -> "WONTH"-> "WONT"
+            paged_core_part = paged_alias_raw.split('_')[0].upper()
+            paged_compare_str = paged_core_part[:4]
+
+            # From CFA area name (e.g., "SASS76"), take alphabetic prefix, uppercase, then first 4 chars.
+            # "SASS76" -> "SASS"  -> "SASS"
+            # "BELG2"  -> "BELG"  -> "BELG"
+            # "WONTH1" -> "WONTH" -> "WONT"
+            area_prefix_match = re.match(r"([A-Z]{3,6})", area_name_cfa) # Extracts the CFA brigade code part
+            if area_prefix_match:
+                cfa_area_prefix = area_prefix_match.group(1).upper()
+                area_compare_str = cfa_area_prefix[:4]
+
+                if paged_compare_str == area_compare_str:
+                    parsed_message['paged_responder_type'] = "PRIMARY"
+                else:
+                    parsed_message['paged_responder_type'] = "SECONDARY"
+                    logger.debug(
+                        f"Responder type SECONDARY: Paged compare string '{paged_compare_str}' (derived from paged alias '{paged_alias_raw}') "
+                        f"does not match Area compare string '{area_compare_str}' (derived from area '{area_name_cfa}')."
+                    )
+            else:
+                # This case means RE_AREA_CFA matched the area, but the simpler prefix extraction failed.
+                # This might happen if area format is unexpected after initial RE_AREA_CFA match.
+                logger.debug(f"Could not extract CFA area prefix from '{area_name_cfa}' for responder type check (Area: {area_name_cfa}, Paged: {paged_alias_raw}).")
+    # --- END: Simplified Primary/Secondary Responder Logic for CFA ---
+
+    if parsed_message.get('address_range') == "CFA": # This condition is repeated, but code inside is distinct for event types
         parsed_message.setdefault('event_type_code', {})
         cfa_event_match = RE_CFA_EVENT_TYPE_CODE.match(message_body)
         if cfa_event_match:
@@ -246,7 +298,7 @@ def parse_message(data):
             parsed_message['event_type_code'] = frv_event_match.groupdict()
             parsed_message['event_type_code']['event_type_name'] = frv_event_types.get(frv_event_match.group('event_type'), "")
             message_body = message_body[frv_event_match.end():].lstrip()
-        elif (emr_event_match := RE_EMR_EVENT_TYPE.match(message_body)): 
+        elif (emr_event_match := RE_EMR_EVENT_TYPE.match(message_body)):
             parsed_message.setdefault('event_type_code', {})['event_type'] = emr_event_match.group(1)
             message_body = message_body[emr_event_match.end():].lstrip()
 
@@ -261,13 +313,13 @@ def parse_message(data):
         if fgd_chans:
             parsed_message['fgd_chans_list'] = sorted(list(set(fgd_chans)))
             message_body = RE_FGD_CHANS.sub("", message_body)
-            message_body = " ".join(message_body.split()).strip() 
+            message_body = " ".join(message_body.split()).strip()
 
     if "MOVE TO STATION" in message_body_original_for_context.upper() and parsed_message.get('alert'):
         RE_MOVE_TO_STATION_SPECIFIC = re.compile(
-            r"^(?P<moving_resources_text>(?:[A-Z0-9_/-]+\s+)*?)" 
+            r"^(?P<moving_resources_text>(?:[A-Z0-9_/-]+\s+)*?)"
             r"MOVE\s+TO\s+STATION\s+"
-            r"(?P<target_station>[A-Z0-9_/-]+)\b", 
+            r"(?P<target_station>[A-Z0-9_/-]+)\b",
             re.IGNORECASE
         )
         move_match = RE_MOVE_TO_STATION_SPECIFIC.search(message_body)
@@ -286,7 +338,7 @@ def parse_message(data):
                          if unit not in parsed_message['resources_dict']['FRV']: parsed_message['resources_dict']['FRV'].append(unit)
                          if unit not in parsed_message['move_up_details']['resources_moving']:
                              parsed_message['move_up_details']['resources_moving'].append(unit)
-                    elif re.fullmatch(r"T\d{1,2}[A-Z]?\b", unit): 
+                    elif re.fullmatch(r"T\d{1,2}[A-Z]?\b", unit):
                          if unit not in parsed_message['resources_dict']['FRV']: parsed_message['resources_dict']['FRV'].append(unit)
                          if unit not in parsed_message['move_up_details']['resources_moving']:
                              parsed_message['move_up_details']['resources_moving'].append(unit)
@@ -303,10 +355,10 @@ def parse_message(data):
             parsed_message.setdefault('map_ref', {})['wgs84'] = {'latitude': latlon_from_grid[0], 'longitude': latlon_from_grid[1]}
         text_before_map_ref = message_body[:map_ref_match.start()]
         text_after_map_ref = message_body[map_ref_match.end():]
-    
+
     text_for_resources_agencies = text_after_map_ref if map_ref_match else message_body
-    agencies_resources_match = RE_AGENCIES_RESOURCES.match(text_for_resources_agencies.lstrip()) 
-    
+    agencies_resources_match = RE_AGENCIES_RESOURCES.match(text_for_resources_agencies.lstrip())
+
     if agencies_resources_match and parsed_message.get('address_range') == "CFA" and not parsed_message.get('move_up_details'):
         parsed_message.setdefault('resources_dict', {'CFA': [], 'FRV': [], 'EMR': [], 'air': [], 'other': []})
         resources_dict = parsed_message['resources_dict']
@@ -321,10 +373,10 @@ def parse_message(data):
         if agencies_text:
             agency_list = parsed_message.get('agencies_list', [])
             agencies_stripped = agencies_text.strip().upper()
-            for ag_char_code in ["A", "F", "P", "R"]: 
+            for ag_char_code in ["A", "F", "P", "R"]:
                 if ag_char_code in agencies_stripped and ag_char_code not in agency_list:
                     agency_list.append(ag_char_code)
-            if "EM" in agencies_stripped and "EM" not in agency_list : 
+            if "EM" in agencies_stripped and "EM" not in agency_list :
                 agency_list.append("EM")
             if agency_list: parsed_message['agencies_list'] = sorted(list(set(agency_list)))
 
@@ -333,15 +385,15 @@ def parse_message(data):
             remaining_tokens_after_resource_parse = []
 
             for r_item_raw_iter in resources_items_raw:
-                r_item = r_item_raw_iter.upper() 
+                r_item = r_item_raw_iter.upper()
                 classified = False
                 alias_lookup_result = aliases.get(r_item)
 
                 if RE_JOB_IDS.fullmatch(r_item_raw_iter):
                     if r_item_raw_iter not in job_ids_to_collect: job_ids_to_collect.append(r_item_raw_iter)
-                    classified = True 
+                    classified = True
                 elif r_item.startswith("LAT/LON:") or RE_EAS_LATLON_DMS.search(r_item_raw_iter) or RE_EAS_LATLON_DECIMAL.search(r_item_raw_iter) :
-                    classified = True 
+                    classified = True
 
                 if not classified and alias_lookup_result:
                     org = alias_lookup_result.get('org', '').upper()
@@ -349,7 +401,7 @@ def parse_message(data):
                     elif org == 'FRV' and r_item_raw_iter not in resources_dict['FRV']: resources_dict['FRV'].append(r_item_raw_iter); classified = True
                     elif org == 'EMR' and r_item_raw_iter not in resources_dict['EMR']: resources_dict['EMR'].append(r_item_raw_iter); classified = True
 
-                if not classified and re.fullmatch(r"T\d{1,2}[A-Z]?\b", r_item_raw_iter) and r_item_raw_iter not in resources_dict['FRV']: 
+                if not classified and re.fullmatch(r"T\d{1,2}[A-Z]?\b", r_item_raw_iter) and r_item_raw_iter not in resources_dict['FRV']:
                     resources_dict['FRV'].append(r_item_raw_iter); classified = True
 
                 if not classified:
@@ -376,44 +428,63 @@ def parse_message(data):
                 if not classified and r_item_raw_iter.startswith(("AIR","HEL","FBD")):
                     if r_item_raw_iter not in resources_dict['air']: resources_dict['air'].append(r_item_raw_iter); classified = True
 
-                if not classified and r_item_raw_iter.startswith("EMR") and len(r_item_raw_iter) > 3: 
+                if not classified and r_item_raw_iter.startswith("EMR") and len(r_item_raw_iter) > 3:
                     if r_item_raw_iter not in resources_dict['EMR']: resources_dict['EMR'].append(r_item_raw_iter); classified = True
-                
+
                 if not classified:
                     if RE_JOB_IDS.fullmatch(r_item_raw_iter):
                         if r_item_raw_iter not in job_ids_to_collect: job_ids_to_collect.append(r_item_raw_iter)
-                    else: 
+                    else:
                         remaining_tokens_after_resource_parse.append(r_item_raw_iter)
 
             if map_ref_match:
                 if agencies_resources_match:
                     message_body = (text_before_map_ref.strip() + " " + " ".join(remaining_tokens_after_resource_parse)).strip()
-                else: 
-                    message_body = text_before_map_ref.strip() 
-            elif agencies_resources_match: 
-                message_body = " ".join(remaining_tokens_after_resource_parse) 
-            
+                else:
+                    message_body = text_before_map_ref.strip()
+            elif agencies_resources_match:
+                message_body = " ".join(remaining_tokens_after_resource_parse)
+
     if 'resources_dict' in parsed_message:
         resources_dict_final_paged = parsed_message.get('resources_dict', {})
         paged_info_for_emr_final = parsed_message.get('paged')
         if paged_info_for_emr_final and paged_info_for_emr_final.get('org') == 'EMR':
-            paged_alias_for_emr = paged_info_for_emr_final.get('alias','').upper()
+            paged_alias_for_emr = paged_info_for_emr_final.get('alias','').upper() # Use the raw alias from paged info
             if paged_alias_for_emr.startswith('E') and len(paged_alias_for_emr) > 1:
-                paged_base_alias_emr = paged_alias_for_emr[1:]
-                items_to_move = []
-                for cfa_res_item_emr in list(resources_dict_final_paged.get('CFA', [])):
-                    cfa_res_base_emr = cfa_res_item_emr.upper()
-                    if (m_c_pref_emr := re.fullmatch(r"C([A-Z]{3,6})", cfa_res_base_emr)): cfa_res_base_emr = m_c_pref_emr.group(1)
-                    elif (m_tank_emr := re.fullmatch(r"([A-Z]{3,6})T(\d{1,2}[A-Z]?)", cfa_res_base_emr)): cfa_res_base_emr = m_tank_emr.group(1)
-                    
-                    if cfa_res_base_emr == paged_base_alias_emr:
-                        items_to_move.append(cfa_res_item_emr)
+                # For EMR, the base alias might be what we need to match against CFA resource codes
+                paged_base_alias_emr = paged_alias_for_emr[1:] # Remove the 'E'
+                # If paged_alias_for_emr had underscores, they were already removed for paged_alias_for_lookup
+                # If not, and original alias was e.g. E_SASS, then paged_alias_for_emr from paged dict is E_SASS
+                # and paged_base_alias_emr would be _SASS. This needs to be consistent.
+                # Let's assume paged_info_for_emr_final.get('alias') is the raw paged alias_raw string.
+                # Then paged_base_alias_emr should be derived similarly to paged_alias_for_lookup.
                 
-                if items_to_move:
-                    emr_list_final_paged = resources_dict_final_paged.setdefault('EMR', [])
-                    for item_move_emr in items_to_move:
-                        if item_move_emr in resources_dict_final_paged.get('CFA', []): resources_dict_final_paged['CFA'].remove(item_move_emr)
-                        if item_move_emr not in emr_list_final_paged: emr_list_final_paged.append(item_move_emr)
+                # Re-evaluate how paged_base_alias_emr is derived for matching:
+                # paged_alias_raw from the message (e.g. "E_SASS", "ESASSBDE")
+                # If paged_alias_raw starts with E and then possibly an underscore:
+                current_paged_alias_raw = paged_info_for_emr_final.get('alias','') # This is paged_alias_raw
+                if current_paged_alias_raw.upper().startswith('E'):
+                    potential_base = current_paged_alias_raw[1:]
+                    if potential_base.startswith('_'): potential_base = potential_base[1:]
+                    paged_base_alias_emr = potential_base.split('_')[0].upper() # E.g. E_SASS_BDE -> SASS
+
+                    items_to_move = []
+                    for cfa_res_item_emr in list(resources_dict_final_paged.get('CFA', [])):
+                        cfa_res_base_emr = cfa_res_item_emr.upper()
+                        # Normalize CFA resource item to its base code for comparison
+                        if (m_c_pref_emr := re.fullmatch(r"C([A-Z]{3,6})", cfa_res_base_emr)): cfa_res_base_emr = m_c_pref_emr.group(1)
+                        elif (m_tank_emr := re.fullmatch(r"([A-Z]{3,6})T(\d{1,2}[A-Z]?)", cfa_res_base_emr)): cfa_res_base_emr = m_tank_emr.group(1)
+                        cfa_res_base_emr = cfa_res_base_emr.split('_')[0] # Further ensure base form
+
+                        if cfa_res_base_emr == paged_base_alias_emr:
+                            items_to_move.append(cfa_res_item_emr)
+                    
+                    if items_to_move:
+                        emr_list_final_paged = resources_dict_final_paged.setdefault('EMR', [])
+                        for item_move_emr in items_to_move:
+                            if item_move_emr in resources_dict_final_paged.get('CFA', []): resources_dict_final_paged['CFA'].remove(item_move_emr)
+                            if item_move_emr not in emr_list_final_paged: emr_list_final_paged.append(item_move_emr)
+
 
     temp_general_job_ids_from_sub = []
     def collect_and_remove_job_ids_from_body(matchobj):
@@ -426,7 +497,7 @@ def parse_message(data):
     if job_ids_to_collect: parsed_message['job_ids_list'] = sorted(list(set(job_ids_to_collect)))
 
     parsed_message['message_body'] = " ".join(message_body.split()).strip()
-    if parsed_message['message_body'].startswith("FROM ") and labels.get('eas_priority') == "ADMIN": 
+    if parsed_message['message_body'].startswith("FROM ") and labels.get('eas_priority') == "ADMIN":
         parsed_message['message_body'] = re.sub(r"^FROM\s+[A-Z0-9\s.-]+:\s*", "", parsed_message['message_body'], count=1, flags=re.IGNORECASE)
 
     if 'resources_dict' in parsed_message:
@@ -435,17 +506,19 @@ def parse_message(data):
                  parsed_message['resources_dict'][k_final] = sorted(list(set(parsed_message['resources_dict'][k_final])))
             else:
                 del parsed_message['resources_dict'][k_final]
-        if not parsed_message['resources_dict']:
+        if not parsed_message['resources_dict']: # Delete dict if all lists became empty
             del parsed_message['resources_dict']
     if 'agencies_list' in parsed_message and parsed_message['agencies_list']:
         parsed_message['agencies_list'] = sorted(list(set(parsed_message['agencies_list'])))
     if 'fgd_chans_list' in parsed_message and parsed_message['fgd_chans_list']:
         parsed_message['fgd_chans_list'] = sorted(list(set(parsed_message['fgd_chans_list'])))
 
-    if 'event_type_code' in parsed_message and not parsed_message['event_type_code']:
+    if 'event_type_code' in parsed_message and not parsed_message['event_type_code']: # Delete if empty
         del parsed_message['event_type_code']
-    if 'advice' in parsed_message and parsed_message['advice']:
-        parsed_message['advice'] = parsed_message['advice'].strip()
+    if 'advice' in parsed_message and not parsed_message['advice'].strip(): # Delete if empty or only whitespace
+        del parsed_message['advice']
+    elif 'advice' in parsed_message : parsed_message['advice'] = parsed_message['advice'].strip()
+
 
     message_data = {'message': parsed_message, 'labels': labels}
     return message_data
@@ -471,11 +544,11 @@ def parse_eas_latlon(message_body_input):
             longitude = dms_to_decimal(lon_deg, lon_min, lon_sec)
             message_body_output = (message_body_output[:match_dms.start()] + message_body_output[match_dms.end():]).strip()
             latlon_coords = {'latitude': latitude, 'longitude': longitude}
-            return message_body_output, latlon_coords 
+            return message_body_output, latlon_coords
         except Exception:
             logger.exception(f"Error parsing DMS lat/lon from EAS message part: {match_dms.group(0)}")
 
-    match_decimal = RE_EAS_LATLON_DECIMAL.search(message_body_output) 
+    match_decimal = RE_EAS_LATLON_DECIMAL.search(message_body_output)
     if match_decimal:
         try:
             lat_str, lon_str = match_decimal.groups()
@@ -524,7 +597,8 @@ def grid_ref_to_latlon(map_ref_data):
 
         mb = bounds_set.get(map_number_raw)
         if not mb:
-            if map_number_raw[:-1].isdigit() and map_number_raw[-1].isalpha():
+            # Try stripping trailing letter if map number ends with one (e.g. "123A" -> "123")
+            if map_number_raw and map_number_raw[:-1].isdigit() and map_number_raw[-1].isalpha():
                 mb = bounds_set.get(map_number_raw[:-1])
             if not mb:
                 logger.debug(f"Map number {map_number_raw} (book {book_raw}) not found in UTM bounds.")
@@ -532,7 +606,7 @@ def grid_ref_to_latlon(map_ref_data):
 
         required_keys = ['mga_zone', 'x_min', 'x_max', 'y_min', 'y_max']
         for key_check in required_keys:
-            if key_check not in mb or not mb[key_check]:
+            if key_check not in mb or not mb[key_check]: # Check for presence and non-empty value
                 logger.debug(f"Missing or empty key '{key_check}' in UTM bounds for map {map_number_raw} (book {book_raw}). Data: {mb}")
                 return None
         
@@ -543,12 +617,12 @@ def grid_ref_to_latlon(map_ref_data):
         )
         if easting is None or northing is None: return None
         
-        source_crs_epsg = 28300 + mga_zone
+        source_crs_epsg = 28300 + mga_zone # GDA94 / MGA zone (or GDA2020 if data is such)
         
         gda_crs = pyproj.CRS.from_epsg(source_crs_epsg)
-        wgs84_crs = pyproj.CRS.from_epsg(4326) 
+        wgs84_crs = pyproj.CRS.from_epsg(4326) # WGS84, standard for lat/lon
 
-        transformer = pyproj.Transformer.from_crs(gda_crs, wgs84_crs, always_xy=True)
+        transformer = pyproj.Transformer.from_crs(gda_crs, wgs84_crs, always_xy=True) # Ensure (lon, lat) order for transform
         longitude, latitude = transformer.transform(easting, northing)
         return latitude, longitude
     except KeyError as e: logger.debug(f"Missing key in map_ref_data for WGS84: {e}. Data: {map_ref_data}"); return None
@@ -570,19 +644,19 @@ def start_client(server_url, shutdown_event_ref):
             dedup_key = f"{message_content}|{address}"
             if dedup_key in message_buffer: client_logger.debug(f"Duplicate message detected from {server_url}. Discarding: {dedup_key[:100]}..."); return
             message_buffer.append(dedup_key)
-            
+
             client_logger.debug(f"Received from {server_url}: CAPCODE={data.get('address')}, MSG='{data.get('message')}'")
             message_data = parse_message(data)
-            
+
             if not message_data: client_logger.error(f"Failed to parse message: {data}"); return
-            message_data['server_url'] = server_url 
+            message_data['server_url'] = server_url
             log_entry = create_log_entry(message_data)
             send_to_loki(log_entry)
         except Exception: client_logger.exception(f"Error processing message with data: {data} from {server_url}")
 
     try:
         sio_client.connect(server_url, socketio_path="socket.io", transports=["websocket"])
-        while not shutdown_event_ref.is_set(): time.sleep(0.1) 
+        while not shutdown_event_ref.is_set(): time.sleep(0.1)
         sio_client.disconnect(); client_logger.info(f"Disconnected from {server_url}")
     except socketio.exceptions.ConnectionError as e: client_logger.error(f"Connection failed to {server_url}: {e}")
     except Exception: client_logger.exception(f"Error in client loop for {server_url}")
@@ -646,24 +720,24 @@ def main():
         try:
             # Ensure the directory exists
             test_dir = os.path.dirname(test_csv_file)
-            if test_dir and not os.path.exists(test_dir): # Check if test_dir is not empty
+            if test_dir and not os.path.exists(test_dir): # Check if test_dir is not empty string
                  os.makedirs(test_dir, exist_ok=True)
 
             with open(test_csv_file, "r", newline="", encoding='utf-8') as csvfile:
                 reader = csv.reader(csvfile)
                 header = next(reader, None)
                 if not header or len(header) < 3:
-                    logger.error(f"Malformed header in {test_csv_file}. Expected at least 3 columns. Found: {header}")
+                    logger.error(f"Malformed header in {test_csv_file}. Expected at least 3 columns (e.g. line_no, capcode, message). Found: {header}")
                     sys.exit(1)
 
-                for current_line_num, row in enumerate(reader, 1): # Line numbers start from 1 for user
+                for current_line_num, row in enumerate(reader, 1): # Line numbers start from 1 for user-facing range
                     if current_line_num < start_line:
                         continue
                     if current_line_num > end_line:
                         break
 
-                    if len(row) < 3:
-                        logger.warning(f"Skipping malformed row {current_line_num} in {test_csv_file}: {row}")
+                    if len(row) < 3: # Expecting at least capcode and message from row[1] and row[2]
+                        logger.warning(f"Skipping malformed row {current_line_num} in {test_csv_file}: {row}. Expected at least 3 columns.")
                         continue
 
                     test_msg_data_input = {'address': row[1].strip(), 'message': row[2].strip()}
@@ -671,6 +745,7 @@ def main():
                     parsed_output = parse_message(test_msg_data_input)
 
                     test_data_and_results.append({
+                        'input_line_number': current_line_num,
                         'input_capcode': test_msg_data_input['address'],
                         'input_message_string': test_msg_data_input['message'],
                         'parsed_result': parsed_output
@@ -683,11 +758,11 @@ def main():
                 print("[]") # Output empty JSON array if no results
         except FileNotFoundError:
             logger.error(f"Error: Test CSV file not found: {test_csv_file}")
-            print("[]")
+            print("[]") # Output empty JSON array
             sys.exit(1)
         except Exception:
             logger.exception(f"Error processing test messages from {test_csv_file}")
-            print("[]")
+            print("[]") # Output empty JSON array
             sys.exit(1)
         return
 
